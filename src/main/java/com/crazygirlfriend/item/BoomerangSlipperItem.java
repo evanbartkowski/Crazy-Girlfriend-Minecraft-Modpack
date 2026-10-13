@@ -47,3 +47,4 @@ public class BoomerangSlipperItem extends Item {
         tooltip.add(Text.literal("Hurls towards friends and curves right back to you!").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

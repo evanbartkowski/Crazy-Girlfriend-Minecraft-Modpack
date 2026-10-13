@@ -50,3 +50,4 @@ public class PillowItem extends Item {
         tooltip.add(Text.literal("Burst of cloud feathers upon hit! Ideal for midnight pillow fights.").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

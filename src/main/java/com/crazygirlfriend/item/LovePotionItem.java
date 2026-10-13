@@ -72,3 +72,4 @@ public class LovePotionItem extends Item {
         tooltip.add(Text.literal("Sparkles with effervescent romantic aura and grants sweet buffs.").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

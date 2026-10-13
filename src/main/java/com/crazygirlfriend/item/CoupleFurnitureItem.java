@@ -97,3 +97,4 @@ public class CoupleFurnitureItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

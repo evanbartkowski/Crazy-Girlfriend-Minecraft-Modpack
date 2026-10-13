@@ -51,3 +51,4 @@ public class FryingPanItem extends SwordItem {
         tooltip.add(Text.literal("Produces an ear-splitting BONK upon impact!").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

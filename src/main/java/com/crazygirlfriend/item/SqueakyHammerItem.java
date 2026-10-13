@@ -49,3 +49,4 @@ public class SqueakyHammerItem extends Item {
         tooltip.add(Text.literal("Loud high-pitched squeak with harmless slapstick knockback!").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

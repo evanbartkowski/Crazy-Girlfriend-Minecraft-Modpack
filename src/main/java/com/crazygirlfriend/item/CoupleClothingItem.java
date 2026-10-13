@@ -107,3 +107,4 @@ public class CoupleClothingItem extends ArmorItem {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

@@ -41,3 +41,4 @@ public class NewspaperItem extends Item {
         tooltip.add(Text.literal("Playful discipline swatter for unruly partners!").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

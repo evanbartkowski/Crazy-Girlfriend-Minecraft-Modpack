@@ -60,3 +60,4 @@ public class RelationshipEvent {
     public boolean isCrazyEvent() { return isCrazyEvent; }
     public CrazyTier getMinimumTier() { return minimumTier; }
 }
+

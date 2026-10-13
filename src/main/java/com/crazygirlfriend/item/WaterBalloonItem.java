@@ -47,3 +47,4 @@ public class WaterBalloonItem extends Item {
         tooltip.add(Text.literal("Splashes friends with water and causes a wet shivering shake!").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }
+

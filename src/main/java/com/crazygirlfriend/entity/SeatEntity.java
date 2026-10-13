@@ -50,3 +50,4 @@ public class SeatEntity extends Entity {
         return 0.15D;
     }
 }
+

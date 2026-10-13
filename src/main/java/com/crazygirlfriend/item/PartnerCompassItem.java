@@ -97,3 +97,4 @@ public class PartnerCompassItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

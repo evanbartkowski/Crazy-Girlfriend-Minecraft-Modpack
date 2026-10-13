@@ -61,3 +61,4 @@ public class PhotoAlbumItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

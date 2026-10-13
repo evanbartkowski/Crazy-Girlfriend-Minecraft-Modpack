@@ -87,3 +87,4 @@ public class CoupleCameraItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

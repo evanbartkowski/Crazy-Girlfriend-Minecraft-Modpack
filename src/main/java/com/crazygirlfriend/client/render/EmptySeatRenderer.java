@@ -15,3 +15,4 @@ public class EmptySeatRenderer extends EntityRenderer<SeatEntity> {
         return null;
     }
 }
+

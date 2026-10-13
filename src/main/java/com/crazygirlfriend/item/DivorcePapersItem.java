@@ -86,3 +86,4 @@ public class DivorcePapersItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+
