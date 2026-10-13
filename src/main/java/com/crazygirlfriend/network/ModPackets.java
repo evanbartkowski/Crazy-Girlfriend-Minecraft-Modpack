@@ -23,11 +23,31 @@ public class ModPackets {
     public static final Identifier LEASH_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "leash_sync");
     public static final Identifier MAKEUP_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "makeup_sync");
     public static final Identifier FADE_VIGNETTE_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "fade_vignette");
+    public static final Identifier FACIAL_EXPRESSION_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "facial_expression_sync");
 
     public static final Identifier INTERACTION_REQUEST_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "interaction_request");
     public static final Identifier APPLY_MAKEUP_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "apply_makeup");
+    public static final Identifier COMBO_TRIGGER_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "combo_trigger");
 
     public static void registerC2SPackets() {
+        ServerPlayNetworking.registerGlobalReceiver(COMBO_TRIGGER_C2S, (server, player, handler, buf, responseSender) -> {
+            UUID targetUuid = buf.readUuid();
+            String comboAnimName = buf.readString();
+
+            server.execute(() -> {
+                ServerPlayerEntity target = server.getPlayerManager().getPlayer(targetUuid);
+                if (target == null || target.isRemoved() || target.equals(player)) return;
+                if (player.distanceTo(target) > 8.0) return;
+
+                try {
+                    com.crazygirlfriend.animation.AnimationType comboType = com.crazygirlfriend.animation.AnimationType.valueOf(comboAnimName);
+                    int duration = comboType.getDefaultDuration() > 0 ? comboType.getDefaultDuration() : 45;
+                    com.crazygirlfriend.animation.PlayerAnimationTracker.get().startAnimation(player, target, comboType, comboType, duration);
+                    com.crazygirlfriend.event.ContextReactionEngine.checkPostInteractionReactions(player, target, comboType);
+                } catch (Exception ignored) {}
+            });
+        });
+
         ServerPlayNetworking.registerGlobalReceiver(INTERACTION_REQUEST_C2S, (server, player, handler, buf, responseSender) -> {
             UUID targetUuid = buf.readUuid();
             String actionName = buf.readString();

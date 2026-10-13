@@ -41,6 +41,9 @@ public abstract class InGameHudMixin {
                 }
             }
         }
+
+        // Render Combo HUD prompt if an interactive animation combo is available
+        com.crazygirlfriend.client.gui.ComboOverlayHud.get().render(context, tickDelta);
     }
 }
 

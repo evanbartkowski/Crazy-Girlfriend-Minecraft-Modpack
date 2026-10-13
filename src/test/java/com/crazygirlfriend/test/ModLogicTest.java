@@ -197,4 +197,94 @@ public class ModLogicTest {
         assertEquals(0, AnimationType.PIGGYBACK.getDefaultDuration());
         assertEquals(0, AnimationType.LEASH_SIT.getDefaultDuration());
     }
+
+    @Test
+    public void testFacialExpressions() {
+        assertEquals(16, com.crazygirlfriend.facial.FacialExpression.values().length);
+        for (com.crazygirlfriend.facial.FacialExpression expr : com.crazygirlfriend.facial.FacialExpression.values()) {
+            assertNotNull(expr.getDisplayName());
+            assertFalse(expr.getDisplayName().isEmpty());
+        }
+    }
+
+    @Test
+    public void testAnimationCombos() {
+        // Test combos from HUG
+        var branches = com.crazygirlfriend.combo.AnimationComboRegistry.getBranches(AnimationType.HUG);
+        assertFalse(branches.isEmpty());
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.HUG, AnimationType.ROMANTIC_DIP_KISS));
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.HUG, AnimationType.SPINNING_HUG));
+        assertFalse(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.HUG, AnimationType.DIVORCE));
+
+        // Test combos from KISS
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.KISS, AnimationType.HEAD_BUMP_KISS));
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.KISS, AnimationType.MAKE_OUT));
+
+        // Test combos from SLAP
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.SLAP_ATTACKER, AnimationType.RECONCILIATION_HUG));
+        assertTrue(com.crazygirlfriend.combo.AnimationComboRegistry.canCombo(AnimationType.SLAP_VICTIM, AnimationType.FAKE_COLLAPSE));
+
+        // Test branch metadata
+        var dipBranch = com.crazygirlfriend.combo.AnimationComboRegistry.getBranch(AnimationType.HUG, AnimationType.ROMANTIC_DIP_KISS);
+        assertNotNull(dipBranch);
+        assertEquals("1", dipBranch.hotkey);
+        assertEquals(com.crazygirlfriend.combo.AnimationComboRegistry.ComboCategory.ROMANTIC, dipBranch.category);
+    }
+
+    @Test
+    public void testAnimationVariantsAndHelpers() {
+        assertTrue(AnimationType.values().length >= 65, "Expected at least 65 animation variants, found: " + AnimationType.values().length);
+
+        // Test variant selectors
+        java.util.Random rnd = new java.util.Random(12345);
+        AnimationType hugVar = AnimationType.getHugVariant(rnd);
+        assertNotNull(hugVar);
+        assertTrue(hugVar.name().contains("HUG"));
+
+        AnimationType kissVar = AnimationType.getKissVariant(rnd);
+        assertNotNull(kissVar);
+        assertTrue(kissVar.name().contains("KISS"));
+
+        AnimationType slapReaction = AnimationType.getSlapReactionVariant(rnd);
+        assertNotNull(slapReaction);
+
+        // Test variant durations
+        assertTrue(AnimationType.BEAR_HUG.getDefaultDuration() > 0);
+        assertTrue(AnimationType.SPINNING_HUG.getDefaultDuration() > 0);
+        assertTrue(AnimationType.ROMANTIC_DIP_KISS.getDefaultDuration() > 0);
+        assertTrue(AnimationType.FISH_SLAP_ATTACKER.getDefaultDuration() > 0);
+    }
+
+    @Test
+    public void testFacialExpressionManagerLifecycle() {
+        UUID testPlayer = UUID.randomUUID();
+        var mgr = com.crazygirlfriend.facial.FacialExpressionManager.get();
+
+        assertEquals(com.crazygirlfriend.facial.FacialExpression.NONE, mgr.getExpression(testPlayer));
+
+        mgr.setExpression(testPlayer, com.crazygirlfriend.facial.FacialExpression.BLUSHING, 3);
+        assertEquals(com.crazygirlfriend.facial.FacialExpression.BLUSHING, mgr.getExpression(testPlayer));
+
+        mgr.tick();
+        assertEquals(com.crazygirlfriend.facial.FacialExpression.BLUSHING, mgr.getExpression(testPlayer));
+
+        mgr.tick();
+        mgr.tick();
+        // After 3 ticks, should expire to NONE
+        assertEquals(com.crazygirlfriend.facial.FacialExpression.NONE, mgr.getExpression(testPlayer));
+    }
+
+    @Test
+    public void testCinematicCameraManagerLogic() {
+        var cam = com.crazygirlfriend.client.camera.CinematicCameraManager.get();
+        assertNotNull(cam);
+
+        cam.triggerScreenShake(5, 1.5f);
+        assertTrue(Math.abs(cam.getShakeOffset(0.0f)) >= 0.0f);
+
+        for (int i = 0; i < 6; i++) {
+            cam.tick();
+        }
+        assertEquals(0.0f, cam.getShakeOffset(0.0f));
+    }
 }

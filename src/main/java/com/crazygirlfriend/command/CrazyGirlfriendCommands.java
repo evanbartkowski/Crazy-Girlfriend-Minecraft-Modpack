@@ -169,6 +169,22 @@ public class CrazyGirlfriendCommands {
                 player.sendMessage(Text.literal("🛑 Interaction / carry cancelled.").formatted(Formatting.YELLOW), false);
                 return 1;
             }))
+            .then(literal("expression")
+                .then(argument("name", com.mojang.brigadier.arguments.StringArgumentType.word())
+                    .executes(ctx -> {
+                        ServerPlayerEntity player = ctx.getSource().getPlayerOrThrow();
+                        String exprName = com.mojang.brigadier.arguments.StringArgumentType.getString(ctx, "name");
+                        try {
+                            com.crazygirlfriend.facial.FacialExpression expr = com.crazygirlfriend.facial.FacialExpression.valueOf(exprName.toUpperCase());
+                            com.crazygirlfriend.facial.FacialExpressionManager.get().setAndSyncExpression(player, expr, 100);
+                            player.sendMessage(Text.literal("😊 Facial expression set to: " + expr.getDisplayName()).formatted(Formatting.LIGHT_PURPLE), false);
+                        } catch (Exception e) {
+                            player.sendMessage(Text.literal("❌ Unknown expression. Try: BLUSHING, SMILING, WINKING, ANGRY_EYEBROWS, SHOCKED, POUTING, DIZZY_EYES, LAUGHING...").formatted(Formatting.RED), false);
+                        }
+                        return 1;
+                    })
+                )
+            )
             .then(literal("anim")
                 .then(argument("animation", com.mojang.brigadier.arguments.StringArgumentType.word())
                     .executes(ctx -> {

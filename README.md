@@ -27,11 +27,14 @@ Track your partner's emotional state with a dynamic meter and 5 distinct tiers:
 * **Tier 5: Total Chaos (95–100%) 🌪️**: Full cartoon slapstick apocalypse! Frying pan duels, water balloon ambushes, bed launches, and pillow fort standoffs!
 * **Soothe & Pacify**: Reduce the meter using chocolates, sweet treats, romantic dates, apologies, and couple cuddles.
 
-### 3. 🎭 63 Synchronized Player Animations & Interactions
-Procedurally animated across all character bones (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) with smooth limb interpolation:
-* **Romantic Interactions**: Warm Hug, Long Hug, Back Hug, Sweet Kiss, Passionate Make Out, Forehead Kiss, Cheek Kiss, Kiss Attack, Princess Carry Kiss, Face Nuzzle, Cuddle, Hand Holding, Slow Dance, Stargazing, Make Love (non-explicit romantic fade-to-black), and Flower Gifting.
-* **Comedy & Chaos Animations**: Dramatic Slap, Frying Pan BONK, Paddle Spank, Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
-* **Carrying & Mount Actions**: Piggyback Ride, Bridal Carry, Shoulder Carry, Straddle Lap Seating.
+### 3. 🎭 65+ Synchronized Player Animations & Interactive Combos
+Procedurally animated across all character bones (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) with smooth limb interpolation, cubic easing, and idle micro-movements:
+* **Romantic Interactions & Variations**: Warm Hug, Bear Hug, Spinning Hug, Jumping Hug, Romantic Sway Hug, Sweet Kiss, Passionate Make Out, Romantic Dip Kiss, Forehead Kiss, Cheek Kiss, Kiss Attack, Princess Carry Kiss, Face Nuzzle, Cuddle, Campfire Snuggle, Hand Holding, Rain Twirl, Slow Dance, Stargazing, Make Love (non-explicit romantic fade-to-black), and Flower Gifting.
+* **Comedy & Chaos Animations**: Dramatic Slap, 360 Spinning Slap, Raw Fish Slap, Frying Pan BONK, Head Bonk Kiss, Paddle Spank, Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Ragdoll Flop, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
+* **Carrying & Mount Actions**: Piggyback Ride, Passenger Waving, Heavy Armor Stumble Carry, Gentle Dismount, Bridal Carry, Shoulder Carry, Straddle Lap Seating.
+* **💫 Interactive Combo System**: Active animations display an on-screen HUD prompt (`[1] Dip Kiss  [2] Spin  [3] Hold Hands  [4] Hug`). Press number keys to branch fluidly into follow-up sequences without interrupting gameplay!
+* **😊 16 Dynamic Facial Expressions**: Non-destructive feature renderer overlays animated expressions onto player skins: Blushing, Smiling, Closed Eyes, Winking, Angry Eyebrows, Shocked, Embarrassed, Cartoon Tears, Sad, Pouting, Suspicious Side-Eye, Dizzy Spiral Eyes, Sleepy, Laughing, and Drama Crying! Trigger via `/cg expression <name>` or dynamically through actions and moods.
+* **🎥 Cinematic Camera System**: Optional subtle cinematic camera movements (`ModConfig.enableCinematicCamera`): gentle camera roll during romantic dips, subtle screen shake on comedic bonks and slaps, and gentle FOV zoom during intimate moments.
 * **Safety & Consent**: All actions respect partner auto-accept permissions (`/cg autoaccept`). Type `/cg cancel` at any moment to cancel an animation or dismount instantly.
 
 ### 4. 🎮 10 Interactive Couple Minigames & Dates

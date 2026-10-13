@@ -131,24 +131,34 @@ public class RequestManager {
                 RelationshipManager.get().upgradeToMarriage(sender, target);
             }
             case HUG -> {
-                PlayerAnimationTracker.get().startAnimation(sender, target, AnimationType.HUG, AnimationType.HUG, 40);
+                AnimationType resolved = com.crazygirlfriend.event.ContextReactionEngine.resolveContextualAnimation(sender, target, AnimationType.HUG);
+                int duration = resolved.getDefaultDuration() > 0 ? resolved.getDefaultDuration() : 40;
+                PlayerAnimationTracker.get().startAnimation(sender, target, resolved, resolved, duration);
                 world.spawnParticles(ParticleTypes.HEART, target.getX(), target.getY() + 1.2, target.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
-                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.ROMANTIC_CHIME, SoundCategory.PLAYERS, 0.9f, 1.2f);
+                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.ROMANTIC_CHIME, SoundCategory.PLAYERS, 0.9f, com.crazygirlfriend.event.ContextReactionEngine.getRandomPitch(world));
+                com.crazygirlfriend.event.ContextReactionEngine.checkPostInteractionReactions(sender, target, resolved);
                 checkJealousy(sender, target, world);
             }
             case KISS -> {
-                PlayerAnimationTracker.get().startAnimation(sender, target, AnimationType.KISS, AnimationType.KISS, 35);
+                AnimationType resolved = com.crazygirlfriend.event.ContextReactionEngine.resolveContextualAnimation(sender, target, AnimationType.KISS);
+                int duration = resolved.getDefaultDuration() > 0 ? resolved.getDefaultDuration() : 35;
+                PlayerAnimationTracker.get().startAnimation(sender, target, resolved, resolved, duration);
                 world.spawnParticles(ParticleTypes.HEART, target.getX(), target.getY() + 1.5, target.getZ(), 20, 0.3, 0.3, 0.3, 0.05);
-                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.KISS, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.KISS, SoundCategory.PLAYERS, 1.0f, com.crazygirlfriend.event.ContextReactionEngine.getRandomPitch(world));
+                com.crazygirlfriend.event.ContextReactionEngine.checkPostInteractionReactions(sender, target, resolved);
                 checkJealousy(sender, target, world);
             }
             case SLAP -> {
-                PlayerAnimationTracker.get().startAnimation(sender, target, AnimationType.SLAP_ATTACKER, AnimationType.SLAP_VICTIM, 25);
+                AnimationType resolved = com.crazygirlfriend.event.ContextReactionEngine.resolveContextualAnimation(sender, target, AnimationType.SLAP_ATTACKER);
+                AnimationType victimAnim = (resolved == AnimationType.FISH_SLAP_ATTACKER) ? AnimationType.FISH_SLAP_VICTIM : AnimationType.SLAP_VICTIM;
+                int duration = resolved.getDefaultDuration() > 0 ? resolved.getDefaultDuration() : 25;
+                PlayerAnimationTracker.get().startAnimation(sender, target, resolved, victimAnim, duration);
                 world.spawnParticles(ParticleTypes.CRIT, target.getX(), target.getY() + 1.2, target.getZ(), 25, 0.3, 0.3, 0.3, 0.2);
-                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.SLAP, SoundCategory.PLAYERS, 1.0f, 1.1f);
+                world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.SLAP, SoundCategory.PLAYERS, 1.0f, com.crazygirlfriend.event.ContextReactionEngine.getRandomPitch(world));
                 Vec3d dir = target.getPos().subtract(sender.getPos()).normalize();
                 double kb = ModConfig.get().slapKnockback;
                 target.takeKnockback(kb, -dir.x, -dir.z);
+                com.crazygirlfriend.event.ContextReactionEngine.checkPostInteractionReactions(sender, target, resolved);
             }
             case STRADDLE -> {
                 PlayerAnimationTracker.get().startAnimation(sender, target, AnimationType.STRADDLE, AnimationType.STRADDLE, 60);
@@ -166,6 +176,12 @@ public class RequestManager {
                 // Send fade-to-black vignette packet to both players
                 sendFadeVignette(sender, 70);
                 sendFadeVignette(target, 70);
+
+                if (world.random.nextFloat() < 0.15f) {
+                    world.playSound(null, target.getX(), target.getY(), target.getZ(), net.minecraft.sound.SoundEvents.BLOCK_WOOD_BREAK, SoundCategory.BLOCKS, 1.0f, 0.8f);
+                    sender.sendMessage(Text.literal("🛏️ Whoops... that was so intense the bed frame creaked!").formatted(Formatting.LIGHT_PURPLE, Formatting.ITALIC), false);
+                    target.sendMessage(Text.literal("🛏️ Whoops... that was so intense the bed frame creaked!").formatted(Formatting.LIGHT_PURPLE, Formatting.ITALIC), false);
+                }
             }
             case GIFT_BOUQUET -> {
                 if (req.getExtraData() instanceof ItemStack bouquetStack) {
@@ -209,6 +225,7 @@ public class RequestManager {
                         target.startRiding(sender, true);
                     }
                     checkJealousy(sender, target, world);
+                    com.crazygirlfriend.event.ContextReactionEngine.checkPostInteractionReactions(sender, target, anim);
                 }
             }
             case MINIGAME_INVITE -> {

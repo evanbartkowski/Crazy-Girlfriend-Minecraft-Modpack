@@ -56,6 +56,9 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             ClientAnimationManager.get().tick();
             ClientRelationshipManager.get().tick();
+            com.crazygirlfriend.facial.FacialExpressionManager.get().tick();
+            com.crazygirlfriend.client.gui.ComboOverlayHud.get().tick(client);
+            com.crazygirlfriend.client.camera.CinematicCameraManager.get().tick();
 
             while (INTERACTION_MENU_KEY.wasPressed()) {
                 if (client.targetedEntity instanceof PlayerEntity targetPlayer) {
@@ -151,6 +154,17 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             int duration = buf.readInt();
             client.execute(() -> {
                 ClientRelationshipManager.get().triggerFadeVignette(duration);
+            });
+        });
+
+        // Facial Expression Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.FACIAL_EXPRESSION_SYNC_ID, (client, handler, buf, responseSender) -> {
+            UUID targetUuid = buf.readUuid();
+            int exprOrdinal = buf.readVarInt();
+            int duration = buf.readVarInt();
+            com.crazygirlfriend.facial.FacialExpression expr = com.crazygirlfriend.facial.FacialExpression.values()[exprOrdinal];
+            client.execute(() -> {
+                com.crazygirlfriend.facial.FacialExpressionManager.get().setExpression(targetUuid, expr, duration);
             });
         });
     }

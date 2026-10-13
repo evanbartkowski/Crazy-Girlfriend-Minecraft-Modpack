@@ -55,6 +55,11 @@ public class RelationshipInteractionScreen extends Screen {
         romanticActions.add(new ActionEntry("✨ Stargazing", "ROMANTIC_STARGAZING", "Lie down side-by-side looking at the sky"));
         romanticActions.add(new ActionEntry("❤️ Make Love", "makelove", "Romantic non-explicit embrace & fade-to-black"));
         romanticActions.add(new ActionEntry("💐 Gift Bouquet", "bouquet", "Gift a beautiful flower bouquet"));
+        romanticActions.add(new ActionEntry("💃 Romantic Dip Kiss", "ROMANTIC_DIP_KISS", "Dramatic cinematic dip kiss"));
+        romanticActions.add(new ActionEntry("🔄 Spinning Hug", "SPINNING_HUG", "Lift and twirl around in circle"));
+        romanticActions.add(new ActionEntry("🐻 Bear Hug", "BEAR_HUG", "Tight passionate bear hug"));
+        romanticActions.add(new ActionEntry("🌧️ Rain Twirl", "RAIN_TWIRL", "Graceful musical twirl in the rain"));
+        romanticActions.add(new ActionEntry("🔥 Campfire Cuddle", "CAMPFIRE_CUDDLE", "Warm snuggle beside the campfire"));
 
         // Chaos & Comedy
         chaosActions.add(new ActionEntry("👋 Dramatic Slap", "slap", "Dramatic comedic slap with stars & knockback"));
@@ -62,6 +67,10 @@ public class RelationshipInteractionScreen extends Screen {
         chaosActions.add(new ActionEntry("🏏 Paddle Spank", "paddle", "Playful disciplinary paddle spank"));
         chaosActions.add(new ActionEntry("🩴 Slipper Impact", "SLIPPER_IMPACT", "Dramatic motherly slipper reaction"));
         chaosActions.add(new ActionEntry("🔨 Squeak Hammer", "squeak", "Hit with squeaky squeaking hammer"));
+        chaosActions.add(new ActionEntry("🐟 Raw Fish Slap", "FISH_SLAP_ATTACKER", "Slap with a wet slimy fish!"));
+        chaosActions.add(new ActionEntry("💫 360 Spinning Slap", "SPINNING_SLAP", "Dramatic full spin windup slap!"));
+        chaosActions.add(new ActionEntry("💥 Head Bonk Kiss", "HEAD_BUMP_KISS", "Comedic accidental head collision!"));
+        chaosActions.add(new ActionEntry("🎭 Ragdoll Flop", "RAGDOLL_FAINT", "Comedic limp ragdoll faint"));
         chaosActions.add(new ActionEntry("😾 Arms Crossed", "ARMS_CROSSED_ANGRY", "Sulking angry arms-crossed stance"));
         chaosActions.add(new ActionEntry("😭 Dramatic Crying", "DRAMATIC_CRYING", "Exaggerated sobbing and tears"));
         chaosActions.add(new ActionEntry("🧎 Fall in Despair", "FALL_TO_KNEES_DESPAIR", "Fall to knees like a telenovela scene"));
@@ -89,6 +98,9 @@ public class RelationshipInteractionScreen extends Screen {
         actionsProps.add(new ActionEntry("🐴 Piggyback Ride", "piggyback", "Carry them on your back"));
         actionsProps.add(new ActionEntry("👰 Bridal Carry", "BRIDAL_CARRY", "Carry partner romantically in arms"));
         actionsProps.add(new ActionEntry("🏋️ Shoulder Carry", "SHOULDER_CARRY", "Comically carry them over your shoulder"));
+        actionsProps.add(new ActionEntry("👋 Wave While Riding", "PASSENGER_WAVING", "Wave enthusiastically from piggyback"));
+        actionsProps.add(new ActionEntry("🏋️ Stumble Carry", "STUMBLE_CARRY", "Comically struggle to carry"));
+        actionsProps.add(new ActionEntry("⬇️ Gentle Dismount", "GENTLE_DISMOUNT", "Gracefully step down to the ground"));
         actionsProps.add(new ActionEntry("🧸 Straddle", "straddle", "Playful lap sitting interaction"));
         actionsProps.add(new ActionEntry("💄 Makeup Studio", "makeup_screen", "Open custom facial makeup artist studio"));
         actionsProps.add(new ActionEntry("🪢 Player Leash", "leash", "Attach leash or toggle sit / heel"));

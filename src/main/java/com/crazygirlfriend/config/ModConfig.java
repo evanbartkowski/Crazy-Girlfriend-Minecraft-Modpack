@@ -32,6 +32,7 @@ public class ModConfig {
     public boolean enableCrazyGirlfriendMode = true;
     public int eventIntervalSeconds = 120;
     public boolean enableMinigames = true;
+    public boolean enableCinematicCamera = true;
 
     private static ModConfig INSTANCE = new ModConfig();
 

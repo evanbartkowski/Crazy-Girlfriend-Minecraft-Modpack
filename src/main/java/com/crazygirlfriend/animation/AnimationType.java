@@ -1,11 +1,19 @@
 package com.crazygirlfriend.animation;
 
+import java.util.Random;
+
 public enum AnimationType {
     NONE(0),
-    // Romantic Interactions
+
+    // Romantic Interactions & Variants
     HUG(40),
     LONG_HUG(80),
     BACK_HUG(60),
+    BEAR_HUG(50),
+    SPINNING_HUG(60),
+    JUMPING_HUG(45),
+    ROMANTIC_SWAY_HUG(70),
+
     KISS(30),
     QUICK_KISS(20),
     MAKE_OUT(70),
@@ -13,17 +21,29 @@ public enum AnimationType {
     CHEEK_KISS(30),
     KISS_ATTACK(50),
     PRINCESS_KISS(60),
+    ROMANTIC_DIP_KISS(60),
+    SURPRISE_KISS(35),
+    HEAD_BUMP_KISS(30),
+
     NUZZLE(45),
     CUDDLE(80),
+    CAMPFIRE_CUDDLE(0),
     SPOONING(0),
     LAP_SITTING(0),
     STRADDLE(60),
     HAND_HOLDING(0),
     SLOW_DANCE(80),
     FAST_DANCE(60),
+    RAIN_TWIRL(60),
+    UNDERWATER_KISS(50),
+
     PIGGYBACK(0),
     BRIDAL_CARRY(0),
     SHOULDER_CARRY(0),
+    STUMBLE_CARRY(50),
+    PASSENGER_WAVING(0),
+    GENTLE_DISMOUNT(25),
+
     TICKLE_FIGHT(50),
     FLIRTING(40),
     SLEEP_TOGETHER(0),
@@ -36,10 +56,14 @@ public enum AnimationType {
     COMFORT(50),
     STARGAZING(80),
 
-    // Funny & Chaotic Animations
+    // Funny & Chaotic Animations & Variants
     SLAP_ATTACKER(25),
     SLAP_VICTIM(25),
     SLAP_DRAMATIC(30),
+    SPINNING_SLAP(35),
+    FISH_SLAP_ATTACKER(25),
+    FISH_SLAP_VICTIM(30),
+
     PADDLE_SPANK_ATTACKER(25),
     PADDLE_SPANK_VICTIM(25),
     BONK_ATTACKER(25),
@@ -53,6 +77,8 @@ public enum AnimationType {
     DRAMATIC_CRYING(50),
     FALL_DESPAIR(50),
     FAKE_FAINTING(60),
+    FAKE_COLLAPSE(50),
+    RAGDOLL_FAINT(55),
     SIDE_EYE(35),
     POUTING(40),
     ANGRY_JUMPING(40),
@@ -92,5 +118,20 @@ public enum AnimationType {
 
     public boolean isContinuous() {
         return defaultDuration == 0;
+    }
+
+    public static AnimationType getHugVariant(Random random) {
+        AnimationType[] variants = {HUG, BEAR_HUG, SPINNING_HUG, JUMPING_HUG, ROMANTIC_SWAY_HUG, LONG_HUG};
+        return variants[random.nextInt(variants.length)];
+    }
+
+    public static AnimationType getKissVariant(Random random) {
+        AnimationType[] variants = {KISS, QUICK_KISS, FOREHEAD_KISS, CHEEK_KISS, ROMANTIC_DIP_KISS, SURPRISE_KISS};
+        return variants[random.nextInt(variants.length)];
+    }
+
+    public static AnimationType getSlapReactionVariant(Random random) {
+        AnimationType[] variants = {SLAP_VICTIM, SLAP_DRAMATIC, SPINNING_SLAP, FAKE_COLLAPSE, RAGDOLL_FAINT};
+        return variants[random.nextInt(variants.length)];
     }
 }

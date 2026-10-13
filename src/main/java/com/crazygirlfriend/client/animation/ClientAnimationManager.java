@@ -29,6 +29,21 @@ public class ClientAnimationManager {
             return MathHelper.clamp((currentTick + tickDelta) / (float) totalDuration, 0.0f, 1.0f);
         }
 
+        public float getEaseProgress(float tickDelta) {
+            float p = getProgress(tickDelta);
+            return p < 0.5f ? 4.0f * p * p * p : 1.0f - (float) Math.pow(-2.0f * p + 2.0f, 3) / 2.0f;
+        }
+
+        public float getBlendWeight(float tickDelta) {
+            if (totalDuration <= 0) {
+                return MathHelper.clamp((currentTick + tickDelta) / 6.0f, 0.0f, 1.0f);
+            }
+            float cur = currentTick + tickDelta;
+            float inWeight = MathHelper.clamp(cur / 6.0f, 0.0f, 1.0f);
+            float outWeight = MathHelper.clamp((totalDuration - cur) / 6.0f, 0.0f, 1.0f);
+            return Math.min(inWeight, outWeight);
+        }
+
         public float getCycle(float speed, float tickDelta) {
             return (currentTick + tickDelta) * speed;
         }
@@ -76,6 +91,17 @@ public class ClientAnimationManager {
         float p = state.getProgress(tickDelta);
         float sinP = MathHelper.sin(p * (float) Math.PI);
         float cycle = state.getCycle(0.2f, tickDelta);
+
+        // Idle micro-movements (breathing, soft sway) for sustained poses
+        if (state.type == AnimationType.CUDDLE || state.type == AnimationType.CUDDLE_SLEEPING ||
+            state.type == AnimationType.LAP_SITTING || state.type == AnimationType.STRADDLE ||
+            state.type == AnimationType.HAND_HOLDING || state.type == AnimationType.SIT_TOGETHER ||
+            state.type == AnimationType.STARGAZING || state.type == AnimationType.LEASH_SIT ||
+            state.type == AnimationType.CAMPFIRE_CUDDLE) {
+            float breath = MathHelper.sin(cycle * 0.35f) * 0.025f;
+            body.pitch += breath;
+            head.pitch -= breath * 0.6f;
+        }
 
         switch (state.type) {
             // === ROMANTIC INTERACTIONS ===
@@ -583,6 +609,220 @@ public class ClientAnimationManager {
                 head.yaw = -shake * 1.5f;
                 rightArm.pitch = -0.5f;
                 leftArm.pitch = -0.5f;
+            }
+            // === ANIMATION OVERHAUL VARIANTS ===
+            case BEAR_HUG -> {
+                rightArm.pitch = -1.45f + (sinP * 0.12f);
+                rightArm.yaw = -0.72f;
+                leftArm.pitch = -1.45f + (sinP * 0.12f);
+                leftArm.yaw = 0.72f;
+                body.pitch = 0.18f;
+                head.pitch = 0.22f;
+                head.roll = 0.10f;
+            }
+            case SPINNING_HUG -> {
+                float spin = p * (float) Math.PI * 4.0f; // Two full rotations
+                body.yaw = spin;
+                rightArm.pitch = -1.30f;
+                rightArm.yaw = -0.55f;
+                leftArm.pitch = -1.30f;
+                leftArm.yaw = 0.55f;
+                head.pitch = 0.15f;
+                leftLeg.pitch = -0.2f * sinP;
+                rightLeg.pitch = 0.2f * sinP;
+            }
+            case JUMPING_HUG -> {
+                float jumpArc = sinP;
+                body.pitch = 0.10f - (jumpArc * 0.15f);
+                head.pitch = 0.25f;
+                rightArm.pitch = -1.65f;
+                rightArm.yaw = -0.45f;
+                leftArm.pitch = -1.65f;
+                leftArm.yaw = 0.45f;
+                leftLeg.pitch = -1.35f * jumpArc;
+                rightLeg.pitch = -1.35f * jumpArc;
+                leftLeg.yaw = -0.2f;
+                rightLeg.yaw = 0.2f;
+            }
+            case ROMANTIC_SWAY_HUG -> {
+                float sway = MathHelper.sin(cycle * 0.45f) * 0.12f;
+                rightArm.pitch = -1.30f;
+                rightArm.yaw = -0.50f + sway;
+                leftArm.pitch = -1.30f;
+                leftArm.yaw = 0.50f + sway;
+                body.roll = sway;
+                body.pitch = 0.08f;
+                head.roll = -sway * 1.3f;
+                head.pitch = 0.12f;
+            }
+            case ROMANTIC_DIP_KISS -> {
+                float dipProgress = sinP;
+                body.pitch = 0.52f * dipProgress;
+                body.roll = 0.18f * dipProgress;
+                head.pitch = -0.35f * dipProgress;
+                head.roll = -0.22f * dipProgress;
+                rightArm.pitch = -1.55f;
+                rightArm.yaw = -0.4f;
+                leftArm.pitch = -0.6f;
+                leftArm.roll = 0.35f;
+                leftLeg.pitch = -0.75f * dipProgress;
+                leftLeg.roll = 0.25f * dipProgress;
+            }
+            case SURPRISE_KISS -> {
+                if (p < 0.30f) {
+                    float startle = p / 0.30f;
+                    body.pitch = -0.25f * startle;
+                    head.pitch = -0.15f * startle;
+                    rightArm.pitch = -0.9f * startle;
+                    leftArm.pitch = -0.9f * startle;
+                } else {
+                    float melt = (p - 0.30f) / 0.70f;
+                    body.pitch = -0.25f + (0.42f * melt);
+                    head.pitch = 0.20f * melt;
+                    head.roll = 0.25f * melt;
+                    rightArm.pitch = -0.9f - (0.4f * melt);
+                    leftArm.pitch = -0.9f - (0.4f * melt);
+                }
+            }
+            case HEAD_BUMP_KISS -> {
+                if (p < 0.35f) {
+                    float lean = p / 0.35f;
+                    body.pitch = 0.35f * lean;
+                    head.pitch = 0.35f * lean;
+                } else if (p < 0.55f) {
+                    float recoil = (p - 0.35f) / 0.20f;
+                    body.pitch = 0.35f - (0.70f * recoil);
+                    head.pitch = 0.35f - (0.90f * recoil);
+                } else {
+                    float recover = (p - 0.55f) / 0.45f;
+                    head.pitch = 0.20f;
+                    head.roll = MathHelper.sin(cycle * 3f) * 0.15f * (1.0f - recover);
+                    rightArm.pitch = -1.75f;
+                    rightArm.yaw = -0.35f;
+                    leftArm.pitch = -0.4f;
+                }
+            }
+            case STUMBLE_CARRY -> {
+                float stumbleWobble = MathHelper.sin(cycle * 3.5f) * 0.25f;
+                body.pitch = 0.48f + (Math.abs(stumbleWobble) * 0.1f);
+                body.roll = stumbleWobble;
+                rightArm.pitch = -1.65f + (stumbleWobble * 0.3f);
+                leftArm.pitch = -1.65f - (stumbleWobble * 0.3f);
+                head.pitch = 0.42f;
+                leftLeg.pitch = MathHelper.sin(cycle * 2.5f) * 0.4f;
+                rightLeg.pitch = -leftLeg.pitch;
+            }
+            case PASSENGER_WAVING -> {
+                leftLeg.pitch = -1.3f;
+                leftLeg.yaw = -0.4f;
+                rightLeg.pitch = -1.3f;
+                rightLeg.yaw = 0.4f;
+                leftArm.pitch = -1.5f;
+                leftArm.yaw = 0.3f;
+                float wave = MathHelper.sin(cycle * 3.0f) * 0.45f;
+                rightArm.pitch = -2.25f;
+                rightArm.roll = 0.35f + wave;
+                head.pitch = -0.2f;
+                head.yaw = 0.2f;
+            }
+            case GENTLE_DISMOUNT -> {
+                float decay = 1.0f - p;
+                body.pitch = 0.15f * decay;
+                rightArm.pitch = -0.45f * decay;
+                leftArm.pitch = -0.45f * decay;
+                leftLeg.pitch = -0.2f * decay;
+                rightLeg.pitch = -0.2f * decay;
+            }
+            case SPINNING_SLAP -> {
+                if (p < 0.45f) {
+                    float wind = p / 0.45f;
+                    body.yaw = wind * (float) Math.PI * 2.0f;
+                    rightArm.pitch = -0.6f;
+                    rightArm.yaw = 1.4f;
+                } else {
+                    float release = (p - 0.45f) / 0.55f;
+                    rightArm.pitch = -0.3f;
+                    rightArm.yaw = 1.4f - (2.8f * release);
+                    body.yaw = -0.45f * (1.0f - release);
+                }
+            }
+            case FISH_SLAP_ATTACKER -> {
+                if (p < 0.35f) {
+                    float wind = p / 0.35f;
+                    rightArm.pitch = -0.6f;
+                    rightArm.yaw = 1.5f * wind;
+                    leftArm.pitch = -0.5f;
+                    leftArm.yaw = 1.2f * wind;
+                } else {
+                    float slap = (p - 0.35f) / 0.65f;
+                    rightArm.pitch = -0.4f;
+                    rightArm.yaw = 1.5f - (3.0f * slap);
+                    leftArm.pitch = -0.3f;
+                    leftArm.yaw = 1.2f - (2.4f * slap);
+                    body.yaw = -0.4f * (1.0f - slap);
+                }
+            }
+            case FISH_SLAP_VICTIM -> {
+                float decay = 1.0f - p;
+                head.yaw = -1.15f * decay;
+                head.pitch = -0.35f * decay;
+                head.roll = -0.30f * decay;
+                body.roll = -0.25f * decay;
+                leftArm.pitch = -0.8f * decay;
+                rightArm.pitch = 0.4f * decay;
+            }
+            case FAKE_COLLAPSE -> {
+                float swoon = sinP;
+                body.pitch = -0.75f * swoon;
+                head.pitch = -0.45f * swoon;
+                rightArm.pitch = -1.80f * swoon;
+                rightArm.yaw = -0.35f;
+                leftArm.pitch = 0.35f * swoon;
+                leftLeg.pitch = -0.3f * swoon;
+            }
+            case RAGDOLL_FAINT -> {
+                float flop = Math.min(1.0f, p * 1.5f);
+                body.pitch = 0.65f * flop;
+                head.pitch = 0.55f * flop;
+                rightArm.pitch = 0.25f * flop;
+                leftArm.pitch = 0.25f * flop;
+                leftLeg.pitch = -0.70f * flop;
+                rightLeg.pitch = -0.50f * flop;
+            }
+            case RAIN_TWIRL -> {
+                float twirl = p * (float) Math.PI * 3.0f;
+                body.yaw = twirl;
+                head.pitch = -0.25f;
+                rightArm.pitch = -0.90f;
+                rightArm.yaw = 0.65f;
+                leftArm.pitch = -0.55f;
+                leftArm.roll = -0.45f;
+            }
+            case CAMPFIRE_CUDDLE -> {
+                leftLeg.pitch = -1.50f;
+                rightLeg.pitch = -1.50f;
+                leftLeg.yaw = -0.1f;
+                rightLeg.yaw = 0.1f;
+                body.pitch = 0.08f;
+                head.pitch = 0.15f;
+                head.roll = 0.25f;
+                rightArm.pitch = -1.25f;
+                rightArm.yaw = -0.65f;
+                leftArm.pitch = -0.55f;
+                leftArm.yaw = 0.25f;
+            }
+            case UNDERWATER_KISS -> {
+                float drift = MathHelper.sin(cycle * 0.8f) * 0.12f;
+                body.pitch = 0.12f + drift;
+                body.roll = MathHelper.sin(cycle * 0.5f) * 0.10f;
+                head.pitch = 0.18f;
+                head.roll = 0.20f;
+                rightArm.pitch = -1.20f + drift;
+                rightArm.yaw = -0.45f;
+                leftArm.pitch = -1.20f - drift;
+                leftArm.yaw = 0.45f;
+                leftLeg.pitch = -0.3f + drift;
+                rightLeg.pitch = -0.3f - drift;
             }
             default -> {}
         }

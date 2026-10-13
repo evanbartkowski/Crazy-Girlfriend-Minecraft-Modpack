@@ -1,5 +1,6 @@
 package com.crazygirlfriend.mixin;
 
+import com.crazygirlfriend.client.render.FacialExpressionFeatureRenderer;
 import com.crazygirlfriend.client.render.LeashFeatureRenderer;
 import com.crazygirlfriend.client.render.MakeupFeatureRenderer;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -22,6 +23,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     private void addCrazyGirlfriendFeatures(EntityRendererFactory.Context ctx, boolean slim, CallbackInfo ci) {
         this.addFeature(new MakeupFeatureRenderer(this));
         this.addFeature(new LeashFeatureRenderer(this));
+        this.addFeature(new FacialExpressionFeatureRenderer(this));
     }
 }
 

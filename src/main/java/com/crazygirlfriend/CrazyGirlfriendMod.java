@@ -83,6 +83,7 @@ public class CrazyGirlfriendMod implements ModInitializer {
         RequestManager.get().tick(server);
         PlayerAnimationTracker.get().tick(server);
         PlayerLeashManager.get().tick(server);
+        com.crazygirlfriend.facial.FacialExpressionManager.get().tick();
 
         periodicHeartTicks++;
         if (periodicHeartTicks >= 60) { // Every 3 seconds
