@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:compass" },
+    "title": { "text": "Treasure of My Heart" },
+    "description": { "text": "Race each other in the Scavenger Hunt." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:compass"]}]}
+    }
+  }
+}

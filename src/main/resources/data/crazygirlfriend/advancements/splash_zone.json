@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:water_balloon" },
+    "title": { "text": "Wet & Wild" },
+    "description": { "text": "Drench a partner or friend with a Water Balloon." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:water_balloon"]}]}
+    }
+  }
+}

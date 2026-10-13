@@ -194,6 +194,28 @@ public class RequestManager {
                     target.sendMessage(Text.literal("💄 Makeup has been applied by " + sender.getName().getString() + "!").formatted(Formatting.LIGHT_PURPLE), false);
                 }
             }
+            case GENERIC_ANIMATION -> {
+                if (req.getExtraData() instanceof AnimationType anim) {
+                    int duration = anim.getDefaultDuration() > 0 ? anim.getDefaultDuration() : 50;
+                    PlayerAnimationTracker.get().startAnimation(sender, target, anim, anim, duration);
+                    if (anim.name().contains("KISS") || anim.name().contains("HUG") || anim.name().contains("CUDDLE") || anim.name().contains("ROMANTIC") || anim.name().contains("DANCE") || anim.name().contains("NUZZLE")) {
+                        world.spawnParticles(ParticleTypes.HEART, target.getX(), target.getY() + 1.2, target.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
+                        world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.ROMANTIC_CHIME, SoundCategory.PLAYERS, 0.9f, 1.2f);
+                    } else if (anim.name().contains("BONK") || anim.name().contains("SLAP") || anim.name().contains("SPANK") || anim.name().contains("ANGRY") || anim.name().contains("TANTRUM")) {
+                        world.spawnParticles(ParticleTypes.ANGRY_VILLAGER, target.getX(), target.getY() + 1.5, target.getZ(), 5, 0.3, 0.3, 0.3, 0.0);
+                        world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.BONK, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                    }
+                    if (anim == AnimationType.BRIDAL_CARRY || anim == AnimationType.SHOULDER_CARRY) {
+                        target.startRiding(sender, true);
+                    }
+                    checkJealousy(sender, target, world);
+                }
+            }
+            case MINIGAME_INVITE -> {
+                if (req.getExtraData() instanceof String gameId) {
+                    com.crazygirlfriend.event.MinigameManager.get().startMinigame(sender, target, gameId);
+                }
+            }
         }
 
         return true;

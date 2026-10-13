@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:iron_boots" },
+    "title": { "text": "Toddler Mode" },
+    "description": { "text": "Throw a full-blown cartoon jumping tantrum." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:first_fight",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:iron_boots"]}]}
+    }
+  }
+}

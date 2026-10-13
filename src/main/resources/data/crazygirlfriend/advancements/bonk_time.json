@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:frying_pan" },
+    "title": { "text": "BONK!" },
+    "description": { "text": "Wield the Cast Iron Frying Pan in hilarious defense." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:frying_pan"]}]}
+    }
+  }
+}

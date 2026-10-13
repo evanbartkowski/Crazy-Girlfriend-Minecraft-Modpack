@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:ghast_tear" },
+    "title": { "text": "Oscar Worthy Performance" },
+    "description": { "text": "Fall to your knees in theatrical despair." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:first_fight",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:ghast_tear"]}]}
+    }
+  }
+}

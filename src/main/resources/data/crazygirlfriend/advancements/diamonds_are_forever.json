@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:diamond_ring" },
+    "title": { "text": "Will You Marry Me?" },
+    "description": { "text": "Craft a Diamond Engagement Ring." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:in_a_relationship",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:diamond_ring"]}]}
+    }
+  }
+}

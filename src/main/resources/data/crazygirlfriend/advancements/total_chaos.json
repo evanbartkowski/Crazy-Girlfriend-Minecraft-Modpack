@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:tnt" },
+    "title": { "text": "DEFCON 1: TOTAL CHAOS" },
+    "description": { "text": "Push the Crazy Meter all the way to 100%!" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:furious_wrath",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:tnt"]}]}
+    }
+  }
+}

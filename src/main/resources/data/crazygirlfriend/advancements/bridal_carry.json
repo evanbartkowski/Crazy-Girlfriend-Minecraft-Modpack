@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:pastel_bouquet" },
+    "title": { "text": "Sweep Off Their Feet" },
+    "description": { "text": "Romantically carry your partner in your arms." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:piggyback_ride",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:pastel_bouquet"]}]}
+    }
+  }
+}

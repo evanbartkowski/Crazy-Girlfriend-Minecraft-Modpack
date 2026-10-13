@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:couple_camera" },
+    "title": { "text": "Caught on Camera!" },
+    "description": { "text": "Complete the Kiss Cam challenge under pressure." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:couple_camera"]}]}
+    }
+  }
+}

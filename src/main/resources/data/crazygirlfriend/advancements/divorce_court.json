@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:divorce_papers" },
+    "title": { "text": "See You in Court!" },
+    "description": { "text": "Serve or receive comical Divorce Papers." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:diamonds_are_forever",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:divorce_papers"]}]}
+    }
+  }
+}

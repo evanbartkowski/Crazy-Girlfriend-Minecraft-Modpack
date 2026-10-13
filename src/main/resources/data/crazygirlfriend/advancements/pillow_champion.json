@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:pillow" },
+    "title": { "text": "Slumber Party Champion" },
+    "description": { "text": "Compete in the 30-second Pillow War Arena." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:pillow"]}]}
+    }
+  }
+}

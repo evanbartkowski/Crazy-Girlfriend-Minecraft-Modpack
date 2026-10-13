@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:sun_bouquet" },
+    "title": { "text": "Table for Two" },
+    "description": { "text": "Initiate a couple minigame or romantic date." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:in_a_relationship",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:sun_bouquet"]}]}
+    }
+  }
+}

@@ -34,6 +34,39 @@ public class ModSounds {
     public static final Identifier JEALOUSY_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "jealousy");
     public static final SoundEvent JEALOUSY = SoundEvent.of(JEALOUSY_ID);
 
+    public static final Identifier BONK_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "bonk");
+    public static final SoundEvent BONK = SoundEvent.of(BONK_ID);
+
+    public static final Identifier SQUEAK_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "squeak");
+    public static final SoundEvent SQUEAK = SoundEvent.of(SQUEAK_ID);
+
+    public static final Identifier BOOMERANG_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "boomerang");
+    public static final SoundEvent BOOMERANG = SoundEvent.of(BOOMERANG_ID);
+
+    public static final Identifier PILLOW_HIT_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "pillow_hit");
+    public static final SoundEvent PILLOW_HIT = SoundEvent.of(PILLOW_HIT_ID);
+
+    public static final Identifier RECORD_SCRATCH_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "record_scratch");
+    public static final SoundEvent RECORD_SCRATCH = SoundEvent.of(RECORD_SCRATCH_ID);
+
+    public static final Identifier SAD_VIOLIN_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "sad_violin");
+    public static final SoundEvent SAD_VIOLIN = SoundEvent.of(SAD_VIOLIN_ID);
+
+    public static final Identifier WATER_SPLASH_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "water_splash");
+    public static final SoundEvent WATER_SPLASH = SoundEvent.of(WATER_SPLASH_ID);
+
+    public static final Identifier CAMERA_CLICK_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "camera_click");
+    public static final SoundEvent CAMERA_CLICK = SoundEvent.of(CAMERA_CLICK_ID);
+
+    public static final Identifier BED_BREAK_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "bed_break");
+    public static final SoundEvent BED_BREAK = SoundEvent.of(BED_BREAK_ID);
+
+    public static final Identifier CHEER_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "cheer");
+    public static final SoundEvent CHEER = SoundEvent.of(CHEER_ID);
+
+    public static final Identifier FISH_SLAP_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "fish_slap");
+    public static final SoundEvent FISH_SLAP = SoundEvent.of(FISH_SLAP_ID);
+
     public static void register() {
         Registry.register(Registries.SOUND_EVENT, ROMANTIC_CHIME_ID, ROMANTIC_CHIME);
         Registry.register(Registries.SOUND_EVENT, SLAP_ID, SLAP);
@@ -44,6 +77,16 @@ public class ModSounds {
         Registry.register(Registries.SOUND_EVENT, SLIPPER_HIT_ID, SLIPPER_HIT);
         Registry.register(Registries.SOUND_EVENT, GIGGLE_ID, GIGGLE);
         Registry.register(Registries.SOUND_EVENT, JEALOUSY_ID, JEALOUSY);
+        Registry.register(Registries.SOUND_EVENT, BONK_ID, BONK);
+        Registry.register(Registries.SOUND_EVENT, SQUEAK_ID, SQUEAK);
+        Registry.register(Registries.SOUND_EVENT, BOOMERANG_ID, BOOMERANG);
+        Registry.register(Registries.SOUND_EVENT, PILLOW_HIT_ID, PILLOW_HIT);
+        Registry.register(Registries.SOUND_EVENT, RECORD_SCRATCH_ID, RECORD_SCRATCH);
+        Registry.register(Registries.SOUND_EVENT, SAD_VIOLIN_ID, SAD_VIOLIN);
+        Registry.register(Registries.SOUND_EVENT, WATER_SPLASH_ID, WATER_SPLASH);
+        Registry.register(Registries.SOUND_EVENT, CAMERA_CLICK_ID, CAMERA_CLICK);
+        Registry.register(Registries.SOUND_EVENT, BED_BREAK_ID, BED_BREAK);
+        Registry.register(Registries.SOUND_EVENT, CHEER_ID, CHEER);
+        Registry.register(Registries.SOUND_EVENT, FISH_SLAP_ID, FISH_SLAP);
     }
 }
-

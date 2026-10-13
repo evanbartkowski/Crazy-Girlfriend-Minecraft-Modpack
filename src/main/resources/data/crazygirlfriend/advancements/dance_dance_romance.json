@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:jukebox" },
+    "title": { "text": "Ballroom Blitz" },
+    "description": { "text": "Participate in a couple Dance-Off competition." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:jukebox"]}]}
+    }
+  }
+}

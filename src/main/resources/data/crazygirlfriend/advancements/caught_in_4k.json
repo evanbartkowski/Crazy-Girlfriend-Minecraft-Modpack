@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:creeper_head" },
+    "title": { "text": "Caught in 4K!" },
+    "description": { "text": "Get comically interrupted by a third player during a romantic scene." },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:cuddle_buddies",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:creeper_head"]}]}
+    }
+  }
+}

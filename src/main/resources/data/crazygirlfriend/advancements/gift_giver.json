@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:chest" },
+    "title": { "text": "Surprise Present" },
+    "description": { "text": "Exchange secret gifts in the Gift Challenge." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:chest"]}]}
+    }
+  }
+}

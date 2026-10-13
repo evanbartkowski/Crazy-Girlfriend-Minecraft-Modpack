@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:clock" },
+    "title": { "text": "Another Year Together" },
+    "description": { "text": "Celebrate your relationship anniversary." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:wedding_bells",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:clock"]}]}
+    }
+  }
+}

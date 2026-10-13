@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:chocolate_box" },
+    "title": { "text": "Sealed with a Kiss" },
+    "description": { "text": "Share your first sweet kiss with your partner." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:in_a_relationship",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:chocolate_box"]}]}
+    }
+  }
+}

@@ -37,6 +37,9 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
     public void onInitializeClient() {
         // Register entity renderers
         EntityRendererRegistry.register(ModEntities.SLIPPER, SlipperEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.BOOMERANG_SLIPPER, net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.WATER_BALLOON, net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SEAT, com.crazygirlfriend.client.render.EmptySeatRenderer::new);
 
         // Register keybindings
         INTERACTION_MENU_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
@@ -90,9 +93,19 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
                 RelationshipType type = RelationshipType.valueOf(buf.readString());
                 long timestamp = buf.readLong();
                 boolean autoAccept = buf.readBoolean();
+                int crazyMeter = buf.readInt();
+                int affectionXp = buf.readInt();
+                String m1 = buf.readString();
+                String m2 = buf.readString();
+                String title = buf.readString();
 
                 Relationship rel = new Relationship(p1, n1, p2, n2, type, timestamp);
                 rel.setAutoAccept(autoAccept);
+                rel.setCrazyMeter(crazyMeter);
+                rel.setAffectionXp(affectionXp);
+                try { rel.setMood(p1, com.crazygirlfriend.relationship.RelationshipMood.valueOf(m1)); } catch (Exception ignored) {}
+                try { rel.setMood(p2, com.crazygirlfriend.relationship.RelationshipMood.valueOf(m2)); } catch (Exception ignored) {}
+                rel.setCustomTitle(title);
                 ClientRelationshipManager.get().addRelationship(rel);
             }
         });

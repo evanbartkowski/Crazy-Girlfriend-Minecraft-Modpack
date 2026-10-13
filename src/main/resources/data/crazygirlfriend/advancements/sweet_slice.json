@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:wedding_cake" },
+    "title": { "text": "Piece of Cake" },
+    "description": { "text": "Share a celebratory slice of wedding cake together." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:wedding_bells",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:wedding_cake"]}]}
+    }
+  }
+}

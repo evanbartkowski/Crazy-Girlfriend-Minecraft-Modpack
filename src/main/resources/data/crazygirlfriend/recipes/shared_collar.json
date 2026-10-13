@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","pattern":[" L ","LGL"," R "],"key":{"L":{"item":"minecraft:lead"},"G":{"item":"minecraft:gold_ingot"},"R":{"item":"minecraft:red_dye"}},"result":{"item":"crazygirlfriend:shared_collar","count":1}}

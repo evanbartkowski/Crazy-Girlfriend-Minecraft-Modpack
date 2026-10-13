@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:throwable_slipper" },
+    "title": { "text": "Emotional Damage!" },
+    "description": { "text": "Throw a slipper and hit a friend with comedic precision." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:throwable_slipper"]}]}
+    }
+  }
+}

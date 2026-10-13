@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:diamond_ring" },
+    "title": { "text": "Tying the Knot" },
+    "description": { "text": "Accept a marriage proposal and become spouses!" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:diamonds_are_forever",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:diamond_ring"]}]}
+    }
+  }
+}

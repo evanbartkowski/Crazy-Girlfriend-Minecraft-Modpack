@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:couple_double_bed" },
+    "title": { "text": "Two Peas in a Pod" },
+    "description": { "text": "Cuddle and rest together in a Couple Double Bed." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:in_a_relationship",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:couple_double_bed"]}]}
+    }
+  }
+}

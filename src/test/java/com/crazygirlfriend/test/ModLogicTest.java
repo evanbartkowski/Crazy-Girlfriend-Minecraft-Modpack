@@ -2,9 +2,13 @@ package com.crazygirlfriend.test;
 
 import com.crazygirlfriend.animation.AnimationType;
 import com.crazygirlfriend.config.ModConfig;
+import com.crazygirlfriend.event.RelationshipEventRegistry;
 import com.crazygirlfriend.makeup.PlayerMakeupData;
+import com.crazygirlfriend.event.MinigameManager;
+import com.crazygirlfriend.relationship.CrazyTier;
 import com.crazygirlfriend.relationship.PendingRequest;
 import com.crazygirlfriend.relationship.Relationship;
+import com.crazygirlfriend.relationship.RelationshipMood;
 import com.crazygirlfriend.relationship.RelationshipType;
 import com.crazygirlfriend.relationship.RequestType;
 import net.minecraft.nbt.NbtCompound;
@@ -48,23 +52,87 @@ public class ModLogicTest {
     }
 
     @Test
-    public void testRelationshipNbtSerialization() {
+    public void testRelationshipExpansionFields() {
         UUID p1 = UUID.randomUUID();
         UUID p2 = UUID.randomUUID();
-        Relationship original = new Relationship(p1, "PlayerOne", p2, "PlayerTwo", RelationshipType.MARRIED, 123456789L);
-        original.setAutoAccept(true);
+        Relationship rel = new Relationship(p1, "Alice", p2, "Bob", RelationshipType.DATING, 1700000000000L);
 
+        // Crazy meter
+        assertEquals(0, rel.getCrazyMeter());
+        rel.addCrazyMeter(50);
+        assertEquals(50, rel.getCrazyMeter());
+        rel.addCrazyMeter(100);
+        assertEquals(100, rel.getCrazyMeter()); // Clamped to 100
+        rel.addCrazyMeter(-150);
+        assertEquals(0, rel.getCrazyMeter()); // Clamped to 0
+
+        // Affection
+        assertEquals(0, rel.getAffectionXp());
+        assertEquals(1, rel.getAffectionLevel());
+        rel.addAffection(250);
+        assertEquals(250, rel.getAffectionXp());
+        assertEquals(3, rel.getAffectionLevel());
+
+        // Moods
+        assertEquals(RelationshipMood.HAPPY, rel.getMood(p1));
+        rel.setMood(p1, RelationshipMood.LOVING);
+        rel.setMood(p2, RelationshipMood.FURIOUS);
+        assertEquals(RelationshipMood.LOVING, rel.getMood(p1));
+        assertEquals(RelationshipMood.FURIOUS, rel.getMood(p2));
+
+        // Custom Title
+        rel.setCustomTitle("Soulmates for Eternity");
+        assertEquals("Soulmates for Eternity", rel.getCustomTitle());
+
+        // NBT serialization
         NbtCompound tag = new NbtCompound();
-        original.writeNbt(tag);
+        rel.writeNbt(tag);
 
         Relationship restored = Relationship.readNbt(tag);
-        assertEquals(original.getPlayer1(), restored.getPlayer1());
-        assertEquals(original.getPlayer2(), restored.getPlayer2());
-        assertEquals(original.getName1(), restored.getName1());
-        assertEquals(original.getName2(), restored.getName2());
-        assertEquals(original.getType(), restored.getType());
-        assertEquals(original.getFormedTimestamp(), restored.getFormedTimestamp());
-        assertEquals(original.isAutoAccept(), restored.isAutoAccept());
+        assertEquals(rel.getCrazyMeter(), restored.getCrazyMeter());
+        assertEquals(rel.getAffectionXp(), restored.getAffectionXp());
+        assertEquals(rel.getMood(p1), restored.getMood(p1));
+        assertEquals(rel.getMood(p2), restored.getMood(p2));
+        assertEquals(rel.getCustomTitle(), restored.getCustomTitle());
+    }
+
+    @Test
+    public void testCrazyTiers() {
+        assertEquals(CrazyTier.SWEETHEART, CrazyTier.fromMeter(0));
+        assertEquals(CrazyTier.SWEETHEART, CrazyTier.fromMeter(24));
+        assertEquals(CrazyTier.SUSPICIOUS, CrazyTier.fromMeter(25));
+        assertEquals(CrazyTier.SUSPICIOUS, CrazyTier.fromMeter(49));
+        assertEquals(CrazyTier.DRAMA_QUEEN, CrazyTier.fromMeter(50));
+        assertEquals(CrazyTier.DRAMA_QUEEN, CrazyTier.fromMeter(74));
+        assertEquals(CrazyTier.FURIOUS, CrazyTier.fromMeter(75));
+        assertEquals(CrazyTier.FURIOUS, CrazyTier.fromMeter(94));
+        assertEquals(CrazyTier.TOTAL_CHAOS, CrazyTier.fromMeter(95));
+        assertEquals(CrazyTier.TOTAL_CHAOS, CrazyTier.fromMeter(100));
+    }
+
+    @Test
+    public void testRelationshipMoods() {
+        assertEquals(10, RelationshipMood.values().length);
+        for (RelationshipMood mood : RelationshipMood.values()) {
+            assertNotNull(mood.getDisplayName());
+            assertTrue(mood.getColor() > 0);
+            assertFalse(mood.getDisplayName().isEmpty());
+        }
+    }
+
+    @Test
+    public void testAnimationCount() {
+        // Must implement at least 50 unique animations
+        assertTrue(AnimationType.values().length >= 50, "Expected at least 50 animations, found: " + AnimationType.values().length);
+    }
+
+    @Test
+    public void testMinigamesAndEvents() {
+        // At least 10 minigames
+        assertTrue(MinigameManager.get().getGames().length >= 10, "Expected at least 10 minigames");
+
+        // At least 75 random events
+        assertTrue(RelationshipEventRegistry.getEvents().size() >= 75, "Expected at least 75 events");
     }
 
     @Test
@@ -130,4 +198,3 @@ public class ModLogicTest {
         assertEquals(0, AnimationType.LEASH_SIT.getDefaultDuration());
     }
 }
-

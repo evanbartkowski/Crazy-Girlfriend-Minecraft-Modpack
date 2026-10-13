@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:boomerang_slipper" },
+    "title": { "text": "What Goes Around..." },
+    "description": { "text": "Craft and throw a Boomerang Slipper that returns to you." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:slipper_sniper",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:boomerang_slipper"]}]}
+    }
+  }
+}

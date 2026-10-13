@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:saddle" },
+    "title": { "text": "Free Ride" },
+    "description": { "text": "Hop onto your partner's back for a piggyback ride." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:first_kiss",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:saddle"]}]}
+    }
+  }
+}

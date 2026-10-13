@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:couple_hoodie" },
+    "title": { "text": "Matching Fits" },
+    "description": { "text": "Wear matching couple hoodies near each other." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:in_a_relationship",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:couple_hoodie"]}]}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:newspaper" },
+    "title": { "text": "Extra! Extra!" },
+    "description": { "text": "Swat someone playfully with the Rolled Up Newspaper." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:newspaper"]}]}
+    }
+  }
+}

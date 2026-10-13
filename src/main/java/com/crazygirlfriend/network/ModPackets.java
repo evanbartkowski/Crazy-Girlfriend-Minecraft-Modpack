@@ -121,6 +121,20 @@ public class ModPackets {
             }
             case "breakup" -> RelationshipManager.get().breakup(sender);
             case "divorce" -> RelationshipManager.get().divorce(sender);
+            default -> {
+                if (actionName.startsWith("minigame:")) {
+                    String gameId = actionName.substring("minigame:".length());
+                    RequestManager.get().sendRequest(sender, target, RequestType.MINIGAME_INVITE, gameId);
+                    return;
+                }
+                for (com.crazygirlfriend.animation.AnimationType type : com.crazygirlfriend.animation.AnimationType.values()) {
+                    if (type.name().equalsIgnoreCase(actionName)) {
+                        RequestManager.get().sendRequest(sender, target, RequestType.GENERIC_ANIMATION, type);
+                        return;
+                    }
+                }
+                sender.sendMessage(Text.literal("❌ Unknown interaction: " + actionName).formatted(Formatting.RED), false);
+            }
         }
     }
 

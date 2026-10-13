@@ -68,6 +68,88 @@
       { "name": "minecraft:entity/villager/no", "type": "event", "pitch": 1.3 },
       { "name": "minecraft:entity/creeper/primed", "type": "event", "pitch": 1.8 }
     ]
+  },
+  "bonk": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.bonk",
+    "sounds": [
+      { "name": "minecraft:block/anvil/land", "type": "event", "pitch": 1.7 },
+      { "name": "minecraft:entity/iron_golem/damage", "type": "event", "pitch": 1.5 }
+    ]
+  },
+  "squeak": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.squeak",
+    "sounds": [
+      { "name": "minecraft:entity/bat/ambient", "type": "event", "pitch": 1.8 },
+      { "name": "minecraft:entity/slime/squish", "type": "event", "pitch": 1.9 }
+    ]
+  },
+  "boomerang": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.boomerang",
+    "sounds": [
+      { "name": "minecraft:item/trident/return", "type": "event", "pitch": 1.3 }
+    ]
+  },
+  "pillow_hit": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.pillow_hit",
+    "sounds": [
+      { "name": "minecraft:block/wool/hit", "type": "event", "pitch": 0.9 },
+      { "name": "minecraft:entity/generic/small_fall", "type": "event", "pitch": 0.8 }
+    ]
+  },
+  "record_scratch": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.record_scratch",
+    "sounds": [
+      { "name": "minecraft:entity/item/break", "type": "event", "pitch": 0.6 },
+      { "name": "minecraft:item/shield/block", "type": "event", "pitch": 0.5 }
+    ]
+  },
+  "sad_violin": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.sad_violin",
+    "sounds": [
+      { "name": "minecraft:block/bell/resonate", "type": "event", "pitch": 0.6 }
+    ]
+  },
+  "water_splash": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.water_splash",
+    "sounds": [
+      { "name": "minecraft:entity/generic/splash", "type": "event", "pitch": 1.3 }
+    ]
+  },
+  "camera_click": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.camera_click",
+    "sounds": [
+      { "name": "minecraft:block/lever/click", "type": "event", "pitch": 1.8 }
+    ]
+  },
+  "bed_break": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.bed_break",
+    "sounds": [
+      { "name": "minecraft:block/wood/break", "type": "event", "pitch": 0.7 }
+    ]
+  },
+  "cheer": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.cheer",
+    "sounds": [
+      { "name": "minecraft:ui/toast/challenge_complete", "type": "event", "pitch": 1.2 }
+    ]
+  },
+  "fish_slap": {
+    "category": "player",
+    "subtitle": "subtitles.crazygirlfriend.fish_slap",
+    "sounds": [
+      { "name": "minecraft:entity/fish/swim", "type": "event", "pitch": 1.5 },
+      { "name": "minecraft:entity/generic/eat1", "type": "event", "pitch": 0.8 }
+    ]
   }
 }
 

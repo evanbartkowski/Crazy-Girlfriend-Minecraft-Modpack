@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:squeaky_hammer" },
+    "title": { "text": "Squeak Attack" },
+    "description": { "text": "Bonk someone with the hilarious Squeaky Hammer." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:bonk_time",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:squeaky_hammer"]}]}
+    }
+  }
+}

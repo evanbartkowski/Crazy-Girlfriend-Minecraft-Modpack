@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:paddle" },
+    "title": { "text": "Trouble in Paradise" },
+    "description": { "text": "Experience rising tension as the Crazy Meter reaches 20%." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:paddle"]}]}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:teddy_bear" },
+    "title": { "text": "Hold Me Tight" },
+    "description": { "text": "Perform a warm, extended hug." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:first_kiss",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:teddy_bear"]}]}
+    }
+  }
+}

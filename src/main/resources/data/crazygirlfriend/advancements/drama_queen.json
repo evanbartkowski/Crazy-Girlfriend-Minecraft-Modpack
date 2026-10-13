@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:makeup_kit" },
+    "title": { "text": "Main Character Syndrome" },
+    "description": { "text": "Reach the Drama Queen Crazy Tier." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:suspicious_partner",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:makeup_kit"]}]}
+    }
+  }
+}

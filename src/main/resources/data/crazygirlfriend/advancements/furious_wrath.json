@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:fire_charge" },
+    "title": { "text": "Hell Hath No Fury" },
+    "description": { "text": "Reach the Furious Crazy Tier." },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:drama_queen",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:fire_charge"]}]}
+    }
+  }
+}

@@ -1,72 +1,89 @@
-# Crazy Girlfriend Modpack (Minecraft Java Edition 1.20.1)
+# Crazy Girlfriend Modpack (Minecraft Java Edition 1.20.1 Fabric)
 
-A fully functional, humorous, interactive multiplayer relationship and romance mod for Minecraft Java Edition.
+A hilarious, romantic, chaotic, and highly interactive multiplayer relationship mod for Minecraft Java Edition.
 
-Introduces a complete relationship lifecycle (asking someone out, dating, marriage, anniversaries, breakups, and divorces), synchronized player animations (hug, kiss, slap, straddle, piggyback, and romantic embrace), custom items (Red Rose, Diamond Engagement Ring, Flower Bouquets, Throwable Slipper, Makeup Kit, Disciplinary Paddle, Player Leash, Heart Chocolates, Teddy Bear), custom makeup rendering on player skins, and an interactive relationship menu GUI.
+Expand your multiplayer adventures with full relationship lifecycles, **63 synchronized player animations**, the **Crazy Girlfriend Mode & Crazy Meter (0-100%)**, **80 randomized couple events**, **10 interactive minigames**, **comedy weapons**, **interactive couple furniture**, an in-game **photo camera & memory album**, and a context-sensitive **reaction engine**!
 
 ---
 
-## 🌟 Key Features
+## 🌟 Major Systems & Features
 
-### 1. ❤️ Girlfriend & Marriage System
-* **Ask Someone to Be Your Girlfriend**: Right-click another player holding a **Red Romance Rose**.
-  * Target receives an interactive chat notification: `❤️ [Player] is asking you to be their girlfriend! Type YES or click [ACCEPT] / [DECLINE]`.
-  * On acceptance: romantic chime sound plays, heart particles burst around both players, and the relationship is announced server-wide.
-  * Relationships persist across deaths, dimension switches, disconnects, and server restarts.
+### 1. ❤️ Complete Relationship Lifecycle
+* **Propose Dating**: Right-click someone with the **Red Romance Rose**.
+  * Chat prompt: `❤️ [Player] is asking you to be their girlfriend! Type YES to accept or NO to decline.`
+  * Interactive clickable `[ACCEPT]` and `[DECLINE]` buttons with chimes, rose particles, and server announcement.
 * **Propose Marriage**: Right-click your dating partner with a **Diamond Engagement Ring**.
-  * On acceptance: wedding bell fanfare rings, sparkling fireworks and heart showers spawn, upgrading status to **Married 💍**.
-* **Relationship Anniversaries**: Tracks the exact timestamp and day the relationship formed.
-* **Consent & Safety**: Mutual consent is required for all relationships. Duplicate requests and invalid transitions are rejected.
-* **Breakups & Divorces**: `/cg breakup` ends dating; `/cg divorce` dissolves marriage with heartbreak particles and sound effects.
+  * Upgrades relationship to **Married 💍**, ringing wedding bells with fireworks and golden sparkles.
+* **Ceremonial Wedding Altar**: Right-click partner with the **Wedding Altar** for a formal ceremony that summons fireworks, plays celebratory cheering, grants absorption/regeneration buffs, and awards the couple a **Wedding Cake**!
+* **Anniversary Celebrations**: Tracks the exact timestamp and anniversary date. Celebrating with the altar triggers anniversary fireworks and buffs!
+* **Divorce Court & Breakups**: Right-click partner with comical **Divorce Papers** to serve them in divorce court with sad violin sound and gavel strikes, or use `/cg breakup`.
 
-### 2. 🎭 Synchronized Player Animations & Interactions
-* `/cg hug <player>`: Both players smoothly draw together, wrap arms around each other with heart particles and sound.
-* `/cg kiss <player>`: Characters lean in gently, tilt their heads, and play a sweet kiss sound.
-* `/cg slap <player>`: Attacker's arm violently swings across; victim's head snaps back with star particles, cartoon slap sound, and knockback.
-* `/cg straddle <player>`: Playful seated lap animation with floating hearts.
-* `/cg piggyback <player>`: Target hops onto the player's back! Carrier walks around carrying the passenger, who sits on their shoulders holding on until dismounting.
-* `/cg makelove`: A non-explicit, mutually accepted romantic embrace featuring a gentle fade-to-black cinematic vignette overlay, playful giggle sound, and a flurry of hearts.
-* All animations smoothly transform limbs (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) through custom client-side bone interpolation and synchronize in real time across the server.
+### 2. ⚡ Crazy Girlfriend Mode & Crazy Meter (0–100%)
+Track your partner's emotional state with a dynamic meter and 5 distinct tiers:
+* **Tier 1: Sweetheart (0–24%) 💖**: Gentle affection, surprise gifts, sweet hugs, flower deliveries.
+* **Tier 2: Suspicious (25–49%) 🤨**: Bombastic side-eye animations, checking chests, suspicious questioning about wandering traders.
+* **Tier 3: Drama Queen (50–74%) 👑**: Dramatic weeping, foot stomping, falling to knees in telenovela despair, theatrical slipper throws.
+* **Tier 4: Furious (75–94%) ⚡**: Angry jumping, tantrums, obsidian mining in rage, fiery sparks and comical chases!
+* **Tier 5: Total Chaos (95–100%) 🌪️**: Full cartoon slapstick apocalypse! Frying pan duels, water balloon ambushes, bed launches, and pillow fort standoffs!
+* **Soothe & Pacify**: Reduce the meter using chocolates, sweet treats, romantic dates, apologies, and couple cuddles.
 
-### 3. 🎁 Custom Relationship Items & Recipes
+### 3. 🎭 63 Synchronized Player Animations & Interactions
+Procedurally animated across all character bones (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) with smooth limb interpolation:
+* **Romantic Interactions**: Warm Hug, Long Hug, Back Hug, Sweet Kiss, Passionate Make Out, Forehead Kiss, Cheek Kiss, Kiss Attack, Princess Carry Kiss, Face Nuzzle, Cuddle, Hand Holding, Slow Dance, Stargazing, Make Love (non-explicit romantic fade-to-black), and Flower Gifting.
+* **Comedy & Chaos Animations**: Dramatic Slap, Frying Pan BONK, Paddle Spank, Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
+* **Carrying & Mount Actions**: Piggyback Ride, Bridal Carry, Shoulder Carry, Straddle Lap Seating.
+* **Safety & Consent**: All actions respect partner auto-accept permissions (`/cg autoaccept`). Type `/cg cancel` at any moment to cancel an animation or dismount instantly.
 
-| Item | Crafting / Materials | Behavior |
-|---|---|---|
-| **Red Romance Rose** | Poppy + Rose Bush + Honeycomb + Gold Nugget | Right-click player to propose dating. |
-| **Diamond Engagement Ring** | Diamond + 3 Gold Ingots | Right-click partner to propose marriage. |
-| **Flower Bouquets** (Red, Pastel, Sunflower) | Poppies / Tulips / Sunflowers + String + Paper | Right-click player to gift the bouquet with flower petals and hearts. |
-| **Emotional Damage Slipper** | Pink Wool + 3 Leather + String | Thrown projectile! Deals cartoon knockback, plays slap sound, drops item on impact to be retrieved. |
-| **Glamour Makeup Kit** | Iron Ingot + Glass Pane + Dyes + Feather | Right-click player to open interactive Makeup Studio. |
-| **Makeup Cleansing Sponge** | White Wool + Water Bucket + Paper | Right-click player or self to wipe off all face markings. |
-| **Disciplinary Paddle** | Oak Planks + Stick | Playfully spanks consenting partner with comic smack sound and star particles. |
-| **Romantic Player Leash** | Lead + Pink Wool + Gold Nugget | Right-click player to request leash. Pulls leashed player along; right-clicking toggles sitting/standing. |
-| **Box of Heart Chocolates** | Cocoa Beans + Sugar + Paper | Edible confection granting Regeneration II (10s) and Speed I (15s). |
-| **Cuddle Teddy Bear** | Brown Wool + Oak Button + String | Huggable plushie that emits heart particles and warm chimes when squeezed. |
-| **Handwritten Love Letter** | Parchment Envelope with Wax Heart | Right-click to read romantic poetry in chat. |
+### 4. 🎮 10 Interactive Couple Minigames & Dates
+Start games via command (`/cg minigame <id>`) or the Interaction GUI:
+1. **Couple Trivia (`trivia`)**: Humorous multiple-choice questions testing how well you know each other!
+2. **Rock-Paper-Scissors (`rps`)**: Best-of-3 comedy hand duel with animations.
+3. **Pillow War Arena (`pillow_fight`)**: 30-second feather frenzy challenge!
+4. **Wrestling Match (`wrestling`)**: Living room slapstick wrestling on the carpet!
+5. **Love Roulette (`roulette`)**: Spin the wheel for random funny buffs, speed boosts, or comical tickle attacks!
+6. **Scavenger Hunt (`scavenger`)**: 60-second race to collect a surprise romantic item!
+7. **Secret Gift Challenge (`gift_challenge`)**: Exchange mystery presents for rewards and affection XP!
+8. **Kiss Cam (`kiss_cam`)**: 10-second countdown to locate each other and share a kiss!
+9. **Dance-Off (`dance_challenge`)**: Synchronized rhythmic dance duel!
+10. **The Apology Challenge (`apology_challenge`)**: Deliver a dramatic apology to wipe the Crazy Meter clean!
 
-### 4. 💄 Makeup Studio & Custom Face Markings
-* Right-click another player with the **Makeup Kit** to open the **Makeup Studio GUI**.
-* Customizations:
-  * **Lipstick**: None, Ruby Red 💄, Soft Pink 🌸, Midnight Black 🖤, Berry Purple 🍇
-  * **Blush**: None, Rosy Cheek 🌸, Anime Peach 🍑, Doll Red 🍎
-  * **Eyeliner**: None, Winged Cat Eye 👁️, Smoky Eye ✨
-  * **Face Markings**: None, Cat Whiskers 🐱, Cheek Hearts 💕, Clown Nose 🤡, Cute Star ⭐, French Mustache 🥸
-* Renders directly onto the player's head via custom `MakeupFeatureRenderer` without modifying skin files.
-* Consent-protected: Target player must accept the makeup request before it is applied.
-* Easily washed off anytime with `/cg wipeface` or a **Makeup Cleansing Sponge**.
+### 5. 🛏️ Bedroom Mechanics & Morning-After Scenes
+* **Couple Double Beds**: Right-click to snuggle together in shared blankets.
+* **Romantic Night & Morning-After**: Romantic embrace triggers a gentle vignette fade-to-black followed by randomized comedic morning outcomes:
+  * Fresh coffee & pancakes with speed buffs!
+  * Partner stole all the blankets, leaving you shivering!
+  * Bed slat collapse with a comical creak sound!
+  * Pillow ambush with feathers floating everywhere!
+* **"Caught in 4K" Detection**: If a third player enters within 6 blocks during an intimate scene, characters jump apart in embarrassment, triggering comical blushed reactions and the "Caught in 4K!" advancement!
 
-### 5. 🪢 Player Leash & Safety System
-* **Consent First**: A player must accept the leash prompt before the leash is attached.
-* **Dynamic Lead Rendering**: Smooth pink/gold silk rope connects the leash holder and the leashed player.
-* **Following & Sitting**: Leashed player is pulled smoothly toward the holder when walking. The holder can right-click the leashed player to toggle sitting.
-* **Server-Side Restrictions**: Leashed players cannot break blocks, place blocks, or attack entities.
-* **Instant Escape**: Leashed players can break free at any second by running `/cg unleash`.
-* **Automatic Safeguards**: Automatically unleashes if either player dies, disconnects, changes dimensions, or exceeds max distance.
+### 6. 🍳 Comedy Weapons & Prank Arsenal
+* **Cast Iron Frying Pan**: Deals comic knockback and plays loud metallic `BONK` sound with cartoon stars!
+* **Boomerang Slipper**: Thrown slipper that smacks friends for emotional damage and loops back into your hand!
+* **Squeaky Hammer**: Toy hammer that emits squeaks on every hit and sends enemies bouncing!
+* **Water Balloons**: Throwable water balloons that burst into splashing water particles and cause players to shake themselves dry!
+* **Feather Battle Pillow**: Soft melee weapon that launches feather clouds on impact!
+* **Rolled Up Newspaper**: Swat naughty friends with comic paper swats!
+* **Aphrodisiac Love Potion**: Drinkable or splash potion giving absorption, hearts, and romantic giggles!
 
-### 6. 📱 Interactive Relationship Menu GUI
-* **Sneak + Right-Click** any player (or press **K**) to open the **Relationship Menu**.
-* Displays the target player's name and status badge (`Single`, `Dating ❤️ [Partner]`, or `Married 💍 [Partner]`).
-* Quick-action buttons: Give Rose, Propose Marriage, Hug, Kiss, Slap, Straddle, Piggyback, Make Love, Gift Bouquet, Apply Makeup, Paddle Spank, Player Leash, Break Up, and Divorce.
+### 7. 📸 Memories, Shared Custody & Lifestyle
+* **Soulmate Heart Compass**: Tracks your partner's coordinates in real time across dimensions; right-click displays distance, mood, and status!
+* **Instant Couple Camera**: Snaps photos with real flash and shutter sound, adding memories to your photo album and reducing Crazy Meter!
+* **Romantic Photo Album**: Stores and displays memorable dates with locations, dates, and partner names!
+* **Joint Custody Pet Collar**: Use on tamed dogs or cats to share pet custody with your partner!
+* **Matching Soulmate Hoodie**: Wearable chestplate granting **Soulmate Warmth** (Speed & Resistance buffs) when standing near your partner!
+* **Interactive Couple Furniture**: Loveseats, Double Beds, Garden Swings, and Picnic Blankets that spawn seats for two players to sit side-by-side!
+
+### 8. 📱 Categorized Interaction Dashboard & Status Bar
+* **Sneak + Right-Click** any player (or press **K**) to open the **Crazy Girlfriend Hub**!
+* Features 4 category tabs:
+  * **❤️ Romance**: Hugs, kisses, proposals, stargazing, dancing.
+  * **⚡ Chaos**: Slaps, bonks, tantrums, despair, slipper throws.
+  * **🎮 Dates**: All 10 couple minigames.
+  * **🛠️ Actions**: Carries, makeup studio, leashes, furniture seating.
+* **Top Status Dashboard**: Displays an active **Crazy Meter bar** (color-coded by tier: Sweetheart -> Total Chaos), Affection Level & Stars, and live partner Mood!
+
+### 9. 🏆 45 Themed Advancements
+A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Comedy Weapons, Minigames, and Bedroom Intimacy.
 
 ---
 
@@ -74,73 +91,28 @@ Introduces a complete relationship lifecycle (asking someone out, dating, marria
 
 | Command | Description |
 |---|---|
-| `/cg accept` | Accept an incoming relationship, animation, makeup, or leash request. |
-| `/cg decline` | Decline an incoming request. |
-| `/cg status [player]` | View your own or another player's relationship status, partner, and anniversary date. |
-| `/cg hug <player>` | Send a hug request. |
-| `/cg kiss <player>` | Send a kiss request. |
-| `/cg slap <player>` | Comically slap a player. |
-| `/cg straddle <player>` | Send a straddle request. |
-| `/cg piggyback <player>` | Send a piggyback ride request. |
-| `/cg makelove` | Initiate romantic embrace with your partner. |
-| `/cg breakup` | End your dating relationship. |
-| `/cg divorce` | Dissolve your marriage. |
-| `/cg unleash` | Instantly release yourself from a leash. |
-| `/cg wipeface` | Wash all makeup off your face. |
+| `/cg status [player]` | View relationship status, partner, crazy meter %, tier, mood, and affection level. |
+| `/cg anim <name> [player]` | Perform any of the 63 animations with your partner. |
+| `/cg minigame <game>` | Challenge partner to any of the 10 minigames. |
+| `/cg minigame_ans <game> <ans>` | Submit answer for active minigames. |
+| `/cg event trigger [id]` | Trigger a randomized relationship event. |
+| `/cg eventchoice <id> <A\|B>` | Choose your response in a relationship event. |
+| `/cg mood <mood>` | Set relationship mood (HAPPY, LOVING, EXCITED, SHY, ANNOYED, JEALOUS, FURIOUS, EMBARRASSED, SLEEPY, SAD). |
+| `/cg cancel` | Instantly cancel any ongoing animation, piggyback ride, or carry. |
 | `/cg autoaccept [on\|off]` | Toggle auto-accepting requests from your romantic partner. |
-| `/cg help` | Display full in-game help menu. |
-
----
-
-## ⚙️ Configuration (`config/crazygirlfriend.json`)
-
-```json
-{
-  "allowLeashRestrictions": true,
-  "leashMaxDistance": 16.0,
-  "interactionTimeoutSeconds": 30,
-  "slapKnockback": 0.4,
-  "slipperDamage": 1.0,
-  "slipperKnockback": 0.5,
-  "enableRelationshipHearts": true,
-  "enableJealousyEffects": true,
-  "autoAcceptForPartners": false
-}
-```
+| `/cg unleash` | Instantly break free from a leash. |
+| `/cg wipeface` | Wash all makeup off your face. |
+| `/cg breakup` | End dating relationship. |
+| `/cg divorce` | Dissolve marriage. |
+| `/cg help` | View in-game command help guide. |
 
 ---
 
 ## 📦 Installation & Setup
 
-### Requirements
-* **Minecraft Version**: `1.20.1` (Java Edition)
-* **Mod Loader**: Fabric Loader (`0.15.11` or newer)
-* **Java Runtime**: Java 17 or Java 21
-
-### Client Installation (CurseForge / Modrinth / Prism Launcher)
-1. **Method A — One-Click Modpack Import**:
-   * Drag and drop `Crazy-Girlfriend-Modpack-1.0.0.zip` into Prism Launcher, CurseForge App, Modrinth App, or ATLauncher.
-2. **Method B — Manual Mods Folder**:
-   * Place `CrazyGirlfriend-1.0.0.jar` and `fabric-api-0.92.2+1.20.1.jar` into your `.minecraft/mods` directory.
-
-### Dedicated Server Installation
-1. Install Fabric Loader on your Minecraft 1.20.1 server.
-2. Copy `CrazyGirlfriend-1.0.0.jar` and `fabric-api-0.92.2+1.20.1.jar` into the server's `mods/` directory.
-3. Start the server. The server automatically initializes `crazygirlfriend_relationships.dat` persistent storage.
-
----
-
-## 🛠️ Building From Source
-
-```bash
-# Clone the repository
-git clone https://github.com/crazygirlfriend/mod.git
-cd "Crazy Girlfriend Minecraft Modpack"
-
-# Run tests
-./gradlew test
-
-# Build the mod JAR
-./gradlew build
-```
-Compiled mod jar will be in `build/libs/CrazyGirlfriend-1.0.0.jar`.
+1. **Loader**: Fabric Loader 0.15.11+ for **Minecraft 1.20.1**.
+2. **Java**: Java 17 or Java 21.
+3. **Dependencies**: [Fabric API](https://modrinth.com/mod/fabric-api) (included in modpack distribution).
+4. **Install**:
+   * Drop `CrazyGirlfriend-1.0.0.jar` into your `.minecraft/mods` folder, or
+   * Import `Crazy-Girlfriend-Modpack-1.0.0.zip` directly into Prism Launcher, CurseForge, or Modrinth App!

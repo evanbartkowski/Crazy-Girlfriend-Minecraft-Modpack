@@ -12,7 +12,9 @@ public enum RequestType {
     GIFT_BOUQUET("gift a bouquet"),
     PADDLE_SPANK("paddle spank"),
     LEASH("put a leash on you"),
-    APPLY_MAKEUP("apply makeup on you");
+    APPLY_MAKEUP("apply makeup on you"),
+    GENERIC_ANIMATION("perform an interaction with you"),
+    MINIGAME_INVITE("challenge you to a couple minigame");
 
     private final String description;
 

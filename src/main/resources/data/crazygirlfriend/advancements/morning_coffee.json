@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:potion" },
+    "title": { "text": "The Morning After" },
+    "description": { "text": "Wake up together and experience a morning-after surprise." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:cuddle_buddies",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:potion"]}]}
+    }
+  }
+}

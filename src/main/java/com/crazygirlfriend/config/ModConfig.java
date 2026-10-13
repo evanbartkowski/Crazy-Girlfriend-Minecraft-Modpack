@@ -29,6 +29,9 @@ public class ModConfig {
     public boolean enableRelationshipHearts = true;
     public boolean enableJealousyEffects = true;
     public boolean autoAcceptForPartners = false;
+    public boolean enableCrazyGirlfriendMode = true;
+    public int eventIntervalSeconds = 120;
+    public boolean enableMinigames = true;
 
     private static ModConfig INSTANCE = new ModConfig();
 

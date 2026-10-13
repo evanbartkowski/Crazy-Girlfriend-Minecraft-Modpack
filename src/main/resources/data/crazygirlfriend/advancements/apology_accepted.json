@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "crazygirlfriend:love_letter" },
+    "title": { "text": "I'm Sorry, Babe" },
+    "description": { "text": "Succeed in the dramatic Apology Challenge." },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:calm_down",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["crazygirlfriend:love_letter"]}]}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:shears" },
+    "title": { "text": "Roshambo Royalty" },
+    "description": { "text": "Play Rock Paper Scissors with your partner." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crazygirlfriend:date_night",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items":[{"items":["minecraft:shears"]}]}
+    }
+  }
+}

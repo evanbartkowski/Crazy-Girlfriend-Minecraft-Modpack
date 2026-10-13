@@ -22,6 +22,10 @@ public class RelationshipManager {
         return INSTANCE;
     }
 
+    public void save(ServerWorld world) {
+        CrazyGirlfriendSaveData.get(world).markDirty();
+    }
+
     public Relationship getRelationship(UUID player, ServerWorld world) {
         CrazyGirlfriendSaveData data = CrazyGirlfriendSaveData.get(world);
         for (Relationship rel : data.getRelationships()) {
@@ -202,6 +206,11 @@ public class RelationshipManager {
             buf.writeString(rel.getType().name());
             buf.writeLong(rel.getFormedTimestamp());
             buf.writeBoolean(rel.isAutoAccept());
+            buf.writeInt(rel.getCrazyMeter());
+            buf.writeInt(rel.getAffectionXp());
+            buf.writeString(rel.getMood(rel.getPlayer1()).name());
+            buf.writeString(rel.getMood(rel.getPlayer2()).name());
+            buf.writeString(rel.getCustomTitle() != null ? rel.getCustomTitle() : "Sweethearts");
         }
 
         ServerPlayNetworking.send(player, ModPackets.RELATIONSHIP_SYNC_ID, buf);
