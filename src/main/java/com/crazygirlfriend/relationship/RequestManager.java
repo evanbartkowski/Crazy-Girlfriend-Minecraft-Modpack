@@ -279,7 +279,7 @@ public class RequestManager {
         partner.sendMessage(Text.literal("👀 Hey! What's going on over there?!").formatted(Formatting.RED, Formatting.ITALIC), true);
     }
 
-    private void sendFadeVignette(ServerPlayerEntity player, int ticks) {
+    public void sendFadeVignette(ServerPlayerEntity player, int ticks) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeInt(ticks);
         ServerPlayNetworking.send(player, ModPackets.FADE_VIGNETTE_ID, buf);

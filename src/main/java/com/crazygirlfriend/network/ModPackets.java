@@ -24,6 +24,7 @@ public class ModPackets {
     public static final Identifier MAKEUP_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "makeup_sync");
     public static final Identifier FADE_VIGNETTE_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "fade_vignette");
     public static final Identifier FACIAL_EXPRESSION_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "facial_expression_sync");
+    public static final Identifier LOVE_EUPHORIA_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "love_euphoria_sync");
 
     public static final Identifier INTERACTION_REQUEST_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "interaction_request");
     public static final Identifier APPLY_MAKEUP_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "apply_makeup");

@@ -29,7 +29,7 @@ public class WaterBalloonItem extends Item {
         if (!world.isClient) {
             WaterBalloonEntity entity = new WaterBalloonEntity(world, user);
             entity.setItem(itemStack);
-            entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.3f, 1.0f);
+            entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 2.4f, 1.0f);
             world.spawnEntity(entity);
         }
 

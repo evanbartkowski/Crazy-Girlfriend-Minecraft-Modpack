@@ -18,6 +18,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import com.crazygirlfriend.facial.FacialExpression;
+import com.crazygirlfriend.facial.FacialExpressionManager;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+
 public class PillowItem extends Item {
     public PillowItem(Settings settings) {
         super(settings);
@@ -27,16 +32,28 @@ public class PillowItem extends Item {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         World world = attacker.getWorld();
         if (!world.isClient) {
+            // Nullify any attack damage so pillow hits deal 0 damage
+            target.heal(2.0f);
+
             world.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.PILLOW_HIT, SoundCategory.PLAYERS, 1.2f, 1.0f);
             if (world instanceof ServerWorld serverWorld) {
                 // Feathers burst
-                serverWorld.spawnParticles(ParticleTypes.CLOUD, target.getX(), target.getY() + 1.0, target.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
+                serverWorld.spawnParticles(ParticleTypes.CLOUD, target.getX(), target.getY() + 0.8, target.getZ(), 25, 0.5, 0.3, 0.5, 0.05);
             }
-            target.takeKnockback(0.4, -attacker.getRotationVec(1.0f).x, -attacker.getRotationVec(1.0f).z);
+
+            // Knock down player / mob: takes a second to get back up
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 30, 6, false, false));
+            target.takeKnockback(0.3, -attacker.getRotationVec(1.0f).x, -attacker.getRotationVec(1.0f).z);
 
             if (target instanceof ServerPlayerEntity playerTarget) {
-                PlayerAnimationTracker.get().startSingleAnimation(playerTarget, AnimationType.PILLOW_FIGHT_VICTIM, 25);
+                // Comical ragdoll fall over on the floor for 30 ticks (1.5 seconds)
+                PlayerAnimationTracker.get().startSingleAnimation(playerTarget, AnimationType.RAGDOLL_FAINT, 30);
+                FacialExpressionManager.get().setAndSyncExpression(playerTarget, FacialExpression.DIZZY_EYES, 30);
+            } else {
+                target.setVelocity(0, -0.2, 0);
+                target.velocityModified = true;
             }
+
             if (attacker instanceof ServerPlayerEntity playerAttacker) {
                 PlayerAnimationTracker.get().startSingleAnimation(playerAttacker, AnimationType.PILLOW_FIGHT_ATTACKER, 25);
             }

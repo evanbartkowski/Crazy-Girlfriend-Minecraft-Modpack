@@ -75,7 +75,10 @@ public class BoomerangSlipperEntity extends ThrownItemEntity {
                 if (target.equals(this.getOwner()) && returning) return;
 
                 target.damage(this.getDamageSources().thrown(this, this.getOwner()), 1.5f);
-                target.takeKnockback(0.6, -this.getVelocity().x, -this.getVelocity().z);
+                Vec3d kb = this.getVelocity().normalize();
+                target.takeKnockback(2.5, -kb.x, -kb.z); // Knockback 5 power
+                target.addVelocity(0, 0.45, 0); // Comedic launch into the air
+                target.velocityModified = true;
 
                 if (this.getWorld() instanceof ServerWorld serverWorld) {
                     serverWorld.spawnParticles(ParticleTypes.CRIT, target.getX(), target.getY() + 1.0, target.getZ(), 15, 0.3, 0.3, 0.3, 0.1);

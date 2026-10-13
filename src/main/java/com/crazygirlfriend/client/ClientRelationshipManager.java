@@ -76,9 +76,20 @@ public class ClientRelationshipManager {
         this.fadeVignetteTotal = duration;
     }
 
+    public int loveEuphoriaRemaining = 0;
+    public int clientTicks = 0;
+
+    public void triggerLoveEuphoria(int duration) {
+        this.loveEuphoriaRemaining = duration;
+    }
+
     public void tick() {
+        clientTicks++;
         if (fadeVignetteRemaining > 0) {
             fadeVignetteRemaining--;
+        }
+        if (loveEuphoriaRemaining > 0) {
+            loveEuphoriaRemaining--;
         }
     }
 }

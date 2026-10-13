@@ -593,15 +593,26 @@ public class ClientAnimationManager {
                 rightArm.pitch = 0.15f;
             }
             case PADDLE_SPANK_ATTACKER -> {
-                rightArm.pitch = -2.0f + (p * 2.5f);
-                rightArm.yaw = -0.2f;
+                if (p < 0.38f) {
+                    float wind = p / 0.38f;
+                    rightArm.pitch = -2.4f * wind;
+                    rightArm.yaw = -0.35f * wind;
+                } else {
+                    float strike = (p - 0.38f) / 0.62f;
+                    rightArm.pitch = -2.4f + (3.2f * strike);
+                    rightArm.yaw = -0.35f + (0.45f * strike);
+                    body.pitch = 0.28f * strike;
+                }
             }
             case PADDLE_SPANK_VICTIM -> {
-                float flinch = (1.0f - p);
-                body.pitch = 0.5f * flinch;
-                head.pitch = 0.35f * flinch;
-                leftArm.pitch = -0.4f * flinch;
-                rightArm.pitch = -0.4f * flinch;
+                // Bending over forward at 90 degrees with hands placed on knees
+                float bend = MathHelper.sin(p * (float) Math.PI);
+                body.pitch = 1.35f * bend;
+                head.pitch = -0.55f * bend;
+                leftArm.pitch = 0.65f * bend;
+                rightArm.pitch = 0.65f * bend;
+                leftLeg.pitch = 0.05f * bend;
+                rightLeg.pitch = 0.05f * bend;
             }
             case WET_SHAKE -> {
                 float shake = MathHelper.sin(cycle * 4f) * 0.4f;

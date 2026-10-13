@@ -2,7 +2,79 @@
 
 A hilarious, romantic, chaotic, and highly interactive multiplayer relationship mod for Minecraft Java Edition.
 
-Expand your multiplayer adventures with full relationship lifecycles, **63 synchronized player animations**, the **Crazy Girlfriend Mode & Crazy Meter (0-100%)**, **80 randomized couple events**, **10 interactive minigames**, **comedy weapons**, **interactive couple furniture**, an in-game **photo camera & memory album**, and a context-sensitive **reaction engine**!
+Expand your multiplayer adventures with full relationship lifecycles, **65+ synchronized player animations**, the **Crazy Girlfriend Mode & Crazy Meter (0-100%)**, **80 randomized couple events**, **10 interactive minigames**, **comedy weapons**, **interactive couple furniture**, an in-game **photo camera & memory album**, and a context-sensitive **reaction engine**!
+
+---
+
+## 📦 Installation & Setup Guide
+
+### 📋 Prerequisites
+* **Minecraft Version**: `1.20.1` (Java Edition)
+* **Mod Loader**: [Fabric Loader 0.15.11+](https://fabricmc.net/use/installer/)
+* **Java Runtime**: Java 17 or Java 21 (64-bit)
+
+---
+
+### Option 1: Prism Launcher / MultiMC (Recommended)
+1. Download [`Crazy-Girlfriend-Modpack-1.0.0.zip`](file:///c:/Users/evan/Documents/Crazy%20Girlfriend%20Minecraft%20Modpack/Crazy-Girlfriend-Modpack-1.0.0.zip) from this repository.
+2. In Prism Launcher / MultiMC, click **Add Instance** ➔ **Import from zip**.
+3. Select `Crazy-Girlfriend-Modpack-1.0.0.zip` and click **OK**.
+4. The instance will immediately configure Minecraft 1.20.1, Fabric Loader, and load all mods and configs automatically. Launch and play!
+
+---
+
+### Option 2: Modrinth App
+1. Download [`Crazy-Girlfriend-Modpack-1.0.0.mrpack`](file:///c:/Users/evan/Documents/Crazy%20Girlfriend%20Minecraft%20Modpack/Crazy-Girlfriend-Modpack-1.0.0.mrpack) from this repository.
+2. In Modrinth App, click the **+** (Create Profile) icon ➔ **Import from file**.
+3. Select `Crazy-Girlfriend-Modpack-1.0.0.mrpack`.
+4. Launch the profile and enjoy!
+
+---
+
+### Option 3: CurseForge / ATLauncher
+1. Download [`Crazy-Girlfriend-Modpack-1.0.0.zip`](file:///c:/Users/evan/Documents/Crazy%20Girlfriend%20Minecraft%20Modpack/Crazy-Girlfriend-Modpack-1.0.0.zip).
+2. In CurseForge, click **Create Custom Profile** ➔ **Import a previously created profile**, then select the `.zip`.
+3. In ATLauncher, go to **Instances** ➔ **Add Instance** ➔ **Import** and choose the `.zip`.
+
+---
+
+### Option 4: Manual Installation (Standard Minecraft Launcher)
+1. Install [Fabric Loader](https://fabricmc.net/use/installer/) for **Minecraft 1.20.1**.
+2. Open your Minecraft directory:
+   * **Windows**: `Win + R` ➔ `%appdata%\.minecraft` ➔ Enter
+   * **macOS**: `~/Library/Application Support/minecraft`
+   * **Linux**: `~/.minecraft`
+3. Place into `.minecraft/mods/`:
+   * `CrazyGirlfriend-1.0.0.jar` (from `build/libs/` or extracted from modpack)
+   * `fabric-api-0.92.2+1.20.1.jar`
+4. Select the **Fabric Loader 1.20.1** profile in the Minecraft Launcher and click Play.
+
+---
+
+### Option 5: Dedicated Multiplayer Server Setup
+1. Run the [Fabric 1.20.1 Server](https://fabricmc.net/use/server/) installer in a dedicated folder.
+2. Copy `CrazyGirlfriend-1.0.0.jar` and `fabric-api-0.92.2+1.20.1.jar` into the server's `mods/` directory.
+3. Accept the Minecraft EULA (`eula.txt -> eula=true`).
+4. Start the server:
+   ```bash
+   java -Xmx4G -jar fabric-server-launch.jar nogui
+   ```
+5. All connecting players must also have `CrazyGirlfriend-1.0.0.jar` installed on their clients for synchronized animations, expressions, and menus.
+
+---
+
+### Option 6: Building from Source (Developers)
+```powershell
+# Clone the repository
+git clone https://github.com/evanbartkowski/Crazy-Girlfriend-Minecraft-Modpack.git
+cd "Crazy-Girlfriend-Minecraft-Modpack"
+
+# Run test suite
+./gradlew test
+
+# Build production JAR (output in build/libs/)
+./gradlew build
+```
 
 ---
 
@@ -30,7 +102,7 @@ Track your partner's emotional state with a dynamic meter and 5 distinct tiers:
 ### 3. 🎭 65+ Synchronized Player Animations & Interactive Combos
 Procedurally animated across all character bones (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) with smooth limb interpolation, cubic easing, and idle micro-movements:
 * **Romantic Interactions & Variations**: Warm Hug, Bear Hug, Spinning Hug, Jumping Hug, Romantic Sway Hug, Sweet Kiss, Passionate Make Out, Romantic Dip Kiss, Forehead Kiss, Cheek Kiss, Kiss Attack, Princess Carry Kiss, Face Nuzzle, Cuddle, Campfire Snuggle, Hand Holding, Rain Twirl, Slow Dance, Stargazing, Make Love (non-explicit romantic fade-to-black), and Flower Gifting.
-* **Comedy & Chaos Animations**: Dramatic Slap, 360 Spinning Slap, Raw Fish Slap, Frying Pan BONK, Head Bonk Kiss, Paddle Spank, Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Ragdoll Flop, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
+* **Comedy & Chaos Animations**: Dramatic Slap, 360 Spinning Slap, Raw Fish Slap, Frying Pan BONK, Head Bonk Kiss, Paddle Spank (attacker swing & victim bend-over), Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Ragdoll Flop, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
 * **Carrying & Mount Actions**: Piggyback Ride, Passenger Waving, Heavy Armor Stumble Carry, Gentle Dismount, Bridal Carry, Shoulder Carry, Straddle Lap Seating.
 * **💫 Interactive Combo System**: Active animations display an on-screen HUD prompt (`[1] Dip Kiss  [2] Spin  [3] Hold Hands  [4] Hug`). Press number keys to branch fluidly into follow-up sequences without interrupting gameplay!
 * **😊 16 Dynamic Facial Expressions**: Non-destructive feature renderer overlays animated expressions onto player skins: Blushing, Smiling, Closed Eyes, Winking, Angry Eyebrows, Shocked, Embarrassed, Cartoon Tears, Sad, Pouting, Suspicious Side-Eye, Dizzy Spiral Eyes, Sleepy, Laughing, and Drama Crying! Trigger via `/cg expression <name>` or dynamically through actions and moods.
@@ -61,12 +133,14 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
 
 ### 6. 🍳 Comedy Weapons & Prank Arsenal
 * **Cast Iron Frying Pan**: Deals comic knockback and plays loud metallic `BONK` sound with cartoon stars!
-* **Boomerang Slipper**: Thrown slipper that smacks friends for emotional damage and loops back into your hand!
+* **Throwable Slipper**: Inflicts Emotional Damage, spinning the victim in a dramatic 360° circle with dizzy eyes!
+* **Boomerang Slipper**: Smacks targets with **Knockback 5** and vertical lift, dealing emotional damage and looping back into your hand!
+* **Water Balloons**: High-speed projectile throw (`2.4x` velocity) that applies **Slowness II** and **Knockback 2**, bursting into splashing water particles and causing hit targets to shake themselves dry!
+* **Feather Battle Pillow**: Soft melee weapon that deals **0 damage**, launches feather clouds, and causes victims to comically flop to the ground (ragdoll faint) taking ~1 second to get back up!
+* **Disciplinary Paddle**: Direct right-click on another player forces them to bend over forward (90° pose) while you deliver a resounding paddle spank! Also swats mobs with crit particles and knockback.
+* **Aphrodisiac Love Potion**: Drinkable or splash potion giving **Speed V**, a drunk screen wobble, and a pulsing pink euphoria overlay. Getting close to another player (< 2.8 blocks) triggers an uncontrollable pounce and comedic romance!
 * **Squeaky Hammer**: Toy hammer that emits squeaks on every hit and sends enemies bouncing!
-* **Water Balloons**: Throwable water balloons that burst into splashing water particles and cause players to shake themselves dry!
-* **Feather Battle Pillow**: Soft melee weapon that launches feather clouds on impact!
 * **Rolled Up Newspaper**: Swat naughty friends with comic paper swats!
-* **Aphrodisiac Love Potion**: Drinkable or splash potion giving absorption, hearts, and romantic giggles!
 
 ### 7. 📸 Memories, Shared Custody & Lifestyle
 * **Soulmate Heart Compass**: Tracks your partner's coordinates in real time across dimensions; right-click displays distance, mood, and status!
@@ -108,66 +182,3 @@ A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Come
 | `/cg breakup` | End dating relationship. |
 | `/cg divorce` | Dissolve marriage. |
 | `/cg help` | View in-game command help guide. |
-
----
-
----
-
-## 📦 Installation & Setup Guide
-
-### 📋 Prerequisites
-* **Minecraft Version**: `1.20.1` (Java Edition)
-* **Mod Loader**: [Fabric Loader 0.15.11+](https://fabricmc.net/use/installer/)
-* **Java Runtime**: Java 17 or Java 21 (64-bit)
-
----
-
-### Option 1: One-Click Modpack Import (Recommended)
-*Works with **Prism Launcher**, **Modrinth App**, **CurseForge**, or **ATLauncher**.*
-
-1. Download [`Crazy-Girlfriend-Modpack-1.0.0.zip`](file:///c:/Users/evan/Documents/Crazy%20Girlfriend%20Minecraft%20Modpack/Crazy-Girlfriend-Modpack-1.0.0.zip) from this repository.
-2. In your launcher, select **Add Instance** / **Create Profile** ➔ **Import from Zip**.
-3. Choose `Crazy-Girlfriend-Modpack-1.0.0.zip` and click **OK**.
-4. Launch the instance and enjoy! *(Fabric Loader, Fabric API, and configs are pre-packaged)*.
-
----
-
-### Option 2: Manual Installation (Standard Minecraft Launcher)
-1. Install [Fabric Loader](https://fabricmc.net/use/installer/) for **Minecraft 1.20.1**.
-2. Open your Minecraft game directory:
-   * **Windows**: Press `Win + R`, type `%appdata%\.minecraft`, and press Enter.
-   * **macOS**: `~/Library/Application Support/minecraft`
-   * **Linux**: `~/.minecraft`
-3. Open or create the `mods` folder.
-4. Copy the following files into `.minecraft/mods/`:
-   * `CrazyGirlfriend-1.0.0.jar` (from `build/libs/` or extracted from the zip)
-   * `fabric-api-0.92.2+1.20.1.jar`
-5. In the Minecraft Launcher, choose the **Fabric Loader 1.20.1** profile and launch.
-
----
-
-### Option 3: Dedicated Multiplayer Server Setup
-1. Download the [Fabric 1.20.1 Server](https://fabricmc.net/use/server/) installer and generate your server directory.
-2. Place `CrazyGirlfriend-1.0.0.jar` and `fabric-api-0.92.2+1.20.1.jar` into the server's `mods/` directory.
-3. Accept the Minecraft EULA (`eula.txt -> eula=true`).
-4. Start the server:
-   ```bash
-   java -Xmx4G -jar fabric-server-launch.jar nogui
-   ```
-5. All connecting players must also have `CrazyGirlfriend-1.0.0.jar` installed on their clients for animations and GUIs to synchronize.
-
----
-
-### Option 4: Building from Source (Developers)
-```powershell
-# Clone the repository
-git clone https://github.com/evanbartkowski/Crazy-Girlfriend-Minecraft-Modpack.git
-cd "Crazy-Girlfriend-Minecraft-Modpack"
-
-# Run tests
-./gradlew test
-
-# Build production JAR (output in build/libs/)
-./gradlew build
-```
-

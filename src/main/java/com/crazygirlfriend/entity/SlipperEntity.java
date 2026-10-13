@@ -54,9 +54,19 @@ public class SlipperEntity extends ThrownItemEntity {
                     serverWorld.playSound(null, target.getX(), target.getY(), target.getZ(), ModSounds.SLIPPER_HIT, SoundCategory.PLAYERS, 1.2f, 1.2f);
                 }
 
-                // If hit player, trigger brief comical stagger animation
+                // If hit player or mob, spin in a circle
+                target.setYaw((target.getYaw() + 180.0f) % 360.0f);
+                target.setBodyYaw((target.getBodyYaw() + 180.0f) % 360.0f);
+                target.setHeadYaw((target.getHeadYaw() + 180.0f) % 360.0f);
+                double spinX = -vel.z * 0.5;
+                double spinZ = vel.x * 0.5;
+                target.addVelocity(spinX, 0.15, spinZ);
+                target.velocityModified = true;
+
                 if (target instanceof ServerPlayerEntity playerTarget) {
-                    PlayerAnimationTracker.get().startSingleAnimation(playerTarget, AnimationType.SLAP_VICTIM, 15);
+                    // Full 360-degree dramatic spin animation
+                    PlayerAnimationTracker.get().startSingleAnimation(playerTarget, AnimationType.SLAP_DRAMATIC, 35);
+                    com.crazygirlfriend.facial.FacialExpressionManager.get().setAndSyncExpression(playerTarget, com.crazygirlfriend.facial.FacialExpression.DIZZY_EYES, 35);
                 }
 
                 // Drop item so it can be retrieved

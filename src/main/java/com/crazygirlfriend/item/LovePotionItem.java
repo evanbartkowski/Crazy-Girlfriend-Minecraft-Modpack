@@ -34,18 +34,20 @@ public class LovePotionItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient) {
+            // Speed 5 (amplifier 4), Nausea (drunk wobble screen), Regeneration
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400, 4));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 400, 0));
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 400, 1));
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400, 1));
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 300, 0));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 400, 0));
 
             if (world instanceof ServerWorld serverWorld) {
-                serverWorld.spawnParticles(ParticleTypes.HEART, user.getX(), user.getY() + 1.2, user.getZ(), 30, 0.5, 0.5, 0.5, 0.1);
+                serverWorld.spawnParticles(ParticleTypes.HEART, user.getX(), user.getY() + 1.2, user.getZ(), 40, 0.5, 0.5, 0.5, 0.1);
                 serverWorld.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ROMANTIC_CHIME, SoundCategory.PLAYERS, 1.0f, 1.5f);
             }
 
             if (user instanceof ServerPlayerEntity serverPlayer) {
-                PlayerAnimationTracker.get().startSingleAnimation(serverPlayer, AnimationType.DIZZY, 60);
-                serverPlayer.sendMessage(Text.literal("💖 Love Potion imbibed! Overwhelming romantic euphoria!").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD), true);
+                com.crazygirlfriend.relationship.LovePotionEuphoriaManager.get().applyEuphoria(serverPlayer, 400);
+                serverPlayer.sendMessage(Text.literal("💖 Love Potion imbibed! Speed V, drunk romantic euphoria! Get close to a partner to pounce!").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD), true);
             }
         }
         return stack;

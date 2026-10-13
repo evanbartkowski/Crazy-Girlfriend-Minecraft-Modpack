@@ -167,6 +167,14 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
                 com.crazygirlfriend.facial.FacialExpressionManager.get().setExpression(targetUuid, expr, duration);
             });
         });
+
+        // Love Euphoria Pink Screen Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.LOVE_EUPHORIA_SYNC_ID, (client, handler, buf, responseSender) -> {
+            int duration = buf.readInt();
+            client.execute(() -> {
+                ClientRelationshipManager.get().triggerLoveEuphoria(duration);
+            });
+        });
     }
 }
 

@@ -6,6 +6,8 @@ import com.crazygirlfriend.item.ModItems;
 import com.crazygirlfriend.sound.ModSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
@@ -14,6 +16,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class WaterBalloonEntity extends ThrownItemEntity {
@@ -35,8 +38,18 @@ public class WaterBalloonEntity extends ThrownItemEntity {
         super.onEntityHit(entityHitResult);
         if (!this.getWorld().isClient) {
             popWaterSplash();
-            if (entityHitResult.getEntity() instanceof ServerPlayerEntity target) {
-                PlayerAnimationTracker.get().startSingleAnimation(target, AnimationType.WET_SHAKE, 35);
+            if (entityHitResult.getEntity() instanceof LivingEntity living) {
+                // Apply Slowness II (100 ticks = 5 seconds)
+                living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 1));
+
+                // Apply Knockback 2
+                Vec3d vel = this.getVelocity().normalize();
+                living.takeKnockback(1.0, -vel.x, -vel.z);
+                living.velocityModified = true;
+
+                if (living instanceof ServerPlayerEntity target) {
+                    PlayerAnimationTracker.get().startSingleAnimation(target, AnimationType.WET_SHAKE, 40);
+                }
             }
             this.discard();
         }

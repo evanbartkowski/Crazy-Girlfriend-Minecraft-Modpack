@@ -42,6 +42,25 @@ public abstract class InGameHudMixin {
             }
         }
 
+        // Render Pink Euphoria Screen (Aphrodisiac love potion effect)
+        int euRem = ClientRelationshipManager.get().loveEuphoriaRemaining;
+        if (euRem > 0) {
+            float pulse = 0.65f + 0.35f * MathHelper.sin(ClientRelationshipManager.get().clientTicks * 0.12f);
+            int alpha = (int) (65.0f * pulse);
+            int pinkOverlay = (alpha << 24) | 0xFF3399; // Dreamy romantic pink wash
+            context.fill(0, 0, context.getScaledWindowWidth(), context.getScaledWindowHeight(), pinkOverlay);
+
+            if (euRem % 40 < 25) {
+                context.drawCenteredTextWithShadow(
+                    this.client.textRenderer,
+                    Text.literal("💖 LOVE EUPHORIA (Get close to someone to pounce!) 💖").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD),
+                    context.getScaledWindowWidth() / 2,
+                    15,
+                    0xFFFF69B4
+                );
+            }
+        }
+
         // Render Combo HUD prompt if an interactive animation combo is available
         com.crazygirlfriend.client.gui.ComboOverlayHud.get().render(context, tickDelta);
     }
