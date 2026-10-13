@@ -111,11 +111,63 @@ A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Come
 
 ---
 
-## 📦 Installation & Setup
+---
 
-1. **Loader**: Fabric Loader 0.15.11+ for **Minecraft 1.20.1**.
-2. **Java**: Java 17 or Java 21.
-3. **Dependencies**: [Fabric API](https://modrinth.com/mod/fabric-api) (included in modpack distribution).
-4. **Install**:
-   * Drop `CrazyGirlfriend-1.0.0.jar` into your `.minecraft/mods` folder, or
-   * Import `Crazy-Girlfriend-Modpack-1.0.0.zip` directly into Prism Launcher, CurseForge, or Modrinth App!
+## 📦 Installation & Setup Guide
+
+### 📋 Prerequisites
+* **Minecraft Version**: `1.20.1` (Java Edition)
+* **Mod Loader**: [Fabric Loader 0.15.11+](https://fabricmc.net/use/installer/)
+* **Java Runtime**: Java 17 or Java 21 (64-bit)
+
+---
+
+### Option 1: One-Click Modpack Import (Recommended)
+*Works with **Prism Launcher**, **Modrinth App**, **CurseForge**, or **ATLauncher**.*
+
+1. Download [`Crazy-Girlfriend-Modpack-1.0.0.zip`](file:///c:/Users/evan/Documents/Crazy%20Girlfriend%20Minecraft%20Modpack/Crazy-Girlfriend-Modpack-1.0.0.zip) from this repository.
+2. In your launcher, select **Add Instance** / **Create Profile** ➔ **Import from Zip**.
+3. Choose `Crazy-Girlfriend-Modpack-1.0.0.zip` and click **OK**.
+4. Launch the instance and enjoy! *(Fabric Loader, Fabric API, and configs are pre-packaged)*.
+
+---
+
+### Option 2: Manual Installation (Standard Minecraft Launcher)
+1. Install [Fabric Loader](https://fabricmc.net/use/installer/) for **Minecraft 1.20.1**.
+2. Open your Minecraft game directory:
+   * **Windows**: Press `Win + R`, type `%appdata%\.minecraft`, and press Enter.
+   * **macOS**: `~/Library/Application Support/minecraft`
+   * **Linux**: `~/.minecraft`
+3. Open or create the `mods` folder.
+4. Copy the following files into `.minecraft/mods/`:
+   * `CrazyGirlfriend-1.0.0.jar` (from `build/libs/` or extracted from the zip)
+   * `fabric-api-0.92.2+1.20.1.jar`
+5. In the Minecraft Launcher, choose the **Fabric Loader 1.20.1** profile and launch.
+
+---
+
+### Option 3: Dedicated Multiplayer Server Setup
+1. Download the [Fabric 1.20.1 Server](https://fabricmc.net/use/server/) installer and generate your server directory.
+2. Place `CrazyGirlfriend-1.0.0.jar` and `fabric-api-0.92.2+1.20.1.jar` into the server's `mods/` directory.
+3. Accept the Minecraft EULA (`eula.txt -> eula=true`).
+4. Start the server:
+   ```bash
+   java -Xmx4G -jar fabric-server-launch.jar nogui
+   ```
+5. All connecting players must also have `CrazyGirlfriend-1.0.0.jar` installed on their clients for animations and GUIs to synchronize.
+
+---
+
+### Option 4: Building from Source (Developers)
+```powershell
+# Clone the repository
+git clone https://github.com/evanbartkowski/Crazy-Girlfriend-Minecraft-Modpack.git
+cd "Crazy-Girlfriend-Minecraft-Modpack"
+
+# Run tests
+./gradlew test
+
+# Build production JAR (output in build/libs/)
+./gradlew build
+```
+
