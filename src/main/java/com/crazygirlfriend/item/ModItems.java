@@ -1,6 +1,7 @@
 package com.crazygirlfriend.item;
 
 import com.crazygirlfriend.CrazyGirlfriendMod;
+import com.crazygirlfriend.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -26,7 +27,7 @@ public class ModItems {
     public static final Item PADDLE = registerItem("paddle", new PaddleItem(new Item.Settings().maxCount(1)));
     public static final Item PLAYER_LEASH = registerItem("player_leash", new PlayerLeashItem(new Item.Settings().maxCount(1)));
     public static final Item CHOCOLATE_BOX = registerItem("chocolate_box", new ChocolateBoxItem(new Item.Settings().maxCount(64)));
-    public static final Item TEDDY_BEAR = registerItem("teddy_bear", new TeddyBearItem(new Item.Settings().maxCount(1)));
+    public static final Item TEDDY_BEAR = registerItem("teddy_bear", new TeddyBearItem(ModBlocks.TEDDY_BEAR, new Item.Settings().maxCount(1)));
     public static final Item LOVE_LETTER = registerItem("love_letter", new LoveLetterItem(new Item.Settings().maxCount(16)));
 
     // Expansion: Comedy Weapons & Prank Items
@@ -41,6 +42,7 @@ public class ModItems {
     // Expansion: Romance, Wedding, Custody & Lifestyle
     public static final Item PARTNER_COMPASS = registerItem("partner_compass", new PartnerCompassItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item COUPLE_CAMERA = registerItem("couple_camera", new CoupleCameraItem(new Item.Settings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item PHOTOGRAPH = registerItem("photograph", new PhotographItem(new Item.Settings().maxCount(16).rarity(Rarity.UNCOMMON)));
     public static final Item PHOTO_ALBUM = registerItem("photo_album", new PhotoAlbumItem(new Item.Settings().maxCount(16)));
     public static final Item SHARED_COLLAR = registerItem("shared_collar", new SharedCollarItem(new Item.Settings().maxCount(16)));
     public static final Item WEDDING_ALTAR = registerItem("wedding_altar", new WeddingAltarItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
@@ -49,10 +51,10 @@ public class ModItems {
     public static final Item COUPLE_HOODIE = registerItem("couple_hoodie", new CoupleClothingItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
     // Expansion: Couple Furniture
-    public static final Item COUPLE_SOFA = registerItem("couple_sofa", new CoupleFurnitureItem(CoupleFurnitureItem.FurnitureType.SOFA, new Item.Settings().maxCount(16)));
-    public static final Item COUPLE_DOUBLE_BED = registerItem("couple_double_bed", new CoupleFurnitureItem(CoupleFurnitureItem.FurnitureType.DOUBLE_BED, new Item.Settings().maxCount(16)));
-    public static final Item COUPLE_SWING = registerItem("couple_swing", new CoupleFurnitureItem(CoupleFurnitureItem.FurnitureType.SWING, new Item.Settings().maxCount(16)));
-    public static final Item COUPLE_PICNIC_BLANKET = registerItem("couple_picnic_blanket", new CoupleFurnitureItem(CoupleFurnitureItem.FurnitureType.PICNIC_BLANKET, new Item.Settings().maxCount(16)));
+    public static final Item COUPLE_SOFA = registerItem("couple_sofa", new CoupleFurnitureItem(ModBlocks.COUPLE_SOFA, CoupleFurnitureItem.FurnitureType.SOFA, new Item.Settings().maxCount(16)));
+    public static final Item COUPLE_DOUBLE_BED = registerItem("couple_double_bed", new CoupleFurnitureItem(ModBlocks.COUPLE_DOUBLE_BED, CoupleFurnitureItem.FurnitureType.DOUBLE_BED, new Item.Settings().maxCount(16)));
+    public static final Item COUPLE_SWING = registerItem("couple_swing", new CoupleFurnitureItem(ModBlocks.COUPLE_SWING, CoupleFurnitureItem.FurnitureType.SWING, new Item.Settings().maxCount(16)));
+    public static final Item COUPLE_PICNIC_BLANKET = registerItem("couple_picnic_blanket", new CoupleFurnitureItem(ModBlocks.COUPLE_PICNIC_BLANKET, CoupleFurnitureItem.FurnitureType.PICNIC_BLANKET, new Item.Settings().maxCount(16)));
 
     public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(CrazyGirlfriendMod.MOD_ID, "general"));
 
@@ -92,6 +94,7 @@ public class ModItems {
                 // Romance & Lifestyle
                 entries.add(PARTNER_COMPASS);
                 entries.add(COUPLE_CAMERA);
+                entries.add(PHOTOGRAPH);
                 entries.add(PHOTO_ALBUM);
                 entries.add(SHARED_COLLAR);
                 entries.add(WEDDING_ALTAR);

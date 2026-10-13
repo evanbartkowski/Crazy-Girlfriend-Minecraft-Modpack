@@ -1,0 +1,33 @@
+{
+  "textures": {
+    "particle": "crazygirlfriend:block/couple_double_bed",
+    "bed": "crazygirlfriend:block/couple_double_bed"
+  },
+  "elements": [
+    {
+      "name": "mattress",
+      "from": [0, 0, 0],
+      "to": [16, 8, 16],
+      "faces": {
+        "down":  { "texture": "#bed", "cullface": "down" },
+        "up":    { "texture": "#bed" },
+        "north": { "texture": "#bed" },
+        "south": { "texture": "#bed" },
+        "west":  { "texture": "#bed" },
+        "east":  { "texture": "#bed" }
+      }
+    },
+    {
+      "name": "pillows",
+      "from": [1, 8, 10],
+      "to": [15, 11, 15],
+      "faces": {
+        "up":    { "texture": "#bed" },
+        "north": { "texture": "#bed" },
+        "south": { "texture": "#bed" },
+        "west":  { "texture": "#bed" },
+        "east":  { "texture": "#bed" }
+      }
+    }
+  ]
+}

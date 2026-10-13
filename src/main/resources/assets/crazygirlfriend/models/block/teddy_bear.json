@@ -1,0 +1,115 @@
+{
+  "textures": {
+    "particle": "crazygirlfriend:block/teddy_bear",
+    "bear": "crazygirlfriend:block/teddy_bear"
+  },
+  "elements": [
+    {
+      "name": "body",
+      "from": [4, 0, 5],
+      "to": [12, 6, 11],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "west":  { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "head",
+      "from": [4.5, 6, 4.5],
+      "to": [11.5, 12, 11.5],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "west":  { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "muzzle",
+      "from": [6, 6.5, 3.5],
+      "to": [10, 9.5, 5],
+      "faces": {
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "west":  { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "left_ear",
+      "from": [4, 11.5, 6.5],
+      "to": [6, 13.5, 9.5],
+      "faces": {
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "west":  { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "right_ear",
+      "from": [10, 11.5, 6.5],
+      "to": [12, 13.5, 9.5],
+      "faces": {
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "west":  { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "left_arm",
+      "from": [2, 1, 6],
+      "to": [4, 5, 9],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "west":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "right_arm",
+      "from": [12, 1, 6],
+      "to": [14, 5, 9],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "south": { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "left_foot",
+      "from": [4, 0, 3],
+      "to": [7, 2, 5],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "west":  { "texture": "#bear" }
+      }
+    },
+    {
+      "name": "right_foot",
+      "from": [9, 0, 3],
+      "to": [12, 2, 5],
+      "faces": {
+        "down":  { "texture": "#bear" },
+        "up":    { "texture": "#bear" },
+        "north": { "texture": "#bear" },
+        "east":  { "texture": "#bear" }
+      }
+    }
+  ]
+}

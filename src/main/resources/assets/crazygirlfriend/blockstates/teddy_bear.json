@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "crazygirlfriend:block/teddy_bear" },
+    "facing=east":  { "model": "crazygirlfriend:block/teddy_bear", "y": 90 },
+    "facing=south": { "model": "crazygirlfriend:block/teddy_bear", "y": 180 },
+    "facing=west":  { "model": "crazygirlfriend:block/teddy_bear", "y": 270 }
+  }
+}

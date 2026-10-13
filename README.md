@@ -78,19 +78,72 @@ cd "Crazy-Girlfriend-Minecraft-Modpack"
 
 ---
 
+## 🎁 Complete Item & Block Guide
+
+Every item and block in the modpack and exactly what it does:
+
+### ❤️ Romance & Relationship Items
+| Item | Description & What It Does |
+|---|---|
+| **Red Romance Rose** (`red_rose`) | Right-click another player to ask them to be your girlfriend! Displays an interactive chat prompt with `[ACCEPT]` and `[DECLINE]` clickable buttons, romantic chimes, rose particles, and server announcement. |
+| **Diamond Engagement Ring** (`diamond_ring`) | Right-click your dating partner to propose marriage! Upgrades relationship status to Married 💍 with wedding bells, sparkles, and celebratory fireworks. |
+| **Romantic Rose Bouquet** (`flower_bouquet`) | Gift to your partner to award Affection XP, boost their relationship mood, and soothe Crazy Meter. |
+| **Pastel Blossom Bouquet** (`pastel_bouquet`) | Sweet arrangement of spring blossoms that cheers up your partner and grants a brief Speed buff. |
+| **Golden Sunflower Bouquet** (`sun_bouquet`) | Radiant bouquet of sunflowers emitting golden sparkle particles that pacifies an angry or sad partner. |
+| **Box of Heart Chocolates** (`chocolate_box`) | Delicious chocolates. Eating or gifting to a partner soothes anger, reduces Crazy Meter by 15%, and restores hunger and hearts. |
+| **Handwritten Love Letter** (`love_letter`) | Express romantic feelings in writing. Right-click partner to grant Affection XP and display floating heart particles. |
+| **Ceremonial Wedding Altar** (`wedding_altar`) | Right-click partner to hold a formal wedding ceremony complete with church bells, celebratory cheering, absorption/regeneration buffs, fireworks, and a Wedding Cake! Also triggers anniversary celebrations. |
+| **Wedding Celebration Cake** (`wedding_cake`) | A multi-slice wedding cake featuring mini bride & groom toppers. Eating slices with your partner grants heart particles and affection boosts. |
+| **Formal Divorce Papers** (`divorce_papers`) | Right-click partner to serve them in comical divorce court with sad violin music and judge gavel sound effects, dissolving the marriage. |
+
+---
+
+### ⚔️ Comedy Weapons & Slapstick Prank Arsenal
+| Item | Description & What It Does |
+|---|---|
+| **Oversized Squeaky Hammer** (`squeaky_hammer`) | Slapstick toy mallet with **Knockback 200**! Hitting any player or mob plays a high-pitched squeak and launches them into orbit across the map. |
+| **Cast Iron Frying Pan** (`frying_pan`) | Classic cartoon weapon that plays a loud metallic `BONK!` sound, creates cartoon dizzy stars, and sends targets stumbling backward. |
+| **Emotional Damage Slipper** (`throwable_slipper`) | Throwable slipper that smacks targets for emotional damage, spinning them around in a dramatic 360° circle with dizzy spiral eyes. |
+| **Boomerang Slipper** (`boomerang_slipper`) | Throw at friends to strike them with **Knockback 5** and vertical lift! Automatically loops back through the air and returns to your hand. |
+| **Water Balloons** (`water_balloon`) | High-speed projectile throw (`2.4x` velocity) that bursts into water splashes on hit, inflicts **Slowness II** and **Knockback 2**, and makes players shake dry. |
+| **Feather Battle Pillow** (`pillow`) | Soft battle pillow that deals **0 damage**, releases feather clouds, and causes victims to comically flop to the ground (ragdoll faint) taking ~1.5s to get back up. |
+| **Disciplinary Paddle** (`paddle`) | Right-click another player to playfully discipline them! Forces the victim to bend over forward (90° pose) while you deliver a resounding paddle spank with crit sparks and audio. |
+| **Aphrodisiac Love Potion** (`love_potion`) | Drinkable or splash potion giving **Speed V**, drunken screen wobble, and a pulsing pink euphoria overlay. Approaching any player (<2.8 blocks) triggers an uncontrollable pounce and playful romantic make-love sequence with hearts and giggles! |
+| **Rolled Up Newspaper** (`newspaper`) | Swat naughty friends or partners with a crisp paper slap sound and harmless playful knockback. |
+
+---
+
+### 🛋️ Placeable Couple Furniture & 3D Plushies
+*All furniture pieces are placeable on the ground as physical 3D blocks with custom models and textures!*
+
+| Item / Block | Description & What It Does |
+|---|---|
+| **Checkered Picnic Blanket** (`couple_picnic_blanket`) | A red-and-white checkered picnic blanket block. Right-click to sit down and relax on the ground; your partner can right-click to cuddle up right beside you! |
+| **Cozy Couple Loveseat** (`couple_sofa`) | A plush pastel pink 3D upholstered couch block. Right-click to sit; supports two players sitting side-by-side with heart particles and facing alignment. |
+| **Couple Cuddle Double Bed** (`couple_double_bed`) | A romantic 3D double bed block with pillows and a duvet. Right-click to snuggle together in shared blankets, lie down, or sleep together. |
+| **Romantic Garden Swing** (`couple_swing`) | A wooden porch swing with suspension ropes. Right-click to sit and gently sway together with your partner. |
+| **Cuddle Teddy Bear** (`teddy_bear`) | An adorable 3D plush teddy bear block! Place it on the floor, table, or bed. Right-click to hug/squeeze it for squeaks and heart particles. Sneak + Right-click to pick it back up into your inventory. |
+
+---
+
+### 📸 Lifestyle, Camera, Custody & Apparel
+| Item | Description & What It Does |
+|---|---|
+| **Instant Couple Camera** (`couple_camera`) | Handheld camera with real flash particles and shutter audio. Right-click to snap scenic or couple photos; **Sneak + Right-Click to take a cute selfie!** Directly prints an inspectable **Polaroid Photograph** into your inventory. |
+| **Polaroid Photograph** (`photograph`) | A glossy printed polaroid photo item. Right-click to inspect the polaroid snapshot card showing memory title, photo type (Selfie or Couple Date), photographer name, date, time, and coordinates. Can be framed on walls or saved in albums! |
+| **Romantic Photo Album** (`photo_album`) | Stores and displays precious memories captured by your camera. Right-click to flip through dates and partner milestones. |
+| **Soulmate Heart Compass** (`partner_compass`) | Always tracks your partner's exact coordinates across any dimension. Right-click to check distance, partner mood, and live Crazy Meter tier. |
+| **Joint Custody Pet Collar** (`shared_collar`) | Right-click your tamed dog or cat to grant joint pet custody to your partner so both players can command and lead the pet. |
+| **Matching Soulmate Hoodie** (`couple_hoodie`) | Fully rendered wearable 3D pastel pink hoodie with drawstrings, pouch, and heart badge! Grants **Soulmate Warmth** (Speed & Resistance buffs) whenever standing within 16 blocks of your partner. |
+| **Glamour Makeup Kit** (`makeup_kit`) | Right-click another player to open the full Makeup Studio GUI. Apply blush, lipstick, eyeliner, anime tears, or silly clown makeup! |
+| **Makeup Cleansing Sponge** (`makeup_remover`) | Right-click a player or yourself to wash off all makeup and facial markings. |
+| **Romantic Player Leash** (`player_leash`) | Tether a consenting friend and guide them around. Partner can break free anytime using `/cg unleash`. |
+
+---
+
 ## 🌟 Major Systems & Features
 
-### 1. ❤️ Complete Relationship Lifecycle
-* **Propose Dating**: Right-click someone with the **Red Romance Rose**.
-  * Chat prompt: `❤️ [Player] is asking you to be their girlfriend! Type YES to accept or NO to decline.`
-  * Interactive clickable `[ACCEPT]` and `[DECLINE]` buttons with chimes, rose particles, and server announcement.
-* **Propose Marriage**: Right-click your dating partner with a **Diamond Engagement Ring**.
-  * Upgrades relationship to **Married 💍**, ringing wedding bells with fireworks and golden sparkles.
-* **Ceremonial Wedding Altar**: Right-click partner with the **Wedding Altar** for a formal ceremony that summons fireworks, plays celebratory cheering, grants absorption/regeneration buffs, and awards the couple a **Wedding Cake**!
-* **Anniversary Celebrations**: Tracks the exact timestamp and anniversary date. Celebrating with the altar triggers anniversary fireworks and buffs!
-* **Divorce Court & Breakups**: Right-click partner with comical **Divorce Papers** to serve them in divorce court with sad violin sound and gavel strikes, or use `/cg breakup`.
-
-### 2. ⚡ Crazy Girlfriend Mode & Crazy Meter (0–100%)
+### 1. ⚡ Crazy Girlfriend Mode & Crazy Meter (0–100%)
 Track your partner's emotional state with a dynamic meter and 5 distinct tiers:
 * **Tier 1: Sweetheart (0–24%) 💖**: Gentle affection, surprise gifts, sweet hugs, flower deliveries.
 * **Tier 2: Suspicious (25–49%) 🤨**: Bombastic side-eye animations, checking chests, suspicious questioning about wandering traders.
@@ -99,7 +152,7 @@ Track your partner's emotional state with a dynamic meter and 5 distinct tiers:
 * **Tier 5: Total Chaos (95–100%) 🌪️**: Full cartoon slapstick apocalypse! Frying pan duels, water balloon ambushes, bed launches, and pillow fort standoffs!
 * **Soothe & Pacify**: Reduce the meter using chocolates, sweet treats, romantic dates, apologies, and couple cuddles.
 
-### 3. 🎭 65+ Synchronized Player Animations & Interactive Combos
+### 2. 🎭 65+ Synchronized Player Animations & Interactive Combos
 Procedurally animated across all character bones (`head`, `body`, `right_arm`, `left_arm`, `right_leg`, `left_leg`) with smooth limb interpolation, cubic easing, and idle micro-movements:
 * **Romantic Interactions & Variations**: Warm Hug, Bear Hug, Spinning Hug, Jumping Hug, Romantic Sway Hug, Sweet Kiss, Passionate Make Out, Romantic Dip Kiss, Forehead Kiss, Cheek Kiss, Kiss Attack, Princess Carry Kiss, Face Nuzzle, Cuddle, Campfire Snuggle, Hand Holding, Rain Twirl, Slow Dance, Stargazing, Make Love (non-explicit romantic fade-to-black), and Flower Gifting.
 * **Comedy & Chaos Animations**: Dramatic Slap, 360 Spinning Slap, Raw Fish Slap, Frying Pan BONK, Head Bonk Kiss, Paddle Spank (attacker swing & victim bend-over), Slipper Impact, Squeaky Hammer Hit, Foot Stomping, Angry Arms-Crossed, Dramatic Crying, Fall in Despair, Fake Fainting, Ragdoll Flop, Exaggerated Side-Eye, Cartoon Tantrum, Rolling Eyes, Uncontrollable Laughing, Playful Wrestling, Pillow Fighting, Ring Throwing, and Dizzy Swirl.
@@ -109,7 +162,7 @@ Procedurally animated across all character bones (`head`, `body`, `right_arm`, `
 * **🎥 Cinematic Camera System**: Optional subtle cinematic camera movements (`ModConfig.enableCinematicCamera`): gentle camera roll during romantic dips, subtle screen shake on comedic bonks and slaps, and gentle FOV zoom during intimate moments.
 * **Safety & Consent**: All actions respect partner auto-accept permissions (`/cg autoaccept`). Type `/cg cancel` at any moment to cancel an animation or dismount instantly.
 
-### 4. 🎮 10 Interactive Couple Minigames & Dates
+### 3. 🎮 10 Interactive Couple Minigames & Dates
 Start games via command (`/cg minigame <id>`) or the Interaction GUI:
 1. **Couple Trivia (`trivia`)**: Humorous multiple-choice questions testing how well you know each other!
 2. **Rock-Paper-Scissors (`rps`)**: Best-of-3 comedy hand duel with animations.
@@ -122,7 +175,7 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
 9. **Dance-Off (`dance_challenge`)**: Synchronized rhythmic dance duel!
 10. **The Apology Challenge (`apology_challenge`)**: Deliver a dramatic apology to wipe the Crazy Meter clean!
 
-### 5. 🛏️ Bedroom Mechanics & Morning-After Scenes
+### 4. 🛏️ Bedroom Mechanics & Morning-After Scenes
 * **Couple Double Beds**: Right-click to snuggle together in shared blankets.
 * **Romantic Night & Morning-After**: Romantic embrace triggers a gentle vignette fade-to-black followed by randomized comedic morning outcomes:
   * Fresh coffee & pancakes with speed buffs!
@@ -131,26 +184,7 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
   * Pillow ambush with feathers floating everywhere!
 * **"Caught in 4K" Detection**: If a third player enters within 6 blocks during an intimate scene, characters jump apart in embarrassment, triggering comical blushed reactions and the "Caught in 4K!" advancement!
 
-### 6. 🍳 Comedy Weapons & Prank Arsenal
-* **Cast Iron Frying Pan**: Deals comic knockback and plays loud metallic `BONK` sound with cartoon stars!
-* **Throwable Slipper**: Inflicts Emotional Damage, spinning the victim in a dramatic 360° circle with dizzy eyes!
-* **Boomerang Slipper**: Smacks targets with **Knockback 5** and vertical lift, dealing emotional damage and looping back into your hand!
-* **Water Balloons**: High-speed projectile throw (`2.4x` velocity) that applies **Slowness II** and **Knockback 2**, bursting into splashing water particles and causing hit targets to shake themselves dry!
-* **Feather Battle Pillow**: Soft melee weapon that deals **0 damage**, launches feather clouds, and causes victims to comically flop to the ground (ragdoll faint) taking ~1 second to get back up!
-* **Disciplinary Paddle**: Direct right-click on another player forces them to bend over forward (90° pose) while you deliver a resounding paddle spank! Also swats mobs with crit particles and knockback.
-* **Aphrodisiac Love Potion**: Drinkable or splash potion giving **Speed V**, a drunk screen wobble, and a pulsing pink euphoria overlay. Getting close to another player (< 2.8 blocks) triggers an uncontrollable pounce and comedic romance!
-* **Squeaky Hammer**: Toy hammer that emits squeaks on every hit and sends enemies bouncing!
-* **Rolled Up Newspaper**: Swat naughty friends with comic paper swats!
-
-### 7. 📸 Memories, Shared Custody & Lifestyle
-* **Soulmate Heart Compass**: Tracks your partner's coordinates in real time across dimensions; right-click displays distance, mood, and status!
-* **Instant Couple Camera**: Snaps photos with real flash and shutter sound, adding memories to your photo album and reducing Crazy Meter!
-* **Romantic Photo Album**: Stores and displays memorable dates with locations, dates, and partner names!
-* **Joint Custody Pet Collar**: Use on tamed dogs or cats to share pet custody with your partner!
-* **Matching Soulmate Hoodie**: Wearable chestplate granting **Soulmate Warmth** (Speed & Resistance buffs) when standing near your partner!
-* **Interactive Couple Furniture**: Loveseats, Double Beds, Garden Swings, and Picnic Blankets that spawn seats for two players to sit side-by-side!
-
-### 8. 📱 Categorized Interaction Dashboard & Status Bar
+### 5. 📱 Categorized Interaction Dashboard & Status Bar
 * **Sneak + Right-Click** any player (or press **K**) to open the **Crazy Girlfriend Hub**!
 * Features 4 category tabs:
   * **❤️ Romance**: Hugs, kisses, proposals, stargazing, dancing.
@@ -159,7 +193,7 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
   * **🛠️ Actions**: Carries, makeup studio, leashes, furniture seating.
 * **Top Status Dashboard**: Displays an active **Crazy Meter bar** (color-coded by tier: Sweetheart -> Total Chaos), Affection Level & Stars, and live partner Mood!
 
-### 9. 🏆 45 Themed Advancements
+### 6. 🏆 45 Themed Advancements
 A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Comedy Weapons, Minigames, and Bedroom Intimacy.
 
 ---
@@ -169,7 +203,7 @@ A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Come
 | Command | Description |
 |---|---|
 | `/cg status [player]` | View relationship status, partner, crazy meter %, tier, mood, and affection level. |
-| `/cg anim <name> [player]` | Perform any of the 63 animations with your partner. |
+| `/cg anim <name> [player]` | Perform any of the 65+ animations with your partner. |
 | `/cg minigame <game>` | Challenge partner to any of the 10 minigames. |
 | `/cg minigame_ans <game> <ans>` | Submit answer for active minigames. |
 | `/cg event trigger [id]` | Trigger a randomized relationship event. |

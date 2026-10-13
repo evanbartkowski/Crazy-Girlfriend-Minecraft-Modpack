@@ -1,0 +1,77 @@
+{
+  "textures": {
+    "particle": "crazygirlfriend:block/couple_swing",
+    "swing": "crazygirlfriend:block/couple_swing"
+  },
+  "elements": [
+    {
+      "name": "seat",
+      "from": [2, 3, 3],
+      "to": [14, 5, 13],
+      "faces": {
+        "down":  { "texture": "#swing" },
+        "up":    { "texture": "#swing" },
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    },
+    {
+      "name": "backrest",
+      "from": [2, 5, 11],
+      "to": [14, 12, 13],
+      "faces": {
+        "up":    { "texture": "#swing" },
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    },
+    {
+      "name": "rope_nw",
+      "from": [2, 5, 3],
+      "to": [3, 16, 4],
+      "faces": {
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    },
+    {
+      "name": "rope_ne",
+      "from": [13, 5, 3],
+      "to": [14, 16, 4],
+      "faces": {
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    },
+    {
+      "name": "rope_sw",
+      "from": [2, 12, 12],
+      "to": [3, 16, 13],
+      "faces": {
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    },
+    {
+      "name": "rope_se",
+      "from": [13, 12, 12],
+      "to": [14, 16, 13],
+      "faces": {
+        "north": { "texture": "#swing" },
+        "south": { "texture": "#swing" },
+        "west":  { "texture": "#swing" },
+        "east":  { "texture": "#swing" }
+      }
+    }
+  ]
+}

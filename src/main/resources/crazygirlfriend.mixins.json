@@ -9,7 +9,8 @@
     "PlayerEntityModelMixin",
     "PlayerEntityRendererMixin",
     "InGameHudMixin",
-    "GameRendererMixin"
+    "GameRendererMixin",
+    "ArmorFeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

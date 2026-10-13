@@ -41,6 +41,16 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.WATER_BALLOON, net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SEAT, com.crazygirlfriend.client.render.EmptySeatRenderer::new);
 
+        // Register block render layers
+        net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap.INSTANCE.putBlocks(
+            net.minecraft.client.render.RenderLayer.getCutout(),
+            com.crazygirlfriend.block.ModBlocks.COUPLE_PICNIC_BLANKET,
+            com.crazygirlfriend.block.ModBlocks.COUPLE_SOFA,
+            com.crazygirlfriend.block.ModBlocks.COUPLE_DOUBLE_BED,
+            com.crazygirlfriend.block.ModBlocks.COUPLE_SWING,
+            com.crazygirlfriend.block.ModBlocks.TEDDY_BEAR
+        );
+
         // Register keybindings
         INTERACTION_MENU_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.crazygirlfriend.open_menu",

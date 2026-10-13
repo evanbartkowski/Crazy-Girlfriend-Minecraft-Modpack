@@ -1,0 +1,57 @@
+{
+  "textures": {
+    "particle": "crazygirlfriend:block/couple_sofa",
+    "cushion": "crazygirlfriend:block/couple_sofa"
+  },
+  "elements": [
+    {
+      "name": "base",
+      "from": [0, 0, 0],
+      "to": [16, 7, 16],
+      "faces": {
+        "down":  { "texture": "#cushion", "cullface": "down" },
+        "up":    { "texture": "#cushion" },
+        "north": { "texture": "#cushion" },
+        "south": { "texture": "#cushion" },
+        "west":  { "texture": "#cushion" },
+        "east":  { "texture": "#cushion" }
+      }
+    },
+    {
+      "name": "backrest",
+      "from": [0, 7, 12],
+      "to": [16, 16, 16],
+      "faces": {
+        "up":    { "texture": "#cushion" },
+        "north": { "texture": "#cushion" },
+        "south": { "texture": "#cushion" },
+        "west":  { "texture": "#cushion" },
+        "east":  { "texture": "#cushion" }
+      }
+    },
+    {
+      "name": "left_arm",
+      "from": [0, 7, 0],
+      "to": [3, 11, 12],
+      "faces": {
+        "up":    { "texture": "#cushion" },
+        "north": { "texture": "#cushion" },
+        "south": { "texture": "#cushion" },
+        "west":  { "texture": "#cushion" },
+        "east":  { "texture": "#cushion" }
+      }
+    },
+    {
+      "name": "right_arm",
+      "from": [13, 7, 0],
+      "to": [16, 11, 12],
+      "faces": {
+        "up":    { "texture": "#cushion" },
+        "north": { "texture": "#cushion" },
+        "south": { "texture": "#cushion" },
+        "west":  { "texture": "#cushion" },
+        "east":  { "texture": "#cushion" }
+      }
+    }
+  ]
+}

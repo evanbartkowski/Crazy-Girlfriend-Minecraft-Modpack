@@ -1,6 +1,7 @@
 package com.crazygirlfriend;
 
 import com.crazygirlfriend.animation.PlayerAnimationTracker;
+import com.crazygirlfriend.block.ModBlocks;
 import com.crazygirlfriend.command.CrazyGirlfriendCommands;
 import com.crazygirlfriend.config.ModConfig;
 import com.crazygirlfriend.entity.ModEntities;
@@ -45,6 +46,7 @@ public class CrazyGirlfriendMod implements ModInitializer {
 
         // Register registries
         ModSounds.register();
+        ModBlocks.register();
         ModItems.register();
         ModEntities.register();
         ModPackets.registerC2SPackets();
