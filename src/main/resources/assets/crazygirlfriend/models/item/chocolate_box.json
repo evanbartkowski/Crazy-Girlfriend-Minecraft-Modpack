@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "crazygirlfriend:item/chocolate_box"
+                 },
+    "parent":  "minecraft:item/generated"
+}

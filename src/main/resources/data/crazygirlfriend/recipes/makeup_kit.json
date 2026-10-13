@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "RPK",
+    " F "
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "G": { "item": "minecraft:glass_pane" },
+    "R": { "item": "minecraft:red_dye" },
+    "P": { "item": "minecraft:pink_dye" },
+    "K": { "item": "minecraft:black_dye" },
+    "F": { "item": "minecraft:feather" }
+  },
+  "result": {
+    "item": "crazygirlfriend:makeup_kit",
+    "count": 1
+  }
+}
+

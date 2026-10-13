@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "crazygirlfriend:item/makeup_kit"
+                 },
+    "parent":  "minecraft:item/generated"
+}

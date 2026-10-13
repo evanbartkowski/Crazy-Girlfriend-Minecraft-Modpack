@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DSD",
+    " T ",
+    " A "
+  ],
+  "key": {
+    "D": { "item": "minecraft:dandelion" },
+    "S": { "item": "minecraft:sunflower" },
+    "T": { "item": "minecraft:string" },
+    "A": { "item": "minecraft:paper" }
+  },
+  "result": {
+    "item": "crazygirlfriend:sun_bouquet",
+    "count": 1
+  }
+}
+

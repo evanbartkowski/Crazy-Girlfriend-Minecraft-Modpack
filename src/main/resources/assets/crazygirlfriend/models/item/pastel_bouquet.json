@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "crazygirlfriend:item/pastel_bouquet"
+                 },
+    "parent":  "minecraft:item/generated"
+}

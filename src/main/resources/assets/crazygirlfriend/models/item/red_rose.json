@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "crazygirlfriend:item/red_rose"
+                 },
+    "parent":  "minecraft:item/generated"
+}

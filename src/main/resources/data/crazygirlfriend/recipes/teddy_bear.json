@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "WWW",
+    " S "
+  ],
+  "key": {
+    "B": { "item": "minecraft:oak_button" },
+    "W": { "item": "minecraft:brown_wool" },
+    "S": { "item": "minecraft:string" }
+  },
+  "result": {
+    "item": "crazygirlfriend:teddy_bear",
+    "count": 1
+  }
+}
+

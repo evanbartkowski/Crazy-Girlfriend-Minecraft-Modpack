@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:white_wool" },
+    { "item": "minecraft:water_bucket" },
+    { "item": "minecraft:paper" }
+  ],
+  "result": {
+    "item": "crazygirlfriend:makeup_remover",
+    "count": 1
+  }
+}
+

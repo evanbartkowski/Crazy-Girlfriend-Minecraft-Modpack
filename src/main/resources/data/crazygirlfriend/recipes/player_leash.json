@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    " L ",
+    " G "
+  ],
+  "key": {
+    "W": { "item": "minecraft:pink_wool" },
+    "L": { "item": "minecraft:lead" },
+    "G": { "item": "minecraft:gold_nugget" }
+  },
+  "result": {
+    "item": "crazygirlfriend:player_leash",
+    "count": 1
+  }
+}
+

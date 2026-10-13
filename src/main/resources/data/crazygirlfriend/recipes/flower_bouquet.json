@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    " S ",
+    " A "
+  ],
+  "key": {
+    "P": { "item": "minecraft:poppy" },
+    "S": { "item": "minecraft:string" },
+    "A": { "item": "minecraft:paper" }
+  },
+  "result": {
+    "item": "crazygirlfriend:flower_bouquet",
+    "count": 1
+  }
+}
+

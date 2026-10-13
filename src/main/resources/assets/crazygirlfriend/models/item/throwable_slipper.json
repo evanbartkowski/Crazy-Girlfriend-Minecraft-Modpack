@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "crazygirlfriend:item/throwable_slipper"
+                 },
+    "parent":  "minecraft:item/handheld"
+}

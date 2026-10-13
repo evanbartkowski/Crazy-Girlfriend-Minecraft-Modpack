@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    " P ",
+    " S "
+  ],
+  "key": {
+    "P": { "item": "minecraft:oak_planks" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "crazygirlfriend:paddle",
+    "count": 1
+  }
+}
+

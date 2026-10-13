@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "crazygirlfriend",
+  "version": "${version}",
+  "name": "Crazy Girlfriend",
+  "description": "A hilarious, interactive multiplayer relationship and romance mod featuring custom animations, items, proposals, marriage, makeup, leashes, and comedy interactions.",
+  "authors": [
+    "Evan",
+    "DeepMind Antigravity"
+  ],
+  "contact": {
+    "homepage": "https://github.com/crazygirlfriend/mod",
+    "sources": "https://github.com/crazygirlfriend/mod"
+  },
+  "license": "MIT",
+  "icon": "assets/crazygirlfriend/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.crazygirlfriend.CrazyGirlfriendMod"
+    ],
+    "client": [
+      "com.crazygirlfriend.client.CrazyGirlfriendClient"
+    ]
+  },
+  "mixins": [
+    "crazygirlfriend.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
+

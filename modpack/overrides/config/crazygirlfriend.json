@@ -1,0 +1,11 @@
+{
+  "allowLeashRestrictions": true,
+  "leashMaxDistance": 16.0,
+  "interactionTimeoutSeconds": 30,
+  "slapKnockback": 0.4,
+  "slipperDamage": 1.0,
+  "slipperKnockback": 0.5,
+  "enableRelationshipHearts": true,
+  "enableJealousyEffects": true,
+  "autoAcceptForPartners": false
+}

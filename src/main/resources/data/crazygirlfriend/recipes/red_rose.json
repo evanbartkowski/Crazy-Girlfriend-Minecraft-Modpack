@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "RSR",
+    " P "
+  ],
+  "key": {
+    "G": { "item": "minecraft:gold_nugget" },
+    "R": { "item": "minecraft:poppy" },
+    "S": { "item": "minecraft:honeycomb" },
+    "P": { "item": "minecraft:rose_bush" }
+  },
+  "result": {
+    "item": "crazygirlfriend:red_rose",
+    "count": 1
+  }
+}
+

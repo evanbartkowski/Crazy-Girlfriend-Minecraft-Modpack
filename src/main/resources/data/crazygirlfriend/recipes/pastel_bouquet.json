@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TPT",
+    " S ",
+    " A "
+  ],
+  "key": {
+    "T": { "item": "minecraft:pink_tulip" },
+    "P": { "item": "minecraft:allium" },
+    "S": { "item": "minecraft:string" },
+    "A": { "item": "minecraft:paper" }
+  },
+  "result": {
+    "item": "crazygirlfriend:pastel_bouquet",
+    "count": 1
+  }
+}
+
