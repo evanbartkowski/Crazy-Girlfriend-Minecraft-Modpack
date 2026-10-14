@@ -361,6 +361,87 @@ public class CrazyGirlfriendCommands {
                     return 1;
                 }))
             )
+            .then(literal("pillory")
+                .requires(source -> source.hasPermissionLevel(2))
+                .then(argument("target", EntityArgumentType.player()).executes(ctx -> {
+                    ServerPlayerEntity sender = ctx.getSource().getPlayerOrThrow();
+                    ServerPlayerEntity target = EntityArgumentType.getPlayer(ctx, "target");
+                    net.minecraft.util.math.BlockPos playerPos = sender.getBlockPos();
+                    net.minecraft.util.math.BlockPos foundPos = null;
+                    for (int dx = -10; dx <= 10; dx++) {
+                        for (int dy = -4; dy <= 4; dy++) {
+                            for (int dz = -10; dz <= 10; dz++) {
+                                net.minecraft.util.math.BlockPos check = playerPos.add(dx, dy, dz);
+                                if (sender.getServerWorld().getBlockState(check).isOf(com.crazygirlfriend.block.ModBlocks.PILLORY)) {
+                                    foundPos = check;
+                                    break;
+                                }
+                            }
+                            if (foundPos != null) break;
+                        }
+                        if (foundPos != null) break;
+                    }
+                    if (foundPos == null) {
+                        sender.sendMessage(Text.literal("❌ No pillory found nearby! Place a pillory down first.").formatted(Formatting.RED), false);
+                        return 0;
+                    }
+                    net.minecraft.block.BlockState pState = sender.getServerWorld().getBlockState(foundPos);
+                    net.minecraft.util.math.Direction facing = pState.get(com.crazygirlfriend.block.PilloryBlock.FACING);
+                    com.crazygirlfriend.entity.PillorySeatEntity seat = new com.crazygirlfriend.entity.PillorySeatEntity(com.crazygirlfriend.entity.ModEntities.PILLORY_SEAT, sender.getServerWorld());
+                    seat.setPilloryPos(foundPos);
+                    seat.refreshPositionAndAngles(foundPos.getX() + 0.5, foundPos.getY() + 0.05, foundPos.getZ() + 0.5, facing.asRotation(), 0);
+                    sender.getServerWorld().spawnEntity(seat);
+                    target.teleport(sender.getServerWorld(), foundPos.getX() + 0.5, foundPos.getY() + 0.05, foundPos.getZ() + 0.5, facing.asRotation(), 0);
+                    target.startRiding(seat, true);
+                    com.crazygirlfriend.pillory.PilloryManager.get().lockPlayer(target, sender, foundPos);
+                    sender.getServerWorld().setBlockState(foundPos, pState.with(com.crazygirlfriend.block.PilloryBlock.OCCUPIED, true), 3);
+                    sender.sendMessage(Text.literal("🔒 Locked " + target.getName().getString() + " into the pillory!").formatted(Formatting.GOLD), true);
+                    return 1;
+                }))
+            )
+            .then(literal("unpillory")
+                .executes(ctx -> {
+                    ServerPlayerEntity sender = ctx.getSource().getPlayerOrThrow();
+                    if (com.crazygirlfriend.pillory.PilloryManager.get().isPilloryLocked(sender.getUuid())) {
+                        if (sender.getVehicle() instanceof com.crazygirlfriend.entity.PillorySeatEntity seat) {
+                            seat.unlock();
+                            sender.dismountVehicle();
+                            if (seat.getPilloryPos() != null) {
+                                net.minecraft.block.BlockState bs = sender.getServerWorld().getBlockState(seat.getPilloryPos());
+                                if (bs.isOf(com.crazygirlfriend.block.ModBlocks.PILLORY)) {
+                                    sender.getServerWorld().setBlockState(seat.getPilloryPos(), bs.with(com.crazygirlfriend.block.PilloryBlock.OCCUPIED, false), 3);
+                                }
+                            }
+                            sender.sendMessage(Text.literal("🔓 You unlocked yourself from the pillory!").formatted(Formatting.GREEN), true);
+                            return 1;
+                        }
+                    }
+                    sender.sendMessage(Text.literal("❌ You are not locked in a pillory!").formatted(Formatting.RED), false);
+                    return 0;
+                })
+                .then(argument("target", EntityArgumentType.player())
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .executes(ctx -> {
+                        ServerPlayerEntity target = EntityArgumentType.getPlayer(ctx, "target");
+                        if (com.crazygirlfriend.pillory.PilloryManager.get().isPilloryLocked(target.getUuid())) {
+                            if (target.getVehicle() instanceof com.crazygirlfriend.entity.PillorySeatEntity seat) {
+                                seat.unlock();
+                                target.dismountVehicle();
+                                if (seat.getPilloryPos() != null) {
+                                    net.minecraft.block.BlockState bs = target.getServerWorld().getBlockState(seat.getPilloryPos());
+                                    if (bs.isOf(com.crazygirlfriend.block.ModBlocks.PILLORY)) {
+                                        target.getServerWorld().setBlockState(seat.getPilloryPos(), bs.with(com.crazygirlfriend.block.PilloryBlock.OCCUPIED, false), 3);
+                                    }
+                                }
+                                ctx.getSource().sendFeedback(() -> Text.literal("🔓 Unlocked " + target.getName().getString() + " from the pillory!").formatted(Formatting.GREEN), true);
+                                return 1;
+                            }
+                        }
+                        ctx.getSource().sendFeedback(() -> Text.literal("❌ " + target.getName().getString() + " is not in a pillory!").formatted(Formatting.RED), false);
+                        return 0;
+                    })
+                )
+            )
             .then(literal("help").executes(ctx -> {
                 showHelp(ctx.getSource());
                 return 1;
@@ -403,6 +484,8 @@ public class CrazyGirlfriendCommands {
         source.sendMessage(Text.literal(" • /cg unleash - Free yourself from a leash").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • /cg wipeface - Wash off makeup").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • /cg sleepside [flip] - Roll over onto your other side in bed").formatted(Formatting.GRAY));
+        source.sendMessage(Text.literal(" • /cg pillory <player> - Put player into nearest pillory").formatted(Formatting.GRAY));
+        source.sendMessage(Text.literal(" • /cg unpillory [player] - Release player from pillory").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • Sneak + Right Click any player to open Interaction GUI!").formatted(Formatting.YELLOW, Formatting.ITALIC));
     }
 }

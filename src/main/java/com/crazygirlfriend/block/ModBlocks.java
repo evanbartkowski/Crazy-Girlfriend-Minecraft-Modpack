@@ -15,6 +15,7 @@ public class ModBlocks {
     public static final Block COZY_FIREPLACE = registerBlock("cozy_fireplace", new CozyFireplaceBlock());
     public static final Block ROMANTIC_CHANDELIER = registerBlock("romantic_chandelier", new RomanticChandelierBlock());
     public static final Block ROMANTIC_DINING_TABLE = registerBlock("romantic_dining_table", new RomanticDiningTableBlock());
+    public static final Block PILLORY = registerBlock("pillory", new PilloryBlock());
 
     private static Block registerBlock(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(CrazyGirlfriendMod.MOD_ID, name), block);

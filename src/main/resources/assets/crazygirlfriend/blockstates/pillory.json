@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,occupied=false": { "model": "crazygirlfriend:block/pillory" },
+    "facing=east,occupied=false":  { "model": "crazygirlfriend:block/pillory", "y": 90 },
+    "facing=south,occupied=false": { "model": "crazygirlfriend:block/pillory", "y": 180 },
+    "facing=west,occupied=false":  { "model": "crazygirlfriend:block/pillory", "y": 270 },
+    "facing=north,occupied=true":  { "model": "crazygirlfriend:block/pillory" },
+    "facing=east,occupied=true":   { "model": "crazygirlfriend:block/pillory", "y": 90 },
+    "facing=south,occupied=true":  { "model": "crazygirlfriend:block/pillory", "y": 180 },
+    "facing=west,occupied=true":   { "model": "crazygirlfriend:block/pillory", "y": 270 }
+  }
+}

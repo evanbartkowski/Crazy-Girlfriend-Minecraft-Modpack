@@ -28,6 +28,7 @@ public class ModPackets {
     public static final Identifier SEASON_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "season_sync");
     public static final Identifier WORLD_EVENT_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "world_event_sync");
     public static final Identifier SLEEP_SIDE_FLIP_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "sleep_side_flip");
+    public static final Identifier PILLORY_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "pillory_sync");
 
     public static final Identifier INTERACTION_REQUEST_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "interaction_request");
     public static final Identifier APPLY_MAKEUP_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "apply_makeup");

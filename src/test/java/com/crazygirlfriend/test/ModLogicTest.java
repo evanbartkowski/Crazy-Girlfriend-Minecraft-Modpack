@@ -431,6 +431,30 @@ public class ModLogicTest {
         tracker.setFlipped(p1, false);
         assertFalse(tracker.isFlipped(p1));
     }
+
+    @Test
+    public void testPilloryManagerClientLogic() {
+        var manager = com.crazygirlfriend.pillory.PilloryManager.get();
+        assertNotNull(manager);
+
+        UUID prisoner = UUID.randomUUID();
+        assertFalse(manager.isPilloryLocked(prisoner));
+
+        manager.updateClientState(prisoner, true);
+        assertTrue(manager.isPilloryLocked(prisoner));
+
+        manager.updateClientState(prisoner, false);
+        assertFalse(manager.isPilloryLocked(prisoner));
+    }
+
+    @Test
+    public void testMarriedLifeBondConfigDefaults() {
+        ModConfig config = ModConfig.get();
+        assertNotNull(config);
+        assertTrue(config.enableMarriedLifeBond);
+        assertTrue(config.enableMarriedDeathBond);
+        assertTrue(config.enableMarriedFoodBond);
+    }
 }
 
 

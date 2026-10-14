@@ -33,6 +33,9 @@ public class ModConfig {
     public int eventIntervalSeconds = 120;
     public boolean enableMinigames = true;
     public boolean enableCinematicCamera = true;
+    public boolean enableMarriedLifeBond = true;
+    public boolean enableMarriedDeathBond = true;
+    public boolean enableMarriedFoodBond = true;
 
     // Visual & Atmospheric Settings
     public String visualPreset = "HIGH"; // LOW, MEDIUM, HIGH, ULTRA

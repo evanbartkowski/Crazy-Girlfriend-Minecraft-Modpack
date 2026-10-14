@@ -40,6 +40,7 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.BOOMERANG_SLIPPER, net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.WATER_BALLOON, net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SEAT, com.crazygirlfriend.client.render.EmptySeatRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PILLORY_SEAT, com.crazygirlfriend.client.render.EmptySeatRenderer::new);
 
         // Register block render layers
         net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap.INSTANCE.putBlocks(
@@ -51,7 +52,8 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             com.crazygirlfriend.block.ModBlocks.TEDDY_BEAR,
             com.crazygirlfriend.block.ModBlocks.COZY_FIREPLACE,
             com.crazygirlfriend.block.ModBlocks.ROMANTIC_CHANDELIER,
-            com.crazygirlfriend.block.ModBlocks.ROMANTIC_DINING_TABLE
+            com.crazygirlfriend.block.ModBlocks.ROMANTIC_DINING_TABLE,
+            com.crazygirlfriend.block.ModBlocks.PILLORY
         );
 
         // Register keybindings
@@ -226,6 +228,15 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             UUID targetUuid = buf.readUuid();
             client.execute(() -> {
                 com.crazygirlfriend.client.bed.CoSleepingClientTracker.get().toggleFlip(targetUuid);
+            });
+        });
+
+        // Pillory Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.PILLORY_SYNC_ID, (client, handler, buf, responseSender) -> {
+            UUID targetUuid = buf.readUuid();
+            boolean locked = buf.readBoolean();
+            client.execute(() -> {
+                com.crazygirlfriend.pillory.PilloryManager.get().updateClientState(targetUuid, locked);
             });
         });
     }

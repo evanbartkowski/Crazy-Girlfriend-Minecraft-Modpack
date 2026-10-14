@@ -126,6 +126,7 @@ Every item and block in the modpack and exactly what it does:
 | **Cozy Brick Fireplace** (`cozy_fireplace`) | An animated hearth with crackling fire, warm chimney embers, and cozy ambient light. Right-click to warm your hands and initiate a cozy couple cuddling session! |
 | **Romantic Golden Chandelier** (`romantic_chandelier`) | An ornate brass and wrought-iron hanging chandelier adorned with warm glowing candles that illuminates romantic dining rooms and grand ballrooms. |
 | **Romantic Dining Table** (`romantic_dining_table`) | A fine candlelit mahogany dining table block. Right-click to sit across from your partner for candlelit couple dinners, toasts, and romantic date nights. |
+| **Wooden Pillory Stocks** (`pillory`) | A 3D wooden stocks restraint block with neck and wrist cutouts. Right-click while leading a collared or leashed player to lock them inside! Trapped players are bent over with an embarrassed face and are completely stuck in until unlocked by their captor, spouse, or admin. |
 
 ---
 
@@ -199,7 +200,44 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
   * Pillow ambush with feathers floating everywhere!
 * **"Caught in 4K" Detection**: If a third player enters within 6 blocks during an intimate scene, characters jump apart in embarrassment, triggering comical blushed reactions and the "Caught in 4K!" advancement!
 
-### 5. 📱 Categorized Interaction Dashboard & Status Bar
+### 5. 💍 Married Life Bond ("Till Death Do Us Part")
+Once two players are officially married (`RelationshipType.MARRIED`), their destinies become deeply intertwined:
+* **Synchronized Health Bar**:
+  * Married partners share the exact same health pool and absorption hearts!
+  * If one spouse takes damage (from monsters, falls, fire, or hazards), the damage immediately ripples to the other spouse with damage indicator particles and an alert: *"💔 You felt your spouse's pain! Health synchronized."*
+  * If one spouse heals or regenerates hearts, both spouses recover health together!
+* **Synchronized Food & Saturation**:
+  * Eating food restores hunger and saturation for both partners simultaneously!
+  * Exertion, sprinting, or swimming hunger drain is shared between both spouses.
+* **Linked Death ("Till Death Do Us Part...")**:
+  * If one spouse perishes, the surviving partner **instantly dies of a broken heart**!
+  * Broadcasts a dramatic server-wide announcement: *"💔 [Spouse] died of a broken heart because their spouse [DeadPlayer] perished! Till death do us part..."*
+  * Accompanied by dramatic soul particles, heartbreak effects, record-scratch audio, and an actionbar notification.
+  * Creative and Spectator mode players are automatically exempt so admins and creative builders are not impacted.
+* **Fully Configurable**: All three aspects can be toggled independently in `config/crazygirlfriend.json` (`enableMarriedLifeBond`, `enableMarriedDeathBond`, `enableMarriedFoodBond`).
+
+### 6. ⛓️ The Wooden Pillory Stocks
+A fully functional medieval wooden stocks block for restraining mischievous partners and collared friends:
+* **Crafting Recipe**: Shaped crafting using 4 sticks, 2 oak planks, and 1 iron ingot (`S_S / P#P / S_S`).
+* **Trapping Players**:
+  * Place the pillory on the ground.
+  * Right-click the pillory while leading a player on a leash, holding a `Player Leash`, or holding a `Joint Custody Pet Collar`.
+  * The target is instantly pulled into the pillory and locked in!
+* **Hilarious Restrained Animation**:
+  * Trapped characters are forced into a custom bent-over stocks pose: torso pitched forward 80° at the waist, head looking forward through the central neck hole, and both arms extended through the wrist cutouts!
+  * The player's face automatically switches to the **Embarrassed** facial expression.
+* **100% Stuck (No Escape)**:
+  * Trapped players **cannot dismount, sneak, or jump out**. Pressing Shift triggers a chain rattling sound and the warning: *"🔒 You are locked in the pillory! You cannot escape!"*
+* **Releasing Prisoners**:
+  * Can be unlocked by:
+    1. The player who locked them inside (the captor).
+    2. Their dating/married partner.
+    3. Anyone holding a `Player Leash`, `Shared Collar`, or `Paddle`.
+    4. An admin or operator using `/cg unpillory [player]`.
+    5. Sneak + right-clicking the block by authorized friends.
+    6. Breaking the pillory block frees the occupant immediately!
+
+### 7. 📱 Categorized Interaction Dashboard & Status Bar
 * **Sneak + Right-Click** any player (or press **K**) to open the **Crazy Girlfriend Hub**!
 * Features 4 category tabs:
   * **❤️ Romance**: Hugs, kisses, proposals, stargazing, dancing.
@@ -208,7 +246,7 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
   * **🛠️ Actions**: Carries, makeup studio, leashes, furniture seating.
 * **Top Status Dashboard**: Displays an active **Crazy Meter bar** (color-coded by tier: Sweetheart -> Total Chaos), Affection Level & Stars, and live partner Mood!
 
-### 6. 🏆 45 Themed Advancements
+### 8. 🏆 45 Themed Advancements
 A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Comedy Weapons, Minigames, and Bedroom Intimacy.
 
 ---
@@ -351,6 +389,8 @@ Your relationship mechanics seamlessly integrate with the living environment:
 | `/cg unleash` | Instantly break free from a leash. |
 | `/cg wipeface` | Wash all makeup off your face. |
 | `/cg sleepside [flip]` | Roll over onto your other side in bed (or spoon together). |
+| `/cg pillory <player>` | Admin lock a player into the nearest pillory stocks block. |
+| `/cg unpillory [player]` | Release a trapped player or yourself from a pillory. |
 | `/cg breakup` | End dating relationship. |
 | `/cg divorce` | Dissolve marriage. |
 | `/cg help` | View in-game command help guide. |

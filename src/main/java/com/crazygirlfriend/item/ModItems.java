@@ -58,6 +58,7 @@ public class ModItems {
     public static final Item COZY_FIREPLACE = registerItem("cozy_fireplace", new net.minecraft.item.BlockItem(ModBlocks.COZY_FIREPLACE, new Item.Settings().maxCount(16)));
     public static final Item ROMANTIC_CHANDELIER = registerItem("romantic_chandelier", new net.minecraft.item.BlockItem(ModBlocks.ROMANTIC_CHANDELIER, new Item.Settings().maxCount(16)));
     public static final Item ROMANTIC_DINING_TABLE = registerItem("romantic_dining_table", new net.minecraft.item.BlockItem(ModBlocks.ROMANTIC_DINING_TABLE, new Item.Settings().maxCount(16)));
+    public static final Item PILLORY = registerItem("pillory", new net.minecraft.item.BlockItem(ModBlocks.PILLORY, new Item.Settings().maxCount(16)));
 
     public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(CrazyGirlfriendMod.MOD_ID, "general"));
 
@@ -113,6 +114,7 @@ public class ModItems {
                 entries.add(COZY_FIREPLACE);
                 entries.add(ROMANTIC_CHANDELIER);
                 entries.add(ROMANTIC_DINING_TABLE);
+                entries.add(PILLORY);
             })
             .build()
         );

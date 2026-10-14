@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+    "P#P",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "minecraft:oak_planks"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "crazygirlfriend:pillory",
+    "count": 1
+  }
+}

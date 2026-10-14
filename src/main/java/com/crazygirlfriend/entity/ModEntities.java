@@ -50,6 +50,16 @@ public class ModEntities {
             .build()
     );
 
+    public static final EntityType<PillorySeatEntity> PILLORY_SEAT = Registry.register(
+        Registries.ENTITY_TYPE,
+        new Identifier(CrazyGirlfriendMod.MOD_ID, "pillory_seat"),
+        FabricEntityTypeBuilder.<PillorySeatEntity>create(SpawnGroup.MISC, PillorySeatEntity::new)
+            .dimensions(EntityDimensions.fixed(0.01f, 0.01f))
+            .trackRangeBlocks(32)
+            .trackedUpdateRate(20)
+            .build()
+    );
+
     public static void register() {
         // Classloaded
     }

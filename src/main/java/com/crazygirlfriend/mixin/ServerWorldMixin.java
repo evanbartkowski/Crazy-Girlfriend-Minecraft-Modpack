@@ -24,3 +24,4 @@ public abstract class ServerWorldMixin {
         CoSleepingManager.get().handleMorningWakeUp(world, sleeping);
     }
 }
+

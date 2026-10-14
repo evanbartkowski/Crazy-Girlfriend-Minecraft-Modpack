@@ -1,0 +1,119 @@
+{
+  "textures": {
+    "particle": "minecraft:block/spruce_planks",
+    "wood": "minecraft:block/spruce_planks",
+    "dark_wood": "minecraft:block/dark_oak_planks",
+    "iron": "minecraft:block/iron_block"
+  },
+  "elements": [
+    {
+      "name": "left_post",
+      "from": [0, 0, 7],
+      "to": [3, 22, 9],
+      "faces": {
+        "down":  { "texture": "#wood", "cullface": "down" },
+        "up":    { "texture": "#dark_wood" },
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" },
+        "west":  { "texture": "#wood" },
+        "east":  { "texture": "#wood" }
+      }
+    },
+    {
+      "name": "right_post",
+      "from": [13, 0, 7],
+      "to": [16, 22, 9],
+      "faces": {
+        "down":  { "texture": "#wood", "cullface": "down" },
+        "up":    { "texture": "#dark_wood" },
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" },
+        "west":  { "texture": "#wood" },
+        "east":  { "texture": "#wood" }
+      }
+    },
+    {
+      "name": "left_foot",
+      "from": [0, 0, 4],
+      "to": [3, 2, 12],
+      "faces": {
+        "down":  { "texture": "#dark_wood", "cullface": "down" },
+        "up":    { "texture": "#dark_wood" },
+        "north": { "texture": "#dark_wood" },
+        "south": { "texture": "#dark_wood" },
+        "west":  { "texture": "#dark_wood" },
+        "east":  { "texture": "#dark_wood" }
+      }
+    },
+    {
+      "name": "right_foot",
+      "from": [13, 0, 4],
+      "to": [16, 2, 12],
+      "faces": {
+        "down":  { "texture": "#dark_wood", "cullface": "down" },
+        "up":    { "texture": "#dark_wood" },
+        "north": { "texture": "#dark_wood" },
+        "south": { "texture": "#dark_wood" },
+        "west":  { "texture": "#dark_wood" },
+        "east":  { "texture": "#dark_wood" }
+      }
+    },
+    {
+      "name": "bottom_beam",
+      "from": [3, 10, 7],
+      "to": [13, 13, 9],
+      "faces": {
+        "down":  { "texture": "#wood" },
+        "up":    { "texture": "#dark_wood" },
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" }
+      }
+    },
+    {
+      "name": "top_beam",
+      "from": [3, 17, 7],
+      "to": [13, 20, 9],
+      "faces": {
+        "up":    { "texture": "#dark_wood" },
+        "down":  { "texture": "#dark_wood" },
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" }
+      }
+    },
+    {
+      "name": "center_head_left_divider",
+      "from": [5, 13, 7],
+      "to": [6, 17, 9],
+      "faces": {
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" },
+        "west":  { "texture": "#dark_wood" },
+        "east":  { "texture": "#dark_wood" }
+      }
+    },
+    {
+      "name": "center_head_right_divider",
+      "from": [10, 13, 7],
+      "to": [11, 17, 9],
+      "faces": {
+        "north": { "texture": "#wood" },
+        "south": { "texture": "#wood" },
+        "west":  { "texture": "#dark_wood" },
+        "east":  { "texture": "#dark_wood" }
+      }
+    },
+    {
+      "name": "iron_lock",
+      "from": [12.5, 14, 6.5],
+      "to": [14.5, 17, 7.5],
+      "faces": {
+        "up":    { "texture": "#iron" },
+        "down":  { "texture": "#iron" },
+        "north": { "texture": "#iron" },
+        "south": { "texture": "#iron" },
+        "west":  { "texture": "#iron" },
+        "east":  { "texture": "#iron" }
+      }
+    }
+  ]
+}

@@ -44,6 +44,7 @@
   "item.crazygirlfriend.cozy_fireplace": "Cozy Fireplace",
   "item.crazygirlfriend.romantic_chandelier": "Romantic Candle Chandelier",
   "item.crazygirlfriend.romantic_dining_table": "Romantic Dining Table",
+  "item.crazygirlfriend.pillory": "Wooden Pillory Stocks",
 
   "block.crazygirlfriend.couple_picnic_blanket": "Checkered Picnic Blanket",
   "block.crazygirlfriend.couple_sofa": "Cozy Couple Loveseat",
@@ -53,11 +54,13 @@
   "block.crazygirlfriend.cozy_fireplace": "Cozy Fireplace",
   "block.crazygirlfriend.romantic_chandelier": "Romantic Candle Chandelier",
   "block.crazygirlfriend.romantic_dining_table": "Romantic Dining Table",
+  "block.crazygirlfriend.pillory": "Wooden Pillory Stocks",
 
   "entity.crazygirlfriend.slipper": "Flying Slipper",
   "entity.crazygirlfriend.boomerang_slipper": "Boomerang Slipper",
   "entity.crazygirlfriend.water_balloon": "Water Balloon",
   "entity.crazygirlfriend.seat": "Couple Furniture Seat",
+  "entity.crazygirlfriend.pillory_seat": "Pillory Restraints",
 
   "gui.crazygirlfriend.interaction_title": "Player Interactions: %s",
   "gui.crazygirlfriend.status_single": "Status: Single",
@@ -100,6 +103,10 @@
   "message.crazygirlfriend.leashed": "🪢 You are now leashed to %s. Type /cg unleash at any time to break free.",
   "message.crazygirlfriend.unleashed": "🪢 Leash has been released.",
   "message.crazygirlfriend.leash_restricted": "❌ You cannot do that while leashed! Type /cg unleash to free yourself.",
+  "message.crazygirlfriend.pillory_locked": "🔒 %s has been locked into the pillory!",
+  "message.crazygirlfriend.pillory_unlocked": "🔓 %s has been released from the pillory!",
+  "message.crazygirlfriend.married_bond_damage": "💔 You felt your spouse's pain! Health synchronized.",
+  "message.crazygirlfriend.married_death": "💔 %s died of a broken heart because their spouse %s perished! Till death do us part...",
 
   "subtitles.crazygirlfriend.romantic_chime": "Romantic Chimes",
   "subtitles.crazygirlfriend.slap": "Slap Impact",
