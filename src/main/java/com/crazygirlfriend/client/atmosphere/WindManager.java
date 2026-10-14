@@ -42,3 +42,4 @@ public class WindManager {
     public float getWindSpeed() { return windSpeed; }
     public Vec3d getWindVector() { return windVector; }
 }
+

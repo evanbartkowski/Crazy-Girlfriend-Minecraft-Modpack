@@ -1,0 +1,83 @@
+{
+  "textures": {
+    "particle": "minecraft:block/bricks",
+    "brick": "minecraft:block/bricks",
+    "hearth": "minecraft:block/stone_bricks",
+    "fire": "minecraft:block/campfire_fire"
+  },
+  "elements": [
+    {
+      "name": "hearth_base",
+      "from": [0, 0, 0],
+      "to": [16, 4, 16],
+      "faces": {
+        "down":  { "texture": "#hearth", "cullface": "down" },
+        "up":    { "texture": "#hearth" },
+        "north": { "texture": "#hearth" },
+        "south": { "texture": "#hearth" },
+        "west":  { "texture": "#hearth" },
+        "east":  { "texture": "#hearth" }
+      }
+    },
+    {
+      "name": "back_wall",
+      "from": [0, 4, 12],
+      "to": [16, 16, 16],
+      "faces": {
+        "up":    { "texture": "#brick" },
+        "north": { "texture": "#brick" },
+        "south": { "texture": "#brick" },
+        "west":  { "texture": "#brick" },
+        "east":  { "texture": "#brick" }
+      }
+    },
+    {
+      "name": "left_pillar",
+      "from": [0, 4, 0],
+      "to": [4, 16, 12],
+      "faces": {
+        "up":    { "texture": "#brick" },
+        "north": { "texture": "#brick" },
+        "south": { "texture": "#brick" },
+        "west":  { "texture": "#brick" },
+        "east":  { "texture": "#brick" }
+      }
+    },
+    {
+      "name": "right_pillar",
+      "from": [12, 4, 0],
+      "to": [16, 16, 12],
+      "faces": {
+        "up":    { "texture": "#brick" },
+        "north": { "texture": "#brick" },
+        "south": { "texture": "#brick" },
+        "west":  { "texture": "#brick" },
+        "east":  { "texture": "#brick" }
+      }
+    },
+    {
+      "name": "mantle",
+      "from": [0, 14, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up":    { "texture": "#hearth" },
+        "north": { "texture": "#hearth" },
+        "south": { "texture": "#hearth" },
+        "west":  { "texture": "#hearth" },
+        "east":  { "texture": "#hearth" }
+      }
+    },
+    {
+      "name": "fire_pit",
+      "from": [4, 4, 4],
+      "to": [12, 9, 12],
+      "faces": {
+        "up":    { "texture": "#fire" },
+        "north": { "texture": "#fire" },
+        "south": { "texture": "#fire" },
+        "west":  { "texture": "#fire" },
+        "east":  { "texture": "#fire" }
+      }
+    }
+  ]
+}

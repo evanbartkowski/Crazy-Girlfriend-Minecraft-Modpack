@@ -55,6 +55,9 @@ public class ModItems {
     public static final Item COUPLE_DOUBLE_BED = registerItem("couple_double_bed", new CoupleFurnitureItem(ModBlocks.COUPLE_DOUBLE_BED, CoupleFurnitureItem.FurnitureType.DOUBLE_BED, new Item.Settings().maxCount(16)));
     public static final Item COUPLE_SWING = registerItem("couple_swing", new CoupleFurnitureItem(ModBlocks.COUPLE_SWING, CoupleFurnitureItem.FurnitureType.SWING, new Item.Settings().maxCount(16)));
     public static final Item COUPLE_PICNIC_BLANKET = registerItem("couple_picnic_blanket", new CoupleFurnitureItem(ModBlocks.COUPLE_PICNIC_BLANKET, CoupleFurnitureItem.FurnitureType.PICNIC_BLANKET, new Item.Settings().maxCount(16)));
+    public static final Item COZY_FIREPLACE = registerItem("cozy_fireplace", new net.minecraft.item.BlockItem(ModBlocks.COZY_FIREPLACE, new Item.Settings().maxCount(16)));
+    public static final Item ROMANTIC_CHANDELIER = registerItem("romantic_chandelier", new net.minecraft.item.BlockItem(ModBlocks.ROMANTIC_CHANDELIER, new Item.Settings().maxCount(16)));
+    public static final Item ROMANTIC_DINING_TABLE = registerItem("romantic_dining_table", new net.minecraft.item.BlockItem(ModBlocks.ROMANTIC_DINING_TABLE, new Item.Settings().maxCount(16)));
 
     public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(CrazyGirlfriendMod.MOD_ID, "general"));
 
@@ -107,6 +110,9 @@ public class ModItems {
                 entries.add(COUPLE_DOUBLE_BED);
                 entries.add(COUPLE_SWING);
                 entries.add(COUPLE_PICNIC_BLANKET);
+                entries.add(COZY_FIREPLACE);
+                entries.add(ROMANTIC_CHANDELIER);
+                entries.add(ROMANTIC_DINING_TABLE);
             })
             .build()
         );

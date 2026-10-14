@@ -53,9 +53,13 @@ public class SkyOverhaulRenderer {
         boolean isNight = timeOfDay > 13000L && timeOfDay < 23000L;
         boolean isClear = !world.isRaining() && !world.isThundering();
 
-        // Meteor Shower event check (rare night event)
+        // Meteor Shower event check (rare night event or synchronized world event)
+        boolean eventMeteor = com.crazygirlfriend.event.world.WorldEventManager.get().isEventActive(com.crazygirlfriend.event.world.WorldEventType.METEOR_SHOWER);
         if (isNight && isClear) {
-            if (!isMeteorShower && random.nextInt(1200) == 0) {
+            if (eventMeteor) {
+                isMeteorShower = true;
+                meteorShowerTicks = 200;
+            } else if (!isMeteorShower && random.nextInt(1200) == 0) {
                 isMeteorShower = true;
                 meteorShowerTicks = 400 + random.nextInt(400); // 20-40 seconds of meteor shower
             }
@@ -64,16 +68,41 @@ public class SkyOverhaulRenderer {
             meteorShowerTicks = 0;
         }
 
-        if (isMeteorShower) {
+        if (isMeteorShower && !eventMeteor) {
             meteorShowerTicks--;
             if (meteorShowerTicks <= 0) {
                 isMeteorShower = false;
             }
         }
 
+        // Aurora Night Event & Cold Biome Auroras
+        boolean isAurora = com.crazygirlfriend.event.world.WorldEventManager.get().isEventActive(com.crazygirlfriend.event.world.WorldEventType.AURORA_NIGHT) ||
+                (isNight && isClear && world.getBiome(player.getBlockPos()).value().isCold(player.getBlockPos()));
+        if (isAurora && random.nextFloat() < 0.45f) {
+            double angle = (world.getTime() * 0.01) + random.nextDouble() * Math.PI;
+            double dist = 25.0 + random.nextDouble() * 20.0;
+            double ax = player.getX() + Math.cos(angle) * dist;
+            double az = player.getZ() + Math.sin(angle) * dist;
+            double ay = player.getY() + 32.0 + Math.sin(world.getTime() * 0.05 + ax * 0.1) * 6.0;
+            world.addParticle(random.nextBoolean() ? ParticleTypes.GLOW : ParticleTypes.WARPED_SPORE, ax, ay, az, 0.01, 0.005, 0.01);
+        }
+
+        // Rainbow After Rain Event
+        boolean isRainbow = com.crazygirlfriend.event.world.WorldEventManager.get().isEventActive(com.crazygirlfriend.event.world.WorldEventType.RAINBOW_AFTER_RAIN);
+        if (isRainbow && !isNight && random.nextFloat() < 0.5f) {
+            double progress = (world.getTime() % 100) / 100.0;
+            double t = (progress - 0.5) * 60.0;
+            double rx = player.getX() + t;
+            double rz = player.getZ() + 35.0;
+            double ry = player.getY() + 20.0 + (30.0 - (t * t) / 45.0);
+            if (ry > player.getY()) {
+                world.addParticle(ParticleTypes.WAX_ON, rx, ry, rz, 0, 0.002, 0);
+            }
+        }
+
         // Spawn shooting stars at night
         if (isNight && isClear) {
-            int spawnChance = isMeteorShower ? 8 : 120;
+            int spawnChance = isMeteorShower ? 6 : 100;
             if (random.nextInt(spawnChance) == 0) {
                 double dist = 40.0 + random.nextDouble() * 30.0;
                 double angle = random.nextDouble() * Math.PI * 2.0;
@@ -118,3 +147,4 @@ public class SkyOverhaulRenderer {
         return isMeteorShower;
     }
 }
+

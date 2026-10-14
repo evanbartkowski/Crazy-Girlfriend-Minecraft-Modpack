@@ -11,7 +11,9 @@
     "InGameHudMixin",
     "GameRendererMixin",
     "ArmorFeatureRendererMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "BiomeColorsMixin",
+    "BackgroundRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

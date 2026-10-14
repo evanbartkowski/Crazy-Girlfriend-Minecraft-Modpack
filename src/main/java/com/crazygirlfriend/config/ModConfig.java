@@ -46,6 +46,19 @@ public class ModConfig {
     public boolean photosensitivityMode = false;
     public boolean enableCustomUI = true;
 
+    // Seasons & World Immersion Settings
+    public boolean enableSeasons = true;
+    public int seasonDays = 7;
+    public boolean enableSeasonalFoliage = true;
+    public boolean enableFallingLeaves = true;
+    public boolean enableMovementAnimations = true;
+    public boolean enableWorldEvents = true;
+    public boolean enableColorGrading = true;
+    public boolean enableCaveVisuals = true;
+    public boolean enableNetherVisuals = true;
+    public boolean enableEndVisuals = true;
+    public boolean enablePhotoMode = true;
+
     public void applyPreset(String preset) {
         if (preset == null) return;
         this.visualPreset = preset.toUpperCase();
@@ -57,6 +70,14 @@ public class ModConfig {
                 this.enableAtmosphericSky = false;
                 this.enableCustomWeather = false;
                 this.enableAmbientAudio = false;
+                this.enableSeasonalFoliage = false;
+                this.enableFallingLeaves = false;
+                this.enableMovementAnimations = false;
+                this.enableWorldEvents = false;
+                this.enableColorGrading = false;
+                this.enableCaveVisuals = false;
+                this.enableNetherVisuals = false;
+                this.enableEndVisuals = false;
                 break;
             case "MEDIUM":
                 this.particleDensity = 0.8f;
@@ -66,6 +87,14 @@ public class ModConfig {
                 this.enableCustomWeather = true;
                 this.enableAmbientAudio = true;
                 this.ambientAudioVolume = 0.5f;
+                this.enableSeasonalFoliage = true;
+                this.enableFallingLeaves = true;
+                this.enableMovementAnimations = true;
+                this.enableWorldEvents = true;
+                this.enableColorGrading = true;
+                this.enableCaveVisuals = true;
+                this.enableNetherVisuals = true;
+                this.enableEndVisuals = true;
                 break;
             case "ULTRA":
                 this.particleDensity = 1.8f;
@@ -75,6 +104,14 @@ public class ModConfig {
                 this.enableCustomWeather = true;
                 this.enableAmbientAudio = true;
                 this.ambientAudioVolume = 0.85f;
+                this.enableSeasonalFoliage = true;
+                this.enableFallingLeaves = true;
+                this.enableMovementAnimations = true;
+                this.enableWorldEvents = true;
+                this.enableColorGrading = true;
+                this.enableCaveVisuals = true;
+                this.enableNetherVisuals = true;
+                this.enableEndVisuals = true;
                 break;
             case "HIGH":
             default:
@@ -86,6 +123,14 @@ public class ModConfig {
                 this.enableCustomWeather = true;
                 this.enableAmbientAudio = true;
                 this.ambientAudioVolume = 0.7f;
+                this.enableSeasonalFoliage = true;
+                this.enableFallingLeaves = true;
+                this.enableMovementAnimations = true;
+                this.enableWorldEvents = true;
+                this.enableColorGrading = true;
+                this.enableCaveVisuals = true;
+                this.enableNetherVisuals = true;
+                this.enableEndVisuals = true;
                 break;
         }
         save();

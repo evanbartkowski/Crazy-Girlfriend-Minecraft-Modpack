@@ -287,4 +287,77 @@ public class ModLogicTest {
         }
         assertEquals(0.0f, cam.getShakeOffset(0.0f));
     }
+
+    @Test
+    public void testSeasonProgressionAndColors() {
+        assertEquals(com.crazygirlfriend.season.Season.SUMMER, com.crazygirlfriend.season.Season.SPRING.getNext());
+        assertEquals(com.crazygirlfriend.season.Season.AUTUMN, com.crazygirlfriend.season.Season.SUMMER.getNext());
+        assertEquals(com.crazygirlfriend.season.Season.WINTER, com.crazygirlfriend.season.Season.AUTUMN.getNext());
+        assertEquals(com.crazygirlfriend.season.Season.SPRING, com.crazygirlfriend.season.Season.WINTER.getNext());
+
+        assertNotNull(com.crazygirlfriend.season.Season.SPRING.getEmoji());
+        assertNotNull(com.crazygirlfriend.season.Season.AUTUMN.getDescription());
+        assertTrue(com.crazygirlfriend.season.Season.AUTUMN.getFoliageColorTint() != 0);
+
+        var sm = com.crazygirlfriend.season.SeasonManager.get();
+        assertNotNull(sm);
+        assertEquals(com.crazygirlfriend.season.Season.SPRING, sm.getClientSeason());
+        sm.updateClientState(com.crazygirlfriend.season.Season.AUTUMN, 0.5f, 3, 7, false);
+        assertEquals(com.crazygirlfriend.season.Season.AUTUMN, sm.getClientSeason());
+        assertEquals(3, sm.getClientDay());
+        assertEquals(7, sm.getClientTotalDays());
+        assertFalse(sm.isClientLocked());
+
+        // Color blending
+        int origColor = 0x55AA55;
+        int blendedFoliage = sm.getBlendedFoliageColor(null, null, origColor);
+        assertTrue(blendedFoliage != 0);
+        int blendedGrass = sm.getBlendedGrassColor(null, null, origColor);
+        assertTrue(blendedGrass != 0);
+    }
+
+    @Test
+    public void testWorldEventsLifecycle() {
+        for (var evt : com.crazygirlfriend.event.world.WorldEventType.values()) {
+            assertNotNull(evt.getDisplayName());
+            assertNotNull(evt.getEmoji());
+        }
+
+        var wem = com.crazygirlfriend.event.world.WorldEventManager.get();
+        assertNotNull(wem);
+        wem.updateClientEvent(com.crazygirlfriend.event.world.WorldEventType.AURORA_NIGHT, 200, 1.0f);
+        assertTrue(wem.isEventActive(com.crazygirlfriend.event.world.WorldEventType.AURORA_NIGHT));
+        assertEquals(com.crazygirlfriend.event.world.WorldEventType.AURORA_NIGHT, wem.getClientEvent());
+        assertEquals(1.0f, wem.getClientIntensity());
+    }
+
+    @Test
+    public void testScenicLocationManagerLogic() {
+        var slm = com.crazygirlfriend.world.gen.ScenicLocationManager.get();
+        assertNotNull(slm);
+
+        net.minecraft.util.math.BlockPos p1 = new net.minecraft.util.math.BlockPos(100, 70, 100);
+        net.minecraft.util.math.BlockPos p2 = new net.minecraft.util.math.BlockPos(500, 80, 500);
+        slm.registerScenicSpot(p1);
+        slm.registerScenicSpot(p2);
+
+        net.minecraft.util.math.BlockPos query = new net.minecraft.util.math.BlockPos(110, 70, 105);
+        net.minecraft.util.math.BlockPos nearest = slm.getNearestScenicSpot(query);
+        assertEquals(p1, nearest);
+    }
+
+    @Test
+    public void testPhotoModeEnums() {
+        var filter = com.crazygirlfriend.client.gui.PhotoModeScreen.FilterType.STANDARD;
+        assertNotNull(filter.getNext());
+        assertNotEquals(filter, filter.getNext());
+
+        var guide = com.crazygirlfriend.client.gui.PhotoModeScreen.AspectRatioGuide.NONE;
+        assertNotNull(guide.getNext());
+        assertNotEquals(guide, guide.getNext());
+
+        var pose = com.crazygirlfriend.client.gui.PhotoModeScreen.PhotoPose.DEFAULT;
+        assertNotNull(pose.getNext());
+        assertNotEquals(pose, pose.getNext());
+    }
 }

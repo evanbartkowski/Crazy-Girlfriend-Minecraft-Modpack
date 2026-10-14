@@ -49,6 +49,7 @@ public class CrazyGirlfriendMod implements ModInitializer {
         ModBlocks.register();
         ModItems.register();
         ModEntities.register();
+        com.crazygirlfriend.world.gen.ModFeatures.register();
         ModPackets.registerC2SPackets();
         CrazyGirlfriendCommands.register();
 
@@ -70,6 +71,10 @@ public class CrazyGirlfriendMod implements ModInitializer {
             for (Map.Entry<UUID, PlayerMakeupData> entry : makeupMgr.getAllMakeup().entrySet()) {
                 RequestManager.syncMakeup(server, entry.getKey(), entry.getValue());
             }
+            // Sync seasons
+            com.crazygirlfriend.season.SeasonManager.get().syncToPlayer(player);
+            // Sync world events
+            com.crazygirlfriend.event.world.WorldEventManager.get().syncToPlayer(player);
         });
 
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
@@ -87,6 +92,8 @@ public class CrazyGirlfriendMod implements ModInitializer {
         PlayerLeashManager.get().tick(server);
         com.crazygirlfriend.facial.FacialExpressionManager.get().tick();
         com.crazygirlfriend.relationship.LovePotionEuphoriaManager.get().tick(server);
+        com.crazygirlfriend.season.SeasonManager.get().tick(server);
+        com.crazygirlfriend.event.world.WorldEventManager.get().tick(server);
 
         periodicHeartTicks++;
         if (periodicHeartTicks >= 60) { // Every 3 seconds

@@ -48,7 +48,10 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             com.crazygirlfriend.block.ModBlocks.COUPLE_SOFA,
             com.crazygirlfriend.block.ModBlocks.COUPLE_DOUBLE_BED,
             com.crazygirlfriend.block.ModBlocks.COUPLE_SWING,
-            com.crazygirlfriend.block.ModBlocks.TEDDY_BEAR
+            com.crazygirlfriend.block.ModBlocks.TEDDY_BEAR,
+            com.crazygirlfriend.block.ModBlocks.COZY_FIREPLACE,
+            com.crazygirlfriend.block.ModBlocks.ROMANTIC_CHANDELIER,
+            com.crazygirlfriend.block.ModBlocks.ROMANTIC_DINING_TABLE
         );
 
         // Register keybindings
@@ -191,6 +194,30 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             int duration = buf.readInt();
             client.execute(() -> {
                 ClientRelationshipManager.get().triggerLoveEuphoria(duration);
+            });
+        });
+
+        // Season Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.SEASON_SYNC_ID, (client, handler, buf, responseSender) -> {
+            String seasonName = buf.readString();
+            float progress = buf.readFloat();
+            int day = buf.readInt();
+            int totalDays = buf.readInt();
+            boolean locked = buf.readBoolean();
+            com.crazygirlfriend.season.Season season = com.crazygirlfriend.season.Season.fromString(seasonName);
+            client.execute(() -> {
+                com.crazygirlfriend.season.SeasonManager.get().updateClientState(season, progress, day, totalDays, locked);
+            });
+        });
+
+        // World Event Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.WORLD_EVENT_SYNC_ID, (client, handler, buf, responseSender) -> {
+            String eventName = buf.readString();
+            int ticks = buf.readInt();
+            float intensity = buf.readFloat();
+            com.crazygirlfriend.event.world.WorldEventType event = com.crazygirlfriend.event.world.WorldEventType.fromString(eventName);
+            client.execute(() -> {
+                com.crazygirlfriend.event.world.WorldEventManager.get().updateClientEvent(event, ticks, intensity);
             });
         });
     }

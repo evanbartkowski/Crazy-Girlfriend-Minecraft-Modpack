@@ -299,6 +299,54 @@ public class CrazyGirlfriendCommands {
                     }))
                 )
             )
+            .then(literal("season")
+                .executes(ctx -> {
+                    com.crazygirlfriend.season.SeasonManager sm = com.crazygirlfriend.season.SeasonManager.get();
+                    com.crazygirlfriend.season.Season s = sm.getCurrentSeason();
+                    ServerCommandSource src = ctx.getSource();
+                    src.sendMessage(Text.literal("════════ Seasonal Calendar ════════").formatted(Formatting.LIGHT_PURPLE));
+                    src.sendMessage(Text.literal(" • Current Season: " + s.getEmoji() + " " + s.getDisplayName()).formatted(Formatting.GOLD, Formatting.BOLD));
+                    src.sendMessage(Text.literal(" • Atmosphere: " + s.getDescription()).formatted(Formatting.YELLOW));
+                    src.sendMessage(Text.literal(" • Cycle Length: " + sm.getSeasonDays() + " in-game days per season").formatted(Formatting.AQUA));
+                    src.sendMessage(Text.literal(" • World Status: " + (sm.isLocked() ? "🔒 Locked" : "⏳ Active Seasonal Cycle")).formatted(Formatting.GREEN));
+                    src.sendMessage(Text.literal("════════════════════════════════════").formatted(Formatting.LIGHT_PURPLE));
+                    return 1;
+                })
+                .then(literal("set")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .then(argument("name", com.mojang.brigadier.arguments.StringArgumentType.word()).executes(ctx -> {
+                        String name = com.mojang.brigadier.arguments.StringArgumentType.getString(ctx, "name");
+                        com.crazygirlfriend.season.Season s = com.crazygirlfriend.season.Season.fromString(name);
+                        com.crazygirlfriend.season.SeasonManager.get().setSeason(s, ctx.getSource().getServer());
+                        ctx.getSource().sendFeedback(() -> Text.literal("🌸 Season manually set to: " + s.getEmoji() + " " + s.getDisplayName()).formatted(Formatting.LIGHT_PURPLE), true);
+                        return 1;
+                    }))
+                )
+                .then(literal("lock")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .then(argument("locked", BoolArgumentType.bool()).executes(ctx -> {
+                        boolean locked = BoolArgumentType.getBool(ctx, "locked");
+                        com.crazygirlfriend.season.SeasonManager.get().setLocked(locked, null, ctx.getSource().getServer());
+                        ctx.getSource().sendFeedback(() -> Text.literal("🔒 Seasonal progression " + (locked ? "LOCKED" : "UNLOCKED")).formatted(Formatting.YELLOW), true);
+                        return 1;
+                    }))
+                )
+                .then(literal("days")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .then(argument("count", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 100)).executes(ctx -> {
+                        int count = com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "count");
+                        com.crazygirlfriend.config.ModConfig.get().seasonDays = count;
+                        com.crazygirlfriend.config.ModConfig.save();
+                        com.crazygirlfriend.season.SeasonManager.get().broadcastSeasonSync(ctx.getSource().getServer());
+                        ctx.getSource().sendFeedback(() -> Text.literal("⏳ Season length set to: " + count + " in-game days").formatted(Formatting.GREEN), true);
+                        return 1;
+                    }))
+                )
+            )
+            .then(literal("locatescenic").executes(ctx -> {
+                com.crazygirlfriend.world.gen.ScenicLocationManager.get().locateForPlayer(ctx.getSource().getPlayerOrThrow());
+                return 1;
+            }))
             .then(literal("help").executes(ctx -> {
                 showHelp(ctx.getSource());
                 return 1;

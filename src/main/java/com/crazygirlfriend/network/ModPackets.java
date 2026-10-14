@@ -25,12 +25,41 @@ public class ModPackets {
     public static final Identifier FADE_VIGNETTE_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "fade_vignette");
     public static final Identifier FACIAL_EXPRESSION_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "facial_expression_sync");
     public static final Identifier LOVE_EUPHORIA_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "love_euphoria_sync");
+    public static final Identifier SEASON_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "season_sync");
+    public static final Identifier WORLD_EVENT_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "world_event_sync");
 
     public static final Identifier INTERACTION_REQUEST_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "interaction_request");
     public static final Identifier APPLY_MAKEUP_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "apply_makeup");
     public static final Identifier COMBO_TRIGGER_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "combo_trigger");
+    public static final Identifier PHOTO_SAVE_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "photo_save");
 
     public static void registerC2SPackets() {
+        ServerPlayNetworking.registerGlobalReceiver(PHOTO_SAVE_C2S, (server, player, handler, buf, responseSender) -> {
+            String title = buf.readString();
+            String partnerName = buf.readString();
+            String biome = buf.readString();
+            String filter = buf.readString();
+            String pose = buf.readString();
+
+            server.execute(() -> {
+                ItemStack photoStack = new ItemStack(ModItems.PHOTOGRAPH);
+                net.minecraft.nbt.NbtCompound nbt = photoStack.getOrCreateNbt();
+                nbt.putString("PhotoTitle", title);
+                nbt.putString("Photographer", player.getName().getString());
+                if (!partnerName.isEmpty()) {
+                    nbt.putString("Partner", partnerName);
+                }
+                nbt.putString("Biome", biome);
+                nbt.putString("Filter", filter);
+                nbt.putString("Pose", pose);
+                nbt.putString("Timestamp", java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+
+                if (!player.getInventory().insertStack(photoStack)) {
+                    player.dropItem(photoStack, false);
+                }
+                player.sendMessage(Text.literal("📷 Snapshot saved to your inventory!").formatted(Formatting.LIGHT_PURPLE), true);
+            });
+        });
         ServerPlayNetworking.registerGlobalReceiver(COMBO_TRIGGER_C2S, (server, player, handler, buf, responseSender) -> {
             UUID targetUuid = buf.readUuid();
             String comboAnimName = buf.readString();

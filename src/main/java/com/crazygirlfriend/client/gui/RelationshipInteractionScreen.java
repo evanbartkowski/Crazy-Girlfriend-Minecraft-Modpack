@@ -176,16 +176,23 @@ public class RelationshipInteractionScreen extends Screen {
             }).dimensions(centerX + 60, startActionY + 102, 50, 18).build());
         }
 
+        // Photo Mode Button
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("📷 Photos"), b -> {
+            if (this.client != null) {
+                this.client.setScreen(new PhotoModeScreen());
+            }
+        }).dimensions(centerX - 120, startActionY + 125, 75, 18).build());
+
         // Visuals & Settings Button
         this.addDrawableChild(ButtonWidget.builder(Text.literal("🌸 Visuals"), b -> {
             if (this.client != null) {
                 this.client.setScreen(new VisualSettingsScreen(this));
             }
-        }).dimensions(centerX - 80, startActionY + 125, 75, 18).build());
+        }).dimensions(centerX - 40, startActionY + 125, 75, 18).build());
 
         // Close Button
         this.addDrawableChild(ButtonWidget.builder(Text.literal("✖ Close"), b -> this.close())
-            .dimensions(centerX + 5, startActionY + 125, 75, 18)
+            .dimensions(centerX + 42, startActionY + 125, 75, 18)
             .build());
     }
 
@@ -241,6 +248,18 @@ public class RelationshipInteractionScreen extends Screen {
 
         // Header
         context.drawCenteredTextWithShadow(this.textRenderer, Text.literal("💕 CRAZY GIRLFRIEND HUB 💕").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD), centerX, topY - 2, 0xFFFFAA);
+
+        // Active Season & World Event indicator
+        com.crazygirlfriend.season.Season season = com.crazygirlfriend.season.SeasonManager.get().getClientSeason();
+        int day = com.crazygirlfriend.season.SeasonManager.get().getClientDay();
+        int totalDays = com.crazygirlfriend.season.SeasonManager.get().getClientTotalDays();
+        String seasonStr = season.getEmoji() + " " + season.getDisplayName() + " (" + day + "/" + totalDays + ")";
+        context.drawTextWithShadow(this.textRenderer, seasonStr, centerX - 152, topY - 2, 0xFFFFCC);
+
+        com.crazygirlfriend.event.world.WorldEventType event = com.crazygirlfriend.event.world.WorldEventManager.get().getClientEvent();
+        if (event != com.crazygirlfriend.event.world.WorldEventType.NONE) {
+            context.drawTextWithShadow(this.textRenderer, event.getEmoji() + " " + event.getDisplayName(), centerX + 70, topY - 2, 0xFFDDAA);
+        }
 
         // Target Name & Status Badge
         Relationship rel = ClientRelationshipManager.get().getRelationship(targetPlayer.getUuid());

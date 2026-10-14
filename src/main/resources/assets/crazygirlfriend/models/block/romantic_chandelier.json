@@ -1,0 +1,100 @@
+{
+  "textures": {
+    "particle": "minecraft:block/iron_block",
+    "iron": "minecraft:block/iron_block",
+    "candle": "minecraft:block/candle"
+  },
+  "elements": [
+    {
+      "name": "chain_rod",
+      "from": [7, 8, 7],
+      "to": [9, 16, 9],
+      "faces": {
+        "up":    { "texture": "#iron" },
+        "down":  { "texture": "#iron" },
+        "north": { "texture": "#iron" },
+        "south": { "texture": "#iron" },
+        "west":  { "texture": "#iron" },
+        "east":  { "texture": "#iron" }
+      }
+    },
+    {
+      "name": "cross_bar_x",
+      "from": [2, 6, 7],
+      "to": [14, 8, 9],
+      "faces": {
+        "up":    { "texture": "#iron" },
+        "down":  { "texture": "#iron" },
+        "north": { "texture": "#iron" },
+        "south": { "texture": "#iron" },
+        "west":  { "texture": "#iron" },
+        "east":  { "texture": "#iron" }
+      }
+    },
+    {
+      "name": "cross_bar_z",
+      "from": [7, 6, 2],
+      "to": [9, 8, 14],
+      "faces": {
+        "up":    { "texture": "#iron" },
+        "down":  { "texture": "#iron" },
+        "north": { "texture": "#iron" },
+        "south": { "texture": "#iron" },
+        "west":  { "texture": "#iron" },
+        "east":  { "texture": "#iron" }
+      }
+    },
+    {
+      "name": "candle_w",
+      "from": [2, 8, 7],
+      "to": [4, 13, 9],
+      "faces": {
+        "up":    { "texture": "#candle" },
+        "down":  { "texture": "#candle" },
+        "north": { "texture": "#candle" },
+        "south": { "texture": "#candle" },
+        "west":  { "texture": "#candle" },
+        "east":  { "texture": "#candle" }
+      }
+    },
+    {
+      "name": "candle_e",
+      "from": [12, 8, 7],
+      "to": [14, 13, 9],
+      "faces": {
+        "up":    { "texture": "#candle" },
+        "down":  { "texture": "#candle" },
+        "north": { "texture": "#candle" },
+        "south": { "texture": "#candle" },
+        "west":  { "texture": "#candle" },
+        "east":  { "texture": "#candle" }
+      }
+    },
+    {
+      "name": "candle_n",
+      "from": [7, 8, 2],
+      "to": [9, 13, 4],
+      "faces": {
+        "up":    { "texture": "#candle" },
+        "down":  { "texture": "#candle" },
+        "north": { "texture": "#candle" },
+        "south": { "texture": "#candle" },
+        "west":  { "texture": "#candle" },
+        "east":  { "texture": "#candle" }
+      }
+    },
+    {
+      "name": "candle_s",
+      "from": [7, 8, 12],
+      "to": [9, 13, 14],
+      "faces": {
+        "up":    { "texture": "#candle" },
+        "down":  { "texture": "#candle" },
+        "north": { "texture": "#candle" },
+        "south": { "texture": "#candle" },
+        "west":  { "texture": "#candle" },
+        "east":  { "texture": "#candle" }
+      }
+    }
+  ]
+}

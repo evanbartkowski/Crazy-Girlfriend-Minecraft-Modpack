@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "ICI",
+    "DCD"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:candle"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:chain"
+    }
+  },
+  "result": {
+    "item": "crazygirlfriend:romantic_chandelier",
+    "count": 1
+  }
+}

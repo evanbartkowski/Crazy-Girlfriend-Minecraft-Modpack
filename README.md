@@ -123,6 +123,9 @@ Every item and block in the modpack and exactly what it does:
 | **Couple Cuddle Double Bed** (`couple_double_bed`) | A romantic 3D double bed block with pillows and a duvet. Right-click to snuggle together in shared blankets, lie down, or sleep together. |
 | **Romantic Garden Swing** (`couple_swing`) | A wooden porch swing with suspension ropes. Right-click to sit and gently sway together with your partner. |
 | **Cuddle Teddy Bear** (`teddy_bear`) | An adorable 3D plush teddy bear block! Place it on the floor, table, or bed. Right-click to hug/squeeze it for squeaks and heart particles. Sneak + Right-click to pick it back up into your inventory. |
+| **Cozy Brick Fireplace** (`cozy_fireplace`) | An animated hearth with crackling fire, warm chimney embers, and cozy ambient light. Right-click to warm your hands and initiate a cozy couple cuddling session! |
+| **Romantic Golden Chandelier** (`romantic_chandelier`) | An ornate brass and wrought-iron hanging chandelier adorned with warm glowing candles that illuminates romantic dining rooms and grand ballrooms. |
+| **Romantic Dining Table** (`romantic_dining_table`) | A fine candlelit mahogany dining table block. Right-click to sit across from your partner for candlelit couple dinners, toasts, and romantic date nights. |
 
 ---
 
@@ -245,11 +248,72 @@ The modpack features a comprehensive visual, celestial, and atmospheric overhaul
 * **Shoreline Ocean Waves**: Gentle surf sounds when standing near beaches and oceans.
 * **Shooting Star Chimes**: Delicate celestial sparkle audio when wishing on a shooting star.
 
-### 🌟 Shader Mod Compatibility (Iris + Sodium)
-* The modpack looks stunning on pure Fabric with zero external mods required!
-* For players who want ultra-realistic lighting, the visual overhaul is **100% compatible with [Iris Shaders](https://irisshaders.dev/) + [Sodium](https://modrinth.com/mod/sodium)**:
-  * Recommended shaderpacks: **Complementary Reimagined**, **MakeUp-UltraFast**, or **BSL Shaders**.
-  * Dynamic particles, custom UI, and sky renderers seamlessly adapt whether shaders are active or disabled.
+### 🍂 Fully Dynamic Four-Season System
+Experience a living Minecraft world that transitions dynamically through all four seasons:
+* **🌸 Spring**: Fresh lime-emerald foliage, pastel flower meadows, floating pollen, and blooming sakura petals.
+* **☀️ Summer**: Deep vibrant lush greens, golden sunlight, shimmering waterways, and warm ocean breezes.
+* **🍁 Autumn**: Fiery orange, golden-yellow, and deep crimson leaves; swirling autumn leaf particles drift through forest canopies.
+* **❄️ Winter**: Frosted silver foliage, muted desaturated grass, and gentle snow flurries falling across the landscape.
+* **Dynamic Calendar & Time Progression**: Each season lasts 7 in-game days by default (fully customizable via `/cg season days <number>`). Seasons blend smoothly across in-game days without jarring color cuts!
+* **Commands**: Check the current season and calendar day with `/cg season`, set a specific season with `/cg season set <spring|summer|autumn|winter>`, or freeze time with `/cg season lock <true|false>`.
+
+### 🏃 Advanced Fluid Movement Animations
+Enhanced player model physics that make your character feel alive without conflicting with the 65+ relationship animations:
+* **Running & Sprinting Lean**: Characters dynamically lean into turns and tilt forward when accelerating into a full sprint.
+* **Fluid Swimming**: Natural swimming strokes, arm flutters, and forward buoyancy tilt while submerged in water.
+* **Ladder & Vine Climbing**: Expressive climbing animations with alternating hand-over-hand grips and footing steps.
+* **Airborne Balance**: Realistic leg kick and arm balancing adjustments when falling or leaping across canyons.
+* **Chest Breathing**: Subtle idle breathing motion during quiet moments.
+* **Context-Sensitive Shivering**: Characters shiver their arms and shoulders in freezing snow biomes and during winter cold!
+
+### 🌌 Rare Magical World Events
+Experience 8 synchronized magical world events that illuminate your adventures:
+1. **Aurora Nights**: Brilliant glowing ribbons of green, violet, and magenta lighting up the night sky.
+2. **Meteor Showers**: High-frequency shooting star streaks across the starry heavens accompanied by celestial chimes.
+3. **Enchanted Forest Nights**: Magical glowing sparkles and floating fairy embers illuminating dark forest canopies.
+4. **Pink Sunsets**: Dreamy pastel pink and lavender horizon gradients and soft twilight fog.
+5. **Magical Mist**: Low-lying ethereal rolling fog winding through valleys and meadows.
+6. **Firefly Blooms**: Thousands of synchronized warm golden fireflies dancing through swamps and riverbeds.
+7. **Luminous Flower Fields**: Flowers and grasses emit gentle pulsating biophotonic light in the dark.
+8. **Rainbow After Rain**: A magnificent multicolor arch appearing across the horizon as storms break into sunshine.
+
+### 🌋 Underground, Nether & Cosmic End Overhaul
+Visual immersion extends across all depths and dimensions:
+* **Lush Caves**: Floating green spore dust and gentle pollen motes drifting between glow berries and moss.
+* **Dripstone Caves**: Ambient water drops, stone dust, and moisture splashes echoing through cavern halls.
+* **Deep Dark**: Eerie sculk soul embers and pulsing teal particulate rising from ancient sculk catalysts.
+* **Crimson Forests**: Swirling crimson spore clouds and deep red fog.
+* **Warped Forests**: Ethereal cyan spore particles drifting upward like deep-sea luminescents.
+* **Soul Sand Valleys**: Ghostly blue ash embers rising from soul soil.
+* **Basalt Deltas**: Swirling gray volcanic ash flurries and cinder sparks.
+* **The End**: Shimmering cosmic void dust, starry purple nebulas, and twinkling distant galaxies.
+
+### 🏛️ Scenic World-Gen Dating Locations
+Discover romantic hand-crafted scenic locations naturally generated across your world:
+* **Lover's Gazebo**: Elegant dark oak gazebo with lantern chandeliers, couple loveseat, and flower boxes.
+* **Lakeside Picnic**: Quaint waterside setup with a checkered picnic blanket, lantern, and flower pots.
+* **Cherry Blossom Shrine**: Torii gate arch with hanging lanterns, falling cherry petals, and couple swing.
+* **Mountain Overlook**: High-altitude stone lookout platform with guardrails and bench overlooking the horizon.
+* **Locate Command**: Run `/cg locatescenic` to locate the nearest scenic spot and receive clickable coordinates to navigate there!
+
+### 📷 In-Game Cinematic Photography Mode
+Capture unforgettable couple memories with the built-in cinematic Photo Mode GUI:
+* **Access**: Press the **📷 Photos** button inside the Crazy Girlfriend Hub (Sneak + Right-Click / **K**), or type `/cg photo`.
+* **Controls**:
+  * **Orbit & Tilt**: Adjust camera horizontal orbit angle (-180° to +180°), pitch elevation, and artistic camera tilt/roll.
+  * **Zoom & FOV**: Smooth zoom slider from 30° close-up portraits to 100° panoramic landscape shots.
+  * **7 Color Filters**: Normal, Vintage Warm, Black & White, Pastel Dream, Cyberpunk, Golden Hour, and Ethereal Pink!
+  * **Framing Guide Overlays**: None, Rule of Thirds, 16:9 Cinema, 2.39:1 Anamorphic Ultrawide, and Classic Polaroid Frame.
+  * **Pose Selector**: Choose standing, waving, blowing a kiss, romantic pose, or goofy celebration while taking the shot.
+  * **Snap Photo**: Click the camera shutter to play camera flash particles and sound, capture an instant high-res screenshot, and print a physical **Polaroid Photograph** directly into your inventory!
+
+### 💫 Dynamic World Immersion Engine
+Your relationship mechanics seamlessly integrate with the living environment:
+* **Sunset Kisses**: Sharing a kiss during Golden Hour or a Pink Sunset rewards bonus Affection XP and celebratory sparkles!
+* **Thunderstorm Snuggles**: Cuddling under a blanket during severe thunderstorms soothes a frightened partner and halves the Crazy Meter.
+* **Aurora Stargazing & Dances**: Dancing under an active Aurora Night triggers special couple harmony buffs.
+* **Meteor Wishes**: Making a wish together during a Meteor Shower grants temporary Luck and Speed buffs.
+* **Autumn Romantic Strolls**: Walking together through falling autumn leaves grants heart particles and warmth.
 
 ---
 
@@ -259,6 +323,12 @@ The modpack features a comprehensive visual, celestial, and atmospheric overhaul
 |---|---|
 | `/cg status [player]` | View relationship status, partner, crazy meter %, tier, mood, and affection level. |
 | `/cg anim <name> [player]` | Perform any of the 65+ animations with your partner. |
+| `/cg photo` | Open the in-game Cinematic Photography Mode studio. |
+| `/cg season` | View the current active season, day in season, and progress. |
+| `/cg season set <spring\|summer\|autumn\|winter>` | Manually set the active world season. |
+| `/cg season lock <true\|false>` | Freeze or unfreeze the seasonal calendar cycle. |
+| `/cg season days <days>` | Configure the number of days each season lasts. |
+| `/cg locatescenic` | Locate the nearest scenic couple dating spot (Gazebo, Picnic, Cherry Shrine, Overlook). |
 | `/cg minigame <game>` | Challenge partner to any of the 10 minigames. |
 | `/cg minigame_ans <game> <ans>` | Submit answer for active minigames. |
 | `/cg event trigger [id]` | Trigger a randomized relationship event. |
@@ -271,4 +341,5 @@ The modpack features a comprehensive visual, celestial, and atmospheric overhaul
 | `/cg breakup` | End dating relationship. |
 | `/cg divorce` | Dissolve marriage. |
 | `/cg help` | View in-game command help guide. |
+
 

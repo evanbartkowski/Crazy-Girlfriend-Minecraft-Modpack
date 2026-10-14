@@ -25,6 +25,20 @@ public abstract class PlayerEntityModelMixin<T extends LivingEntity> extends Bip
     private void applyCrazyGirlfriendAnimation(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch, CallbackInfo ci) {
         if (entity instanceof AbstractClientPlayerEntity player) {
             float tickDelta = MinecraftClient.getInstance().getTickDelta();
+            com.crazygirlfriend.client.animation.EnhancedMovementAnimator.get().applyMovementAnimation(
+                player,
+                this.head,
+                this.body,
+                this.rightArm,
+                this.leftArm,
+                this.rightLeg,
+                this.leftLeg,
+                limbAngle,
+                limbDistance,
+                animationProgress,
+                tickDelta
+            );
+
             ClientAnimationManager.get().applyAnimationToModel(
                 player.getUuid(),
                 this.head,

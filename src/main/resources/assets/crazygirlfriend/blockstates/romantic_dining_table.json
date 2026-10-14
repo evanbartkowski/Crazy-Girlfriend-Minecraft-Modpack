@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "crazygirlfriend:block/romantic_dining_table" },
+    "facing=east":  { "model": "crazygirlfriend:block/romantic_dining_table", "y": 90 },
+    "facing=south": { "model": "crazygirlfriend:block/romantic_dining_table", "y": 180 },
+    "facing=west":  { "model": "crazygirlfriend:block/romantic_dining_table", "y": 270 }
+  }
+}

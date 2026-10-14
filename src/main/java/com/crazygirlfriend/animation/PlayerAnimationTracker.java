@@ -41,6 +41,13 @@ public class PlayerAnimationTracker {
             activeAnimations.put(player2.getUuid(), new ActiveAnimation(type2, player1.getUuid(), duration));
             broadcastAnimationPacket(player2.server, player2.getUuid(), player1.getUuid(), type2, duration);
         }
+
+        if (player1 != null && player2 != null) {
+            com.crazygirlfriend.relationship.Relationship rel = com.crazygirlfriend.relationship.RelationshipManager.get().getRelationship(player1.getUuid(), player1.getServerWorld());
+            if (rel != null && rel.involves(player2.getUuid())) {
+                com.crazygirlfriend.immersion.WorldImmersionEngine.get().onCoupleInteraction(player1, player2, type1, rel);
+            }
+        }
     }
 
     public void startSingleAnimation(ServerPlayerEntity player, AnimationType type, int duration) {
