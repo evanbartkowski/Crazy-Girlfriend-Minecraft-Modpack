@@ -79,7 +79,7 @@ public class PillorySeatEntity extends Entity {
                     return;
                 }
             }
-            if (this.getPassengerList().isEmpty()) {
+            if (this.age > 10 && this.getPassengerList().isEmpty()) {
                 this.discard();
             }
         }
@@ -90,3 +90,4 @@ public class PillorySeatEntity extends Entity {
         return 0.1D;
     }
 }
+

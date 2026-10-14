@@ -104,8 +104,8 @@ public abstract class PlayerEntityModelMixin<T extends LivingEntity> extends Bip
                 }
             }
 
-            if (com.crazygirlfriend.pillory.PilloryManager.get().isPilloryLocked(player.getUuid())
-                    || (player.getVehicle() != null && player.getVehicle().getClass().getSimpleName().contains("PillorySeatEntity"))) {
+            if (player.getVehicle() != null && (com.crazygirlfriend.pillory.PilloryManager.get().isPilloryLocked(player.getUuid())
+                    || player.getVehicle().getClass().getSimpleName().contains("PillorySeatEntity"))) {
                 // Torso bent forward at waist
                 this.body.pitch = 1.35f;
                 // Head angled forward to look out of the pillory hole

@@ -16,16 +16,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Entity.class)
 public abstract class EntityMixin {
 
+    @Shadow public abstract boolean isAlive();
     @Shadow public abstract Entity getVehicle();
 
     @Inject(method = "dismountVehicle", at = @At("HEAD"), cancellable = true)
     private void onPilloryDismount(CallbackInfo ci) {
-        if (this.getVehicle() instanceof PillorySeatEntity pillorySeat && pillorySeat.isLocked()) {
+        if (!this.isAlive()) {
+            return;
+        }
+
+        if (this.getVehicle() instanceof PillorySeatEntity pillorySeat && pillorySeat.isLocked() && !pillorySeat.isRemoved() && pillorySeat.isAlive()) {
             ci.cancel();
             if ((Object) this instanceof ServerPlayerEntity player) {
                 player.sendMessage(Text.literal("🔒 You are locked in the pillory! You cannot escape!").formatted(Formatting.RED), true);
-                player.getServerWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.PLAYERS, 0.7f, 1.1f);
+                if (player.age % 15 == 0) {
+                    player.getServerWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.PLAYERS, 0.7f, 1.1f);
+                }
             }
         }
     }
 }
+

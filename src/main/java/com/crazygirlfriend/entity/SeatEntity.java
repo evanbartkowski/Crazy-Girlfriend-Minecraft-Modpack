@@ -34,7 +34,7 @@ public class SeatEntity extends Entity {
     public void tick() {
         super.tick();
         if (!this.getWorld().isClient) {
-            if (this.getPassengerList().isEmpty()) {
+            if (this.age > 10 && this.getPassengerList().isEmpty()) {
                 this.discard();
             }
         }

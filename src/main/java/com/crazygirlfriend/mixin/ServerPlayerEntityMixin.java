@@ -23,3 +23,4 @@ public abstract class ServerPlayerEntityMixin {
         MarriedLifeBondManager.get().onSpouseDied(player, damageSource);
     }
 }
+

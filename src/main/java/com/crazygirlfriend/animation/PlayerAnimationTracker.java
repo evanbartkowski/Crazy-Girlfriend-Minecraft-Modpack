@@ -26,7 +26,7 @@ public class PlayerAnimationTracker {
         }
     }
 
-    private final Map<UUID, ActiveAnimation> activeAnimations = new HashMap<>();
+    private final Map<UUID, ActiveAnimation> activeAnimations = new java.util.concurrent.ConcurrentHashMap<>();
 
     public static PlayerAnimationTracker get() {
         return INSTANCE;

@@ -25,18 +25,23 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RequestManager {
     private static final RequestManager INSTANCE = new RequestManager();
 
     // targetUuid -> PendingRequest
-    private final Map<UUID, PendingRequest> pendingRequests = new HashMap<>();
+    private final Map<UUID, PendingRequest> pendingRequests = new ConcurrentHashMap<>();
 
     public static RequestManager get() {
         return INSTANCE;
+    }
+
+    public void cleanupPlayer(UUID uuid) {
+        pendingRequests.remove(uuid);
+        pendingRequests.entrySet().removeIf(entry -> entry.getValue().getSender().equals(uuid));
     }
 
     public boolean hasPendingRequest(UUID target) {

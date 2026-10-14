@@ -21,7 +21,7 @@ import java.util.*;
 public class LovePotionEuphoriaManager {
     private static final LovePotionEuphoriaManager INSTANCE = new LovePotionEuphoriaManager();
 
-    private final Map<UUID, Integer> euphoricPlayers = new HashMap<>();
+    private final Map<UUID, Integer> euphoricPlayers = new java.util.concurrent.ConcurrentHashMap<>();
 
     public static LovePotionEuphoriaManager get() {
         return INSTANCE;

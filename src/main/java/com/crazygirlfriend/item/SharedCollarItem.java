@@ -30,6 +30,24 @@ public class SharedCollarItem extends Item {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if (!user.getWorld().isClient && entity instanceof ServerPlayerEntity target && user instanceof ServerPlayerEntity sender) {
+            if (com.crazygirlfriend.leash.PlayerLeashManager.get().isCollared(target.getUuid())) {
+                user.sendMessage(Text.literal("❌ " + target.getName().getString() + " is already wearing a collar!").formatted(Formatting.YELLOW), true);
+                return ActionResult.CONSUME;
+            }
+
+            com.crazygirlfriend.leash.PlayerLeashManager.get().attachCollar(sender, target);
+            user.getWorld().playSound(null, target.getX(), target.getY(), target.getZ(), net.minecraft.sound.SoundEvents.ITEM_ARMOR_EQUIP_IRON, SoundCategory.PLAYERS, 1.0f, 1.1f);
+            if (user.getWorld() instanceof ServerWorld sw) {
+                sw.spawnParticles(ParticleTypes.HEART, target.getX(), target.getY() + 1.2, target.getZ(), 8, 0.3, 0.3, 0.3, 0.05);
+            }
+
+            if (!sender.isCreative()) {
+                stack.decrement(1);
+            }
+            return ActionResult.SUCCESS;
+        }
+
         if (entity instanceof TameableEntity pet) {
             World world = user.getWorld();
 

@@ -88,18 +88,17 @@ public class PilloryBlock extends HorizontalFacingBlock {
                     Entity passenger = seat.getPassengerList().get(0);
                     UUID jailerUuid = PilloryManager.get().getJailer(passenger.getUuid());
 
-                    // Check if player is authorized to release (jailer, partner, holding key/leash/paddle, or sneaking)
+                    Relationship rel = RelationshipManager.get().getRelationship(passenger.getUuid(), serverWorld);
+                    boolean isPartner = rel != null && rel.involves(serverPlayer.getUuid());
+
+                    // Check if player is authorized to release (jailer, partner, admin, or holding leash/paddle/collar/shears)
                     boolean canRelease = serverPlayer.hasPermissionLevel(2)
                             || (jailerUuid != null && jailerUuid.equals(serverPlayer.getUuid()))
-                            || serverPlayer.isSneaking()
+                            || isPartner
                             || serverPlayer.getMainHandStack().isOf(ModItems.PLAYER_LEASH)
                             || serverPlayer.getMainHandStack().isOf(ModItems.SHARED_COLLAR)
-                            || serverPlayer.getMainHandStack().isOf(ModItems.PADDLE);
-
-                    Relationship rel = RelationshipManager.get().getRelationship(passenger.getUuid(), serverWorld);
-                    if (rel != null && rel.involves(serverPlayer.getUuid())) {
-                        canRelease = true;
-                    }
+                            || serverPlayer.getMainHandStack().isOf(ModItems.PADDLE)
+                            || serverPlayer.getMainHandStack().isOf(net.minecraft.item.Items.SHEARS);
 
                     if (canRelease) {
                         seat.unlock();
@@ -116,7 +115,7 @@ public class PilloryBlock extends HorizontalFacingBlock {
                         }
                         return ActionResult.SUCCESS;
                     } else {
-                        serverPlayer.sendMessage(Text.literal("🔒 " + passenger.getName().getString() + " is locked in the pillory! Only their captor, partner, or someone with a leash/paddle can release them.").formatted(Formatting.YELLOW), true);
+                        serverPlayer.sendMessage(Text.literal("🔒 " + passenger.getName().getString() + " is locked in the pillory! Only their captor, partner, or someone with a leash/paddle/shears can release them.").formatted(Formatting.YELLOW), true);
                         return ActionResult.SUCCESS;
                     }
                 }
@@ -144,6 +143,7 @@ public class PilloryBlock extends HorizontalFacingBlock {
             for (ServerPlayerEntity nearby : serverWorld.getPlayers()) {
                 if (nearby.distanceTo(serverPlayer) <= 3.5 && !nearby.equals(serverPlayer)) {
                     if (PlayerLeashManager.get().isLeashed(nearby.getUuid())
+                            || PlayerLeashManager.get().isCollared(nearby.getUuid())
                             || serverPlayer.getMainHandStack().isOf(ModItems.PLAYER_LEASH)
                             || serverPlayer.getMainHandStack().isOf(ModItems.SHARED_COLLAR)) {
                         targetToLock = nearby;

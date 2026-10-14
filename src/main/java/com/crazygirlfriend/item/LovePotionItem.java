@@ -49,6 +49,10 @@ public class LovePotionItem extends Item {
                 com.crazygirlfriend.relationship.LovePotionEuphoriaManager.get().applyEuphoria(serverPlayer, 400);
                 serverPlayer.sendMessage(Text.literal("💖 Love Potion imbibed! Speed V, drunk romantic euphoria! Get close to a partner to pounce!").formatted(Formatting.LIGHT_PURPLE, Formatting.BOLD), true);
             }
+
+            if (user instanceof PlayerEntity player && !player.getAbilities().creativeMode) {
+                stack.decrement(1);
+            }
         }
         return stack;
     }

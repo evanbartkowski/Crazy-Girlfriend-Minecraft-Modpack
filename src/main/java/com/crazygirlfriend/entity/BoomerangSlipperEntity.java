@@ -42,12 +42,28 @@ public class BoomerangSlipperEntity extends ThrownItemEntity {
         flightTicks++;
 
         if (!this.getWorld().isClient) {
+            // Lifespan safety: prevent infinite flight if target lost or stuck
+            if (flightTicks > 100) {
+                if (this.getOwner() instanceof PlayerEntity player && player.isAlive() && player.getWorld() == this.getWorld()) {
+                    player.getInventory().offerOrDrop(new ItemStack(ModItems.BOOMERANG_SLIPPER));
+                } else {
+                    this.dropStack(new ItemStack(ModItems.BOOMERANG_SLIPPER));
+                }
+                this.discard();
+                return;
+            }
+
             if (flightTicks > 15) {
                 returning = true;
             }
 
-            if (returning && this.getOwner() != null) {
-                LivingEntity owner = (LivingEntity) this.getOwner();
+            if (returning) {
+                if (this.getOwner() == null || !(this.getOwner() instanceof LivingEntity owner) || !owner.isAlive() || owner.getWorld() != this.getWorld()) {
+                    this.dropStack(new ItemStack(ModItems.BOOMERANG_SLIPPER));
+                    this.discard();
+                    return;
+                }
+
                 Vec3d target = owner.getPos().add(0, 1.0, 0);
                 Vec3d diff = target.subtract(this.getPos());
                 double dist = diff.length();

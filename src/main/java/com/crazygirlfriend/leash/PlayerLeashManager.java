@@ -14,6 +14,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -26,9 +27,11 @@ public class PlayerLeashManager {
     private static final PlayerLeashManager INSTANCE = new PlayerLeashManager();
 
     // leashedPlayerUuid -> holderPlayerUuid
-    private final Map<UUID, UUID> activeLeashes = new HashMap<>();
+    private final Map<UUID, UUID> activeLeashes = new java.util.concurrent.ConcurrentHashMap<>();
     // leashedPlayerUuid -> isSitting
-    private final Map<UUID, Boolean> sittingStatus = new HashMap<>();
+    private final Map<UUID, Boolean> sittingStatus = new java.util.concurrent.ConcurrentHashMap<>();
+    // collared players
+    private final Set<UUID> collaredPlayers = java.util.concurrent.ConcurrentHashMap.newKeySet();
 
     public static PlayerLeashManager get() {
         return INSTANCE;
@@ -46,6 +49,20 @@ public class PlayerLeashManager {
         return activeLeashes.get(leashedPlayerUuid);
     }
 
+    public boolean isCollared(UUID playerUuid) {
+        return collaredPlayers.contains(playerUuid);
+    }
+
+    public void attachCollar(ServerPlayerEntity sender, ServerPlayerEntity target) {
+        collaredPlayers.add(target.getUuid());
+        sender.sendMessage(Text.literal("🔒 You put a collar on " + target.getName().getString() + "!").formatted(Formatting.LIGHT_PURPLE), true);
+        target.sendMessage(Text.literal("🔒 " + sender.getName().getString() + " put a collar on you!").formatted(Formatting.YELLOW, Formatting.BOLD), true);
+    }
+
+    public void removeCollar(UUID playerUuid) {
+        collaredPlayers.remove(playerUuid);
+    }
+
     public void attachLeash(ServerPlayerEntity holder, ServerPlayerEntity leashed) {
         activeLeashes.put(leashed.getUuid(), holder.getUuid());
         sittingStatus.put(leashed.getUuid(), false);
@@ -57,6 +74,7 @@ public class PlayerLeashManager {
     }
 
     public void releaseLeash(UUID leashedPlayerUuid, MinecraftServer server) {
+        collaredPlayers.remove(leashedPlayerUuid);
         if (activeLeashes.containsKey(leashedPlayerUuid)) {
             UUID holderUuid = activeLeashes.remove(leashedPlayerUuid);
             sittingStatus.remove(leashedPlayerUuid);

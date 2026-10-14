@@ -50,7 +50,11 @@ public abstract class BedBlockMixin {
             List<ServerPlayerEntity> sleepers = CoSleepingManager.get().getSleepersAt(world, finalHeadPos);
             if (sleepers.size() == 1 && !sleepers.contains(player)) {
                 ServerPlayerEntity partner = sleepers.get(0);
+                // Temporarily clear BedBlock.OCCUPIED so vanilla trySleep doesn't reject with SleepFailureReason.OCCUPIED
+                world.setBlockState(finalHeadPos, state.with(BedBlock.OCCUPIED, false), net.minecraft.block.Block.NO_REDRAW);
                 Either<PlayerEntity.SleepFailureReason, Unit> either = player.trySleep(finalHeadPos);
+                // Re-mark OCCUPIED
+                world.setBlockState(finalHeadPos, world.getBlockState(finalHeadPos).with(BedBlock.OCCUPIED, true), net.minecraft.block.Block.NO_REDRAW);
                 either.ifLeft(reason -> {
                     if (reason.getMessage() != null) {
                         player.sendMessage(reason.getMessage(), true);

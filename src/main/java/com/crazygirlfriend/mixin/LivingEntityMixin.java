@@ -17,11 +17,5 @@ public abstract class LivingEntityMixin {
             MarriedLifeBondManager.get().onHealthChanged(player, health);
         }
     }
-
-    @Inject(method = "heal", at = @At("TAIL"))
-    private void onMarriedHeal(float amount, CallbackInfo ci) {
-        if ((Object) this instanceof ServerPlayerEntity player) {
-            MarriedLifeBondManager.get().onHealthChanged(player, player.getHealth());
-        }
-    }
 }
+

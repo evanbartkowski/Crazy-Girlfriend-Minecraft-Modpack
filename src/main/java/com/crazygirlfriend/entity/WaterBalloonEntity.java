@@ -34,6 +34,15 @@ public class WaterBalloonEntity extends ThrownItemEntity {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if (!this.getWorld().isClient && this.age > 200) {
+            popWaterSplash();
+            this.discard();
+        }
+    }
+
+    @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         if (!this.getWorld().isClient) {

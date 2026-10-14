@@ -81,6 +81,26 @@ public class CrazyGirlfriendMod implements ModInitializer {
             UUID uuid = handler.getPlayer().getUuid();
             PlayerLeashManager.get().releaseLeash(uuid, server);
             PlayerAnimationTracker.get().stopAnimation(uuid, server);
+
+            // Cleanup pillory if locked
+            if (com.crazygirlfriend.pillory.PilloryManager.get().isPilloryLocked(uuid)) {
+                net.minecraft.util.math.BlockPos pPos = com.crazygirlfriend.pillory.PilloryManager.get().getPilloryPos(uuid);
+                com.crazygirlfriend.pillory.PilloryManager.get().unlockPlayer(uuid, server);
+                if (pPos != null) {
+                    ServerWorld world = handler.getPlayer().getServerWorld();
+                    if (world.getBlockState(pPos).isOf(ModBlocks.PILLORY)) {
+                        world.setBlockState(pPos, world.getBlockState(pPos).with(com.crazygirlfriend.block.PilloryBlock.OCCUPIED, false), 3);
+                    }
+                }
+            }
+
+            // Cleanup married life bond cached levels
+            com.crazygirlfriend.relationship.MarriedLifeBondManager.get().cleanupPlayer(uuid);
+            // Cleanup co-sleeping pairs
+            com.crazygirlfriend.relationship.CoSleepingManager.get().onPlayerWakeUp(handler.getPlayer());
+            // Cleanup pending relationship requests and facial expressions
+            RequestManager.get().cleanupPlayer(uuid);
+            com.crazygirlfriend.facial.FacialExpressionManager.get().setExpression(uuid, com.crazygirlfriend.facial.FacialExpression.NONE, 0);
         });
 
         LOGGER.info("Crazy Girlfriend Mod initialized successfully!");

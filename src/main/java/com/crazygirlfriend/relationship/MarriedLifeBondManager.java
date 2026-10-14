@@ -31,6 +31,8 @@ public class MarriedLifeBondManager {
     // Guard against recursive death loops
     private static final Set<UUID> DYING_SPOUSES = ConcurrentHashMap.newKeySet();
 
+    // Track previous health to detect damage bursts
+    private final Map<UUID, Float> lastHealthLevels = new ConcurrentHashMap<>();
     // Track previous food & saturation to detect changes
     private final Map<UUID, Integer> lastFoodLevels = new ConcurrentHashMap<>();
     private final Map<UUID, Float> lastSaturationLevels = new ConcurrentHashMap<>();
@@ -67,10 +69,14 @@ public class MarriedLifeBondManager {
      */
     public void onHealthChanged(ServerPlayerEntity player, float newHealth) {
         if (IS_SYNCING_HEALTH.get()) return;
-        if (!isBondActive(player)) return;
+        if (!isBondActive(player)) {
+            lastHealthLevels.put(player.getUuid(), newHealth);
+            return;
+        }
 
         ServerPlayerEntity spouse = getSpouse(player);
         if (spouse != null && spouse.isAlive()) {
+            float prevHealth = lastHealthLevels.getOrDefault(player.getUuid(), newHealth);
             IS_SYNCING_HEALTH.set(true);
             try {
                 float targetHealth = Math.min(newHealth, spouse.getMaxHealth());
@@ -78,15 +84,19 @@ public class MarriedLifeBondManager {
                 spouse.setAbsorptionAmount(player.getAbsorptionAmount());
 
                 // Visual/audio feedback if significant damage occurred
-                if (newHealth < player.getHealth() - 1.0f) {
+                if (newHealth < prevHealth - 0.5f) {
                     ServerWorld world = spouse.getServerWorld();
-                    world.spawnParticles(ParticleTypes.DAMAGE_INDICATOR, spouse.getX(), spouse.getY() + 1.0, spouse.getZ(), 4, 0.2, 0.2, 0.2, 0.1);
+                    world.spawnParticles(ParticleTypes.DAMAGE_INDICATOR, spouse.getX(), spouse.getY() + 1.0, spouse.getZ(), 6, 0.2, 0.2, 0.2, 0.1);
                     spouse.sendMessage(Text.literal("💔 You felt your spouse's pain! Health synchronized.").formatted(Formatting.RED), true);
                 }
+
+                lastHealthLevels.put(spouse.getUuid(), targetHealth);
             } finally {
                 IS_SYNCING_HEALTH.set(false);
             }
         }
+
+        lastHealthLevels.put(player.getUuid(), newHealth);
     }
 
     /**
@@ -94,6 +104,7 @@ public class MarriedLifeBondManager {
      */
     public void tick(ServerPlayerEntity player) {
         if (!isBondActive(player)) {
+            lastHealthLevels.remove(player.getUuid());
             lastFoodLevels.remove(player.getUuid());
             lastSaturationLevels.remove(player.getUuid());
             return;
@@ -112,6 +123,8 @@ public class MarriedLifeBondManager {
                 try {
                     player.setHealth(target);
                     spouse.setHealth(target);
+                    lastHealthLevels.put(player.getUuid(), target);
+                    lastHealthLevels.put(spouse.getUuid(), target);
                 } finally {
                     IS_SYNCING_HEALTH.set(false);
                 }
@@ -134,6 +147,24 @@ public class MarriedLifeBondManager {
 
             int food1 = hm1.getFoodLevel();
             float sat1 = hm1.getSaturationLevel();
+            int food2 = hm2.getFoodLevel();
+            float sat2 = hm2.getSaturationLevel();
+
+            // Reconcile initial discrepancy if neither has an active cached record
+            if (!lastFoodLevels.containsKey(player.getUuid()) && food1 != food2) {
+                int commonFood = Math.min(food1, food2);
+                float commonSat = Math.min(sat1, sat2);
+                hm1.setFoodLevel(commonFood);
+                hm1.setSaturationLevel(commonSat);
+                hm2.setFoodLevel(commonFood);
+                hm2.setSaturationLevel(commonSat);
+                lastFoodLevels.put(player.getUuid(), commonFood);
+                lastFoodLevels.put(spouse.getUuid(), commonFood);
+                lastSaturationLevels.put(player.getUuid(), commonSat);
+                lastSaturationLevels.put(spouse.getUuid(), commonSat);
+                return;
+            }
+
             int prevFood = lastFoodLevels.getOrDefault(player.getUuid(), food1);
             float prevSat = lastSaturationLevels.getOrDefault(player.getUuid(), sat1);
 
@@ -148,6 +179,12 @@ public class MarriedLifeBondManager {
             lastFoodLevels.put(player.getUuid(), food1);
             lastSaturationLevels.put(player.getUuid(), sat1);
         }
+    }
+
+    public void cleanupPlayer(UUID uuid) {
+        lastHealthLevels.remove(uuid);
+        lastFoodLevels.remove(uuid);
+        lastSaturationLevels.remove(uuid);
     }
 
     /**
@@ -196,3 +233,4 @@ public class MarriedLifeBondManager {
         });
     }
 }
+

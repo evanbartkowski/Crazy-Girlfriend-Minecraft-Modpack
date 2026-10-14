@@ -35,6 +35,15 @@ public class SlipperEntity extends ThrownItemEntity {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if (!this.getWorld().isClient && this.age > 200) {
+            this.dropStack(new ItemStack(ModItems.THROWABLE_SLIPPER));
+            this.discard();
+        }
+    }
+
+    @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         if (!this.getWorld().isClient) {

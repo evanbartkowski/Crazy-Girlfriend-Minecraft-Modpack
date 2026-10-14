@@ -5,14 +5,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ScenicLocationManager {
     private static final ScenicLocationManager INSTANCE = new ScenicLocationManager();
     public static ScenicLocationManager get() { return INSTANCE; }
 
-    private final List<BlockPos> scenicSpots = new ArrayList<>();
+    private final List<BlockPos> scenicSpots = new CopyOnWriteArrayList<>();
 
     public void registerScenicSpot(BlockPos pos) {
         if (!scenicSpots.contains(pos)) {

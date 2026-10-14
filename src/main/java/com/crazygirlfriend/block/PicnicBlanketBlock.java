@@ -45,6 +45,10 @@ public class PicnicBlanketBlock extends Block {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (player.getVehicle() instanceof SeatEntity) {
+            return ActionResult.PASS;
+        }
+
         if (!world.isClient && world instanceof ServerWorld serverWorld) {
             // Check existing seats at this location
             Box box = new Box(pos).expand(0.5);
@@ -73,6 +77,21 @@ public class PicnicBlanketBlock extends Block {
             return ActionResult.SUCCESS;
         }
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.isOf(newState.getBlock())) {
+            if (!world.isClient && world instanceof ServerWorld serverWorld) {
+                Box box = new Box(pos).expand(0.5);
+                List<SeatEntity> seats = serverWorld.getEntitiesByClass(SeatEntity.class, box, e -> true);
+                for (SeatEntity seat : seats) {
+                    seat.removeAllPassengers();
+                    seat.discard();
+                }
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
     }
 
     @Override

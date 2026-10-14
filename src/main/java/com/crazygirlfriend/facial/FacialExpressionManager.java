@@ -7,9 +7,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class FacialExpressionManager {
     private static final FacialExpressionManager INSTANCE = new FacialExpressionManager();
@@ -24,7 +24,7 @@ public class FacialExpressionManager {
         }
     }
 
-    private final Map<UUID, ExpressionState> activeExpressions = new HashMap<>();
+    private final Map<UUID, ExpressionState> activeExpressions = new ConcurrentHashMap<>();
 
     public static FacialExpressionManager get() {
         return INSTANCE;
