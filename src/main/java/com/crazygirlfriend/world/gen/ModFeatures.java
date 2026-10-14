@@ -14,3 +14,4 @@ public class ModFeatures {
         CrazyGirlfriendMod.LOGGER.info("Registered Crazy Girlfriend scenic location features");
     }
 }
+

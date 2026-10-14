@@ -22,3 +22,4 @@ public abstract class BackgroundRendererMixin {
         EnvironmentalColorManager.get().applyFogDistance(camera, fogType, viewDistance, thickFog, tickDelta);
     }
 }
+

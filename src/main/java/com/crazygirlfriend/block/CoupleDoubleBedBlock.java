@@ -66,36 +66,75 @@ public class CoupleDoubleBedBlock extends HorizontalFacingBlock {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient && world instanceof ServerWorld serverWorld) {
-            Box box = new Box(pos).expand(0.5);
-            List<SeatEntity> existingSeats = serverWorld.getEntitiesByClass(SeatEntity.class, box, seat -> seat.hasPassengers());
+            if (player.isSneaking()) {
+                return sitOnBed(state, serverWorld, pos, player);
+            }
 
-            Direction facing = state.get(FACING);
-            Direction side = facing.rotateYClockwise();
-
-            double x = pos.getX() + 0.5;
-            double z = pos.getZ() + 0.5;
-
-            if (existingSeats.isEmpty()) {
-                x += side.getOffsetX() * 0.25;
-                z += side.getOffsetZ() * 0.25;
-            } else if (existingSeats.size() == 1) {
-                x -= side.getOffsetX() * 0.25;
-                z -= side.getOffsetZ() * 0.25;
-            } else {
-                player.sendMessage(Text.literal("🛏️ The bed is full!").formatted(Formatting.YELLOW), true);
+            // Check if bed is already full (2/2)
+            List<net.minecraft.server.network.ServerPlayerEntity> sleepers = com.crazygirlfriend.relationship.CoSleepingManager.get().getSleepersAt(serverWorld, pos);
+            if (sleepers.size() >= 2 && !sleepers.contains(player)) {
+                player.sendMessage(Text.literal("🛏️ The couple bed is already full (2/2)!").formatted(Formatting.YELLOW), true);
                 return ActionResult.CONSUME;
             }
 
-            SeatEntity seat = new SeatEntity(ModEntities.SEAT, serverWorld);
-            seat.refreshPositionAndAngles(x, pos.getY() + 0.2, z, facing.asRotation(), 0);
-            serverWorld.spawnEntity(seat);
-            player.startRiding(seat, true);
-
-            serverWorld.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0f, 0.9f);
-            serverWorld.spawnParticles(ParticleTypes.HEART, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 6, 0.3, 0.2, 0.3, 0.02);
-            player.sendMessage(Text.literal("🛏️ Cozying up in the couple bed! Partner can snuggle right beside you.").formatted(Formatting.LIGHT_PURPLE), true);
-            return ActionResult.SUCCESS;
+            // Attempt to sleep in the couple bed
+            com.mojang.datafixers.util.Either<PlayerEntity.SleepFailureReason, net.minecraft.util.Unit> either = player.trySleep(pos);
+            if (either.left().isPresent()) {
+                PlayerEntity.SleepFailureReason reason = either.left().get();
+                if (reason == PlayerEntity.SleepFailureReason.NOT_POSSIBLE_NOW) {
+                    // Daytime or cannot sleep: fallback to sitting down comfortably!
+                    return sitOnBed(state, serverWorld, pos, player);
+                }
+                if (reason.getMessage() != null) {
+                    player.sendMessage(reason.getMessage(), true);
+                }
+                return ActionResult.SUCCESS;
+            } else {
+                // Successfully started sleeping!
+                if (sleepers.size() == 1 && !sleepers.contains(player)) {
+                    net.minecraft.server.network.ServerPlayerEntity partner = sleepers.get(0);
+                    if (player instanceof net.minecraft.server.network.ServerPlayerEntity serverPlayer) {
+                        com.crazygirlfriend.relationship.CoSleepingManager.get().onCoSleepStart(serverPlayer, partner, pos);
+                    }
+                } else {
+                    player.sendMessage(Text.literal("🛏️ Cozying up in the couple bed! Sleeping on your side...").formatted(Formatting.LIGHT_PURPLE), true);
+                    serverWorld.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0f, 0.9f);
+                }
+                return ActionResult.SUCCESS;
+            }
         }
+        return ActionResult.SUCCESS;
+    }
+
+    private ActionResult sitOnBed(BlockState state, ServerWorld serverWorld, BlockPos pos, PlayerEntity player) {
+        Box box = new Box(pos).expand(0.5);
+        List<SeatEntity> existingSeats = serverWorld.getEntitiesByClass(SeatEntity.class, box, seat -> seat.hasPassengers());
+
+        Direction facing = state.get(FACING);
+        Direction side = facing.rotateYClockwise();
+
+        double x = pos.getX() + 0.5;
+        double z = pos.getZ() + 0.5;
+
+        if (existingSeats.isEmpty()) {
+            x += side.getOffsetX() * 0.25;
+            z += side.getOffsetZ() * 0.25;
+        } else if (existingSeats.size() == 1) {
+            x -= side.getOffsetX() * 0.25;
+            z -= side.getOffsetZ() * 0.25;
+        } else {
+            player.sendMessage(Text.literal("🛏️ The bed is full!").formatted(Formatting.YELLOW), true);
+            return ActionResult.CONSUME;
+        }
+
+        SeatEntity seat = new SeatEntity(ModEntities.SEAT, serverWorld);
+        seat.refreshPositionAndAngles(x, pos.getY() + 0.2, z, facing.asRotation(), 0);
+        serverWorld.spawnEntity(seat);
+        player.startRiding(seat, true);
+
+        serverWorld.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1.0f, 0.9f);
+        serverWorld.spawnParticles(ParticleTypes.HEART, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 6, 0.3, 0.2, 0.3, 0.02);
+        player.sendMessage(Text.literal("🛏️ Cozying up on the couple bed!").formatted(Formatting.LIGHT_PURPLE), true);
         return ActionResult.SUCCESS;
     }
 

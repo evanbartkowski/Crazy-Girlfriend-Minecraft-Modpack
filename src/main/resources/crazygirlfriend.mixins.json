@@ -4,6 +4,8 @@
   "package": "com.crazygirlfriend.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BedBlockMixin",
+    "ServerWorldMixin"
   ],
   "client": [
     "PlayerEntityModelMixin",

@@ -220,6 +220,14 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
                 com.crazygirlfriend.event.world.WorldEventManager.get().updateClientEvent(event, ticks, intensity);
             });
         });
+
+        // Sleep Side Flip Sync
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.SLEEP_SIDE_FLIP_ID, (client, handler, buf, responseSender) -> {
+            UUID targetUuid = buf.readUuid();
+            client.execute(() -> {
+                com.crazygirlfriend.client.bed.CoSleepingClientTracker.get().toggleFlip(targetUuid);
+            });
+        });
     }
 }
 

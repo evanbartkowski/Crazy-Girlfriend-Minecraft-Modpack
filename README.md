@@ -178,9 +178,21 @@ Start games via command (`/cg minigame <id>`) or the Interaction GUI:
 9. **Dance-Off (`dance_challenge`)**: Synchronized rhythmic dance duel!
 10. **The Apology Challenge (`apology_challenge`)**: Deliver a dramatic apology to wipe the Crazy Meter clean!
 
-### 4. 🛏️ Bedroom Mechanics & Morning-After Scenes
-* **Couple Double Beds**: Right-click to snuggle together in shared blankets.
-* **Romantic Night & Morning-After**: Romantic embrace triggers a gentle vignette fade-to-black followed by randomized comedic morning outcomes:
+### 4. 🛏️ Bedroom Mechanics, Co-Sleeping & Side-Sleeping
+* **Shared Bed Sleeping (Co-Sleeping)**:
+  * Two players can now sleep in the **exact same bed simultaneously**! Works on all vanilla beds (all colors) as well as Couple Double Beds.
+  * No more "This bed is occupied" errors for couples and friends!
+  * Both players enter the sleeping state, both count towards skipping the night, both get the "Leave Bed" sleeping HUD, and both wake up together in the morning.
+* **Realistic Side-Sleeping System**:
+  * Instead of lying flat and stiff on your back like a plank, characters now **sleep comfortably on their side**!
+  * **Natural Side-Sleeper Posture**:
+    * Body rolled 80° onto its side with shoulder resting against the mattress.
+    * Legs naturally curled at the knees and hips in a relaxed sleeping posture.
+    * Arms bent cozily: one arm resting near the head/pillow, the other draped across the torso holding blankets or cuddling.
+    * Gentle, peaceful chest breathing animation cycle.
+  * **Facing Each Other in Bed**: When two players share the same bed, they are positioned side-by-side on the mattress and automatically roll onto their sides facing inward towards each other!
+  * **Roll Over Command**: Type `/cg sleepside flip` anytime in bed to roll over onto your other side (or spoon together)!
+* **Romantic Night & Morning-After**: Sharing a bed with your partner rewards **+25 Affection XP** and reduces the Crazy Meter by **-15%**. Skipping the night triggers randomized comedic morning outcomes:
   * Fresh coffee & pancakes with speed buffs!
   * Partner stole all the blankets, leaving you shivering!
   * Bed slat collapse with a comical creak sound!
@@ -338,6 +350,7 @@ Your relationship mechanics seamlessly integrate with the living environment:
 | `/cg autoaccept [on\|off]` | Toggle auto-accepting requests from your romantic partner. |
 | `/cg unleash` | Instantly break free from a leash. |
 | `/cg wipeface` | Wash all makeup off your face. |
+| `/cg sleepside [flip]` | Roll over onto your other side in bed (or spoon together). |
 | `/cg breakup` | End dating relationship. |
 | `/cg divorce` | Dissolve marriage. |
 | `/cg help` | View in-game command help guide. |

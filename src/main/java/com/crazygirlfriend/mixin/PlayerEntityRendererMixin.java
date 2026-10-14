@@ -25,5 +25,19 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         this.addFeature(new LeashFeatureRenderer(this));
         this.addFeature(new FacialExpressionFeatureRenderer(this));
     }
+
+    @Inject(method = "setupTransforms(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/client/util/math/MatrixStack;FFF)V", at = @At("TAIL"))
+    private void applySideSleepingTransforms(AbstractClientPlayerEntity player, net.minecraft.client.util.math.MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, CallbackInfo ci) {
+        if (player.isInPose(net.minecraft.entity.EntityPose.SLEEPING)) {
+            float lateralOffset = com.crazygirlfriend.client.bed.CoSleepingClientTracker.getLateralOffset(player);
+            if (lateralOffset != 0.0f) {
+                matrices.translate(lateralOffset, 0.0f, 0.0f);
+            }
+            float rollAngle = com.crazygirlfriend.client.bed.CoSleepingClientTracker.getRollAngle(player);
+            matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Y.rotationDegrees(rollAngle));
+            // Subtle adjustment so shoulder and body rest naturally on the mattress
+            matrices.translate(0.0f, 0.04f, 0.0f);
+        }
+    }
 }
 

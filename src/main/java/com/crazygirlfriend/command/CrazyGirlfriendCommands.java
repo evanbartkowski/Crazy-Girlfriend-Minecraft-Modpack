@@ -347,6 +347,20 @@ public class CrazyGirlfriendCommands {
                 com.crazygirlfriend.world.gen.ScenicLocationManager.get().locateForPlayer(ctx.getSource().getPlayerOrThrow());
                 return 1;
             }))
+            .then(literal("sleepside")
+                .executes(ctx -> {
+                    ServerPlayerEntity sender = ctx.getSource().getPlayerOrThrow();
+                    com.crazygirlfriend.network.ModPackets.sendSleepSideFlip(sender);
+                    sender.sendMessage(Text.literal("🛏️ Rolled over onto your other side!").formatted(Formatting.LIGHT_PURPLE), true);
+                    return 1;
+                })
+                .then(literal("flip").executes(ctx -> {
+                    ServerPlayerEntity sender = ctx.getSource().getPlayerOrThrow();
+                    com.crazygirlfriend.network.ModPackets.sendSleepSideFlip(sender);
+                    sender.sendMessage(Text.literal("🛏️ Rolled over onto your other side!").formatted(Formatting.LIGHT_PURPLE), true);
+                    return 1;
+                }))
+            )
             .then(literal("help").executes(ctx -> {
                 showHelp(ctx.getSource());
                 return 1;
@@ -388,6 +402,7 @@ public class CrazyGirlfriendCommands {
         source.sendMessage(Text.literal(" • /cg autoaccept [on|off] - Auto-accept partner requests").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • /cg unleash - Free yourself from a leash").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • /cg wipeface - Wash off makeup").formatted(Formatting.GRAY));
+        source.sendMessage(Text.literal(" • /cg sleepside [flip] - Roll over onto your other side in bed").formatted(Formatting.GRAY));
         source.sendMessage(Text.literal(" • Sneak + Right Click any player to open Interaction GUI!").formatted(Formatting.YELLOW, Formatting.ITALIC));
     }
 }

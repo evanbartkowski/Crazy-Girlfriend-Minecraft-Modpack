@@ -247,3 +247,4 @@ public class SeasonManager {
         return (r << 16) | (g << 8) | b;
     }
 }
+

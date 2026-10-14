@@ -53,3 +53,4 @@ public class ScenicLocationManager {
         player.sendMessage(Text.literal("═══════════════════════════════════════").formatted(Formatting.LIGHT_PURPLE));
     }
 }
+

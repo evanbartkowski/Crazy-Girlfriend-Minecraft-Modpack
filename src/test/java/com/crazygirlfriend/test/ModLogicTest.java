@@ -360,4 +360,77 @@ public class ModLogicTest {
         assertNotNull(pose.getNext());
         assertNotEquals(pose, pose.getNext());
     }
+
+    @Test
+    public void testSleepTransformMatrix() {
+        org.joml.Matrix4f mat = new org.joml.Matrix4f();
+        // Vanilla LivingEntityRenderer.setupTransforms for sleeping:
+        // direction = North (getYaw = 180)
+        mat.rotate((float) Math.toRadians(180), 0, 1, 0); // POSITIVE_Y(180)
+        mat.rotate((float) Math.toRadians(90), 0, 0, 1);  // POSITIVE_Z(90)
+        mat.rotate((float) Math.toRadians(270), 0, 1, 0); // POSITIVE_Y(270)
+
+        // In LivingEntityRenderer, before render, model Y is -1 (upwards) and Z is +1 (forward/facing)
+        org.joml.Vector3f up = new org.joml.Vector3f(0, 1, 0); // player's standing "up" (head direction)
+        mat.transformDirection(up);
+        System.out.println("Head direction in world space: " + up);
+
+        org.joml.Vector3f face = new org.joml.Vector3f(0, 0, 1); // player's facing direction
+        mat.transformDirection(face);
+        System.out.println("Face direction in world space: " + face);
+
+        // Now test local axes
+        org.joml.Vector3f localX = new org.joml.Vector3f(1, 0, 0);
+        mat.transformDirection(localX);
+        System.out.println("Local X in world space: " + localX);
+
+        org.joml.Vector3f localY = new org.joml.Vector3f(0, 1, 0);
+        mat.transformDirection(localY);
+        System.out.println("Local Y in world space: " + localY);
+
+        // Test all 4 directions: North (180), South (0), West (90), East (270)
+        float[] yaws = {0f, 90f, 180f, 270f};
+        String[] dirNames = {"South", "West", "North", "East"};
+        for (int i = 0; i < yaws.length; i++) {
+            org.joml.Matrix4f m = new org.joml.Matrix4f();
+            m.rotate((float) Math.toRadians(yaws[i]), 0, 1, 0);
+            m.rotate((float) Math.toRadians(90), 0, 0, 1);
+            m.rotate((float) Math.toRadians(270), 0, 1, 0);
+
+            // Local Y axis (head-to-toe)
+            org.joml.Vector3f spine = new org.joml.Vector3f(0, 1, 0);
+            m.transformDirection(spine);
+
+            // Shift along local X (across bed)
+            org.joml.Vector3f across = new org.joml.Vector3f(1, 0, 0);
+            m.transformDirection(across);
+
+            // Verify spine is horizontal (Y component is 0)
+            assertEquals(0.0f, spine.y, 0.001f, "Spine Y should be 0 for " + dirNames[i]);
+            // Verify across is horizontal (Y component is 0)
+            assertEquals(0.0f, across.y, 0.001f, "Across Y should be 0 for " + dirNames[i]);
+            // Verify spine and across are orthogonal
+            assertEquals(0.0f, spine.dot(across), 0.001f, "Spine and across should be orthogonal for " + dirNames[i]);
+        }
+    }
+
+    @Test
+    public void testCoSleepingClientTrackerLogic() {
+        var tracker = com.crazygirlfriend.client.bed.CoSleepingClientTracker.get();
+        assertNotNull(tracker);
+
+        UUID p1 = UUID.randomUUID();
+        assertFalse(tracker.isFlipped(p1));
+        tracker.toggleFlip(p1);
+        assertTrue(tracker.isFlipped(p1));
+        tracker.toggleFlip(p1);
+        assertFalse(tracker.isFlipped(p1));
+
+        tracker.setFlipped(p1, true);
+        assertTrue(tracker.isFlipped(p1));
+        tracker.setFlipped(p1, false);
+        assertFalse(tracker.isFlipped(p1));
+    }
 }
+
+

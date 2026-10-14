@@ -56,3 +56,4 @@ public class RomanticChandelierBlock extends Block {
         return Collections.singletonList(new ItemStack(this));
     }
 }
+

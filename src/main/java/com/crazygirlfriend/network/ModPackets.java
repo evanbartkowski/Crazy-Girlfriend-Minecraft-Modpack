@@ -27,6 +27,7 @@ public class ModPackets {
     public static final Identifier LOVE_EUPHORIA_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "love_euphoria_sync");
     public static final Identifier SEASON_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "season_sync");
     public static final Identifier WORLD_EVENT_SYNC_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "world_event_sync");
+    public static final Identifier SLEEP_SIDE_FLIP_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "sleep_side_flip");
 
     public static final Identifier INTERACTION_REQUEST_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "interaction_request");
     public static final Identifier APPLY_MAKEUP_C2S = new Identifier(CrazyGirlfriendMod.MOD_ID, "apply_makeup");
@@ -199,6 +200,14 @@ public class ModPackets {
             }
         }
         return ItemStack.EMPTY;
+    }
+
+    public static void sendSleepSideFlip(ServerPlayerEntity player) {
+        net.minecraft.network.PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
+        buf.writeUuid(player.getUuid());
+        for (ServerPlayerEntity p : player.getServerWorld().getPlayers()) {
+            ServerPlayNetworking.send(p, SLEEP_SIDE_FLIP_ID, buf);
+        }
     }
 }
 
