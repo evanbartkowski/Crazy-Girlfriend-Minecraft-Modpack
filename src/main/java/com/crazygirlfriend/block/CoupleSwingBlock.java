@@ -104,3 +104,4 @@ public class CoupleSwingBlock extends HorizontalFacingBlock {
         return Collections.singletonList(new ItemStack(this.asItem()));
     }
 }
+

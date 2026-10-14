@@ -84,3 +84,4 @@ public class TeddyBearBlock extends HorizontalFacingBlock {
         return Collections.singletonList(new ItemStack(ModItems.TEDDY_BEAR));
     }
 }
+

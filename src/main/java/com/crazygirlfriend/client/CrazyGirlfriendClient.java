@@ -70,6 +70,14 @@ public class CrazyGirlfriendClient implements ClientModInitializer {
             com.crazygirlfriend.client.gui.ComboOverlayHud.get().tick(client);
             com.crazygirlfriend.client.camera.CinematicCameraManager.get().tick();
 
+            // Atmospheric & Environmental Systems
+            if (client.world != null) {
+                com.crazygirlfriend.client.atmosphere.WindManager.get().tick(client.world);
+                com.crazygirlfriend.client.atmosphere.AtmosphericParticleManager.get().tick(client);
+                com.crazygirlfriend.client.atmosphere.SkyOverhaulRenderer.get().tick(client);
+                com.crazygirlfriend.client.atmosphere.AmbientSoundManager.get().tick(client);
+            }
+
             while (INTERACTION_MENU_KEY.wasPressed()) {
                 if (client.targetedEntity instanceof PlayerEntity targetPlayer) {
                     client.setScreen(new RelationshipInteractionScreen(targetPlayer));

@@ -2,7 +2,7 @@
 
 A hilarious, romantic, chaotic, and highly interactive multiplayer relationship mod for Minecraft Java Edition.
 
-Expand your multiplayer adventures with full relationship lifecycles, **65+ synchronized player animations**, the **Crazy Girlfriend Mode & Crazy Meter (0-100%)**, **80 randomized couple events**, **10 interactive minigames**, **comedy weapons**, **interactive couple furniture**, an in-game **photo camera & memory album**, and a context-sensitive **reaction engine**!
+Expand your multiplayer adventures with full relationship lifecycles, **65+ synchronized player animations**, the **Crazy Girlfriend Mode & Crazy Meter (0-100%)**, **80 randomized couple events**, **10 interactive minigames**, **comedy weapons**, **interactive couple furniture**, an in-game **photo camera & memory album**, a context-sensitive **reaction engine**, and a complete **dreamy romantic visual & atmospheric overhaul**!
 
 ---
 
@@ -198,6 +198,61 @@ A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Come
 
 ---
 
+## 🌸 Complete Minecraft Visual & Atmospheric Overhaul
+
+The modpack features a comprehensive visual, celestial, and atmospheric overhaul designed to make the Minecraft world feel like a dreamy, romantic fantasy while preserving its blocky pixel-art identity.
+
+### 🍃 Dynamic Biome Atmospheres & Particles
+* **Cherry Groves & Blossoms**: Soft pink sakura blossom petals drifting gently across the breeze.
+* **Forests & Flower Meadows**: Floating dandelion pollen, sun-dappled glades, and colorful fluttering butterflies.
+* **Swamps & Mangroves**: Eerie low-lying ground mist with warm glowing fireflies emerging at twilight and dusk.
+* **Oceans, Rivers & Beaches**: Clear animated turquoise water with dynamic shoreline ripples and foam splashes.
+* **Deserts & Badlands**: Swirling dust flurries and blowing sand swept across dunes by the wind.
+* **Snowy Taigas & Mountain Peaks**: Whipping blizzards with realistic wind-carried snowflakes.
+
+### 💨 Deterministic Continuous Wind Simulation
+* An integrated mathematical wind engine calculates dynamic wind direction, speed, and gust vectors every tick.
+* Directly drives particle drift speeds, foliage sway, and cloud/weather trajectories.
+
+### ✨ Celestial Night Sky, Shooting Stars & Auroras
+* **Golden Hour & Sunsets**: High-resolution radiant sun with warm golden horizon gradients.
+* **Deep Romantic Night Skies**: Scintillating starfields where stars twinkle realistically based on atmospheric depth.
+* **Shooting Stars & Meteor Showers**: Random shooting stars streak across the night sky, with rare meteor showers accompanied by gentle celestial chimes.
+* **Northern Lights / Auroras**: Shimmering ribbons of green, violet, and rose auroras light up cold biomes and snowy mountain nights.
+
+### 🎨 Built-In Resource Pack & Sweetheart HUD
+* Comes pre-packaged with **`Crazy-Girlfriend-Visuals.zip`** (automatically enabled in `options.txt`):
+  * **Bushy Lush Grass & Foliage**: Fluffy leaf canopies and vibrant grass block textures.
+  * **Seamless Clear Glass**: Borderless, crystal-clear connected-feel glass blocks.
+  * **Vibrant Crystal Water**: High-clarity animated turquoise water textures.
+  * **Sweetheart HUD**: Custom romantic heart health icons and golden-glazed hunger drumsticks.
+  * **Romantic Main Menu**: Floating sakura blossom petals and custom title screen banners.
+
+### ⚙️ Visual Settings Screen & Graphics Presets
+* Open the **Crazy Girlfriend Hub** (Sneak + Right-Click or press **K**) and click the **🌸 Visuals** button!
+* **4 Graphics Presets**:
+  * **LOW**: Lightweight performance mode for low-end PCs (reduced particles, no wind sway).
+  * **MEDIUM**: Balanced visual enhancement for standard gameplay.
+  * **HIGH (Default)**: Full atmospheric particles, shooting stars, auroras, and ambient audio.
+  * **ULTRA**: Maximum particle density, intense starfields, and full visual immersion.
+* **Photosensitivity Mode**: One-click toggle that removes all camera screen shakes, white flash frames, and sudden particle bursts.
+* **Granular Controls**: Sliders and toggles for Particle Density, Wind Sway, Custom Sky, Weather, and Ambient Sound Volume.
+
+### 🎵 Procedural Environmental Ambient Audio
+* **Morning Forest Birdsong**: Procedural birds chirping at dawn in lush biomes.
+* **Night Crickets**: Soothing crickets chirping under clear starry skies.
+* **Canopy Wind Breezes**: Gentle wind rustling through tree leaves.
+* **Shoreline Ocean Waves**: Gentle surf sounds when standing near beaches and oceans.
+* **Shooting Star Chimes**: Delicate celestial sparkle audio when wishing on a shooting star.
+
+### 🌟 Shader Mod Compatibility (Iris + Sodium)
+* The modpack looks stunning on pure Fabric with zero external mods required!
+* For players who want ultra-realistic lighting, the visual overhaul is **100% compatible with [Iris Shaders](https://irisshaders.dev/) + [Sodium](https://modrinth.com/mod/sodium)**:
+  * Recommended shaderpacks: **Complementary Reimagined**, **MakeUp-UltraFast**, or **BSL Shaders**.
+  * Dynamic particles, custom UI, and sky renderers seamlessly adapt whether shaders are active or disabled.
+
+---
+
 ## ⌨️ Command Reference
 
 | Command | Description |
@@ -216,3 +271,4 @@ A complete custom advancement tree spanning Dating, Crazy Girlfriend Tiers, Come
 | `/cg breakup` | End dating relationship. |
 | `/cg divorce` | Dissolve marriage. |
 | `/cg help` | View in-game command help guide. |
+

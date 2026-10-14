@@ -104,3 +104,4 @@ public class CoupleDoubleBedBlock extends HorizontalFacingBlock {
         return Collections.singletonList(new ItemStack(this.asItem()));
     }
 }
+

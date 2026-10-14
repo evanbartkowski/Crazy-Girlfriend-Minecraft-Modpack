@@ -1,0 +1,2 @@
+resourcePacks:["vanilla","file/Crazy-Girlfriend-Visuals.zip"]
+incompatibleResourcePacks:[]

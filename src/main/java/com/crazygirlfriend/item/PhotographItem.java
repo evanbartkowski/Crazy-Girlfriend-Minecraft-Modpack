@@ -79,3 +79,4 @@ public class PhotographItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
     }
 }
+

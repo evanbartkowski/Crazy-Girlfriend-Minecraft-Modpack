@@ -80,3 +80,4 @@ public class PicnicBlanketBlock extends Block {
         return Collections.singletonList(new ItemStack(this.asItem()));
     }
 }
+

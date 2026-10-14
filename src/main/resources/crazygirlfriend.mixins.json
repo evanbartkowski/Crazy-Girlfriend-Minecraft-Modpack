@@ -10,7 +10,8 @@
     "PlayerEntityRendererMixin",
     "InGameHudMixin",
     "GameRendererMixin",
-    "ArmorFeatureRendererMixin"
+    "ArmorFeatureRendererMixin",
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

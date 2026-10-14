@@ -34,6 +34,63 @@ public class ModConfig {
     public boolean enableMinigames = true;
     public boolean enableCinematicCamera = true;
 
+    // Visual & Atmospheric Settings
+    public String visualPreset = "HIGH"; // LOW, MEDIUM, HIGH, ULTRA
+    public float particleDensity = 1.2f;
+    public boolean enableWindSway = true;
+    public boolean enableAmbientParticles = true;
+    public boolean enableAtmosphericSky = true;
+    public boolean enableCustomWeather = true;
+    public boolean enableAmbientAudio = true;
+    public float ambientAudioVolume = 0.7f;
+    public boolean photosensitivityMode = false;
+    public boolean enableCustomUI = true;
+
+    public void applyPreset(String preset) {
+        if (preset == null) return;
+        this.visualPreset = preset.toUpperCase();
+        switch (this.visualPreset) {
+            case "LOW":
+                this.particleDensity = 0.4f;
+                this.enableWindSway = false;
+                this.enableAmbientParticles = false;
+                this.enableAtmosphericSky = false;
+                this.enableCustomWeather = false;
+                this.enableAmbientAudio = false;
+                break;
+            case "MEDIUM":
+                this.particleDensity = 0.8f;
+                this.enableWindSway = true;
+                this.enableAmbientParticles = true;
+                this.enableAtmosphericSky = true;
+                this.enableCustomWeather = true;
+                this.enableAmbientAudio = true;
+                this.ambientAudioVolume = 0.5f;
+                break;
+            case "ULTRA":
+                this.particleDensity = 1.8f;
+                this.enableWindSway = true;
+                this.enableAmbientParticles = true;
+                this.enableAtmosphericSky = true;
+                this.enableCustomWeather = true;
+                this.enableAmbientAudio = true;
+                this.ambientAudioVolume = 0.85f;
+                break;
+            case "HIGH":
+            default:
+                this.visualPreset = "HIGH";
+                this.particleDensity = 1.2f;
+                this.enableWindSway = true;
+                this.enableAmbientParticles = true;
+                this.enableAtmosphericSky = true;
+                this.enableCustomWeather = true;
+                this.enableAmbientAudio = true;
+                this.ambientAudioVolume = 0.7f;
+                break;
+        }
+        save();
+    }
+
     private static ModConfig INSTANCE = new ModConfig();
 
     public static ModConfig get() {

@@ -67,6 +67,21 @@ public class ModSounds {
     public static final Identifier FISH_SLAP_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "fish_slap");
     public static final SoundEvent FISH_SLAP = SoundEvent.of(FISH_SLAP_ID);
 
+    public static final Identifier WIND_BREEZE_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "wind_breeze");
+    public static final SoundEvent WIND_BREEZE = SoundEvent.of(WIND_BREEZE_ID);
+
+    public static final Identifier BIRDS_MORNING_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "birds_morning");
+    public static final SoundEvent BIRDS_MORNING = SoundEvent.of(BIRDS_MORNING_ID);
+
+    public static final Identifier CRICKETS_NIGHT_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "crickets_night");
+    public static final SoundEvent CRICKETS_NIGHT = SoundEvent.of(CRICKETS_NIGHT_ID);
+
+    public static final Identifier OCEAN_WAVES_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "ocean_waves");
+    public static final SoundEvent OCEAN_WAVES = SoundEvent.of(OCEAN_WAVES_ID);
+
+    public static final Identifier SHOOTING_STAR_ID = new Identifier(CrazyGirlfriendMod.MOD_ID, "shooting_star");
+    public static final SoundEvent SHOOTING_STAR = SoundEvent.of(SHOOTING_STAR_ID);
+
     public static void register() {
         Registry.register(Registries.SOUND_EVENT, ROMANTIC_CHIME_ID, ROMANTIC_CHIME);
         Registry.register(Registries.SOUND_EVENT, SLAP_ID, SLAP);
@@ -88,5 +103,10 @@ public class ModSounds {
         Registry.register(Registries.SOUND_EVENT, BED_BREAK_ID, BED_BREAK);
         Registry.register(Registries.SOUND_EVENT, CHEER_ID, CHEER);
         Registry.register(Registries.SOUND_EVENT, FISH_SLAP_ID, FISH_SLAP);
+        Registry.register(Registries.SOUND_EVENT, WIND_BREEZE_ID, WIND_BREEZE);
+        Registry.register(Registries.SOUND_EVENT, BIRDS_MORNING_ID, BIRDS_MORNING);
+        Registry.register(Registries.SOUND_EVENT, CRICKETS_NIGHT_ID, CRICKETS_NIGHT);
+        Registry.register(Registries.SOUND_EVENT, OCEAN_WAVES_ID, OCEAN_WAVES);
+        Registry.register(Registries.SOUND_EVENT, SHOOTING_STAR_ID, SHOOTING_STAR);
     }
 }

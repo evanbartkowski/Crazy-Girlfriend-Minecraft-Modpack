@@ -176,9 +176,16 @@ public class RelationshipInteractionScreen extends Screen {
             }).dimensions(centerX + 60, startActionY + 102, 50, 18).build());
         }
 
+        // Visuals & Settings Button
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("🌸 Visuals"), b -> {
+            if (this.client != null) {
+                this.client.setScreen(new VisualSettingsScreen(this));
+            }
+        }).dimensions(centerX - 80, startActionY + 125, 75, 18).build());
+
         // Close Button
         this.addDrawableChild(ButtonWidget.builder(Text.literal("✖ Close"), b -> this.close())
-            .dimensions(centerX - 35, startActionY + 125, 70, 18)
+            .dimensions(centerX + 5, startActionY + 125, 75, 18)
             .build());
     }
 
